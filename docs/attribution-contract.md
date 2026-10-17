@@ -16,7 +16,7 @@ Every trial CTA links to `https://app.hofclin.com.br/signup`, with `?plan=standa
 | Max-Age | 7776000 (90 days), refreshed on every write |
 | SameSite / Secure | `Lax` / `Secure` |
 | HttpOnly | no — written by the landing's script, read by the SPA |
-| Value | `encodeURIComponent(JSON.stringify(payload))`, kept under 2 KB (each string truncated to 200 chars) |
+| Value | `encodeURIComponent(JSON.stringify(payload))`, at most 2048 characters encoded (see "Size budget") |
 
 ### Payload, version 1
 
@@ -64,6 +64,7 @@ Every trial CTA links to `https://app.hofclin.com.br/signup`, with `?plan=standa
 - **UTMs travel regardless of Consent** — they identify a campaign, not a person.
 - **Click IDs, `fbc`, `fbp`, `ttp` require Marketing.** If Marketing is granted later in the same session, the landing captures the IDs from the session's landing URL at that moment. Revoking Marketing deletes `ids`.
 - **`gaClientId` requires Analytics.** Revoking Analytics deletes it.
+- **Size budget.** Touch strings are cut to 200 characters. A click ID (or `fbc`/`fbp`/`ttp`) over 200 characters is discarded, never truncated — a partial ID matches nothing. If the encoded cookie still exceeds 2048 characters, the landing sheds data in this order until it fits: `term`, `content` and `id` from both touches; touch strings cut to 100, then 50, then 25 characters; then ids in the order `ttp`, `fbp`, `fbc`, `wbraid`, `gbraid`, `ttclid`, `fbclid`, `gclid`. Real campaign links never get past the first step.
 
 ## 3. What the app sends
 

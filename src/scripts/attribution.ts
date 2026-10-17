@@ -33,6 +33,12 @@ export interface Attribution {
 const COOKIE = "hof_attr";
 const MAX_AGE_SECONDS = 90 * 24 * 60 * 60;
 const MAX_STRING = 200;
+/** Contract: the encoded cookie stays under 2 KB — browsers silently drop cookies over ~4 KB. */
+const MAX_ENCODED = 2048;
+/** Touch string caps tried, in order, while the encoded cookie is over budget. */
+const TOUCH_CAPS: readonly number[] = [MAX_STRING, 100, 50, 25];
+/** Last resort when touches alone cannot fit: least useful first; URL click IDs go last. */
+const ID_DROP_ORDER: readonly (keyof Ids)[] = ["ttp", "fbp", "fbc", "wbraid", "gbraid", "ttclid", "fbclid", "gclid"];
 const SESSION_IDS_KEY = "hof_landing_ids";
 
 const CLICK_IDS: readonly ClickIdKey[] = ["gclid", "gbraid", "wbraid", "fbclid", "ttclid"];
@@ -47,6 +53,10 @@ const SEARCH_ENGINES: readonly string[] = ["google", "bing", "duckduckgo", "yaho
 
 const clip = (value: string | null | undefined): string | null =>
   value == null || value === "" ? null : value.slice(0, MAX_STRING);
+
+/** A click ID cut short matches nothing on the ad platform, so an oversized one is discarded, never truncated. */
+const idValue = (value: string | null | undefined): string | undefined =>
+  value && value.length <= MAX_STRING ? value : undefined;
 
 function isSameSite(host: string): boolean {
   return host === location.hostname || host === "hofclin.com.br" || host.endsWith(".hofclin.com.br");
@@ -65,7 +75,7 @@ function externalReferrerHost(): string | null {
 function clickIdsFrom(params: URLSearchParams): Partial<Record<ClickIdKey, string>> {
   const ids: Partial<Record<ClickIdKey, string>> = {};
   for (const key of CLICK_IDS) {
-    const value = clip(params.get(key));
+    const value = idValue(params.get(key));
     if (value) ids[key] = value;
   }
   return ids;
@@ -127,8 +137,47 @@ export function readAttribution(): Attribution | null {
   }
 }
 
+const encode = (attribution: Attribution): string => encodeURIComponent(JSON.stringify(attribution));
+
+/** Drops term, content and id, and cuts the remaining strings to `cap`. */
+function shrinkTouch(touch: Touch, cap: number): Touch {
+  const cut = (value: string | null) => (value == null ? null : value.slice(0, cap));
+  return {
+    ...touch,
+    source: cut(touch.source),
+    medium: cut(touch.medium),
+    campaign: cut(touch.campaign),
+    term: null,
+    content: null,
+    id: null,
+    landingPath: touch.landingPath.slice(0, cap),
+    referrer: cut(touch.referrer),
+  };
+}
+
+/**
+ * Serializes within MAX_ENCODED. Per-field caps do not bound the whole payload (and URI
+ * encoding can triple non-ASCII), so when over budget it sheds the least useful data first:
+ * optional touch fields, then shorter touch strings, then ids in ID_DROP_ORDER.
+ */
+function serialize(attribution: Attribution): string {
+  let value = encode(attribution);
+  for (const cap of TOUCH_CAPS) {
+    if (value.length <= MAX_ENCODED) return value;
+    attribution = { ...attribution, first: shrinkTouch(attribution.first, cap), last: attribution.last && shrinkTouch(attribution.last, cap) };
+    value = encode(attribution);
+  }
+  for (const key of ID_DROP_ORDER) {
+    if (value.length <= MAX_ENCODED || !attribution.ids) return value;
+    const { [key]: _dropped, ...ids } = attribution.ids;
+    attribution = { ...attribution, ids };
+    value = encode(attribution);
+  }
+  return value;
+}
+
 function write(attribution: Attribution): void {
-  writeCookie(COOKIE, encodeURIComponent(JSON.stringify(attribution)), MAX_AGE_SECONDS);
+  writeCookie(COOKIE, serialize(attribution), MAX_AGE_SECONDS);
 }
 
 /** `_ga` = GA1.1.<random>.<timestamp>; the client id is the last two fields. */
@@ -160,11 +209,11 @@ function withConsent(attribution: Attribution, consent: ConsentState | null): At
   if (next.consent.marketing) {
     const ids: Ids = { ...next.ids, ...stashedClickIds(), ...clickIdsFrom(new URLSearchParams(location.search)) };
     const fbcCookie = readCookie("_fbc");
-    if (fbcCookie) ids.fbc = clip(fbcCookie) ?? undefined;
-    else if (ids.fbclid && !ids.fbc?.endsWith(`.${ids.fbclid}`)) ids.fbc = clip(`fb.1.${Date.now()}.${ids.fbclid}`) ?? undefined;
-    const fbp = clip(readCookie("_fbp"));
+    if (fbcCookie) ids.fbc = idValue(fbcCookie);
+    else if (ids.fbclid && !ids.fbc?.endsWith(`.${ids.fbclid}`)) ids.fbc = idValue(`fb.1.${Date.now()}.${ids.fbclid}`);
+    const fbp = idValue(readCookie("_fbp"));
     if (fbp) ids.fbp = fbp;
-    const ttp = clip(readCookie("_ttp"));
+    const ttp = idValue(readCookie("_ttp"));
     if (ttp) ids.ttp = ttp;
     next.ids = ids;
   } else {

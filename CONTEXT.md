@@ -27,7 +27,7 @@ The visitor's choice, per category — Analytics (UI: analíticos) and Marketing
 _Avoid_: pre-checked categories; a single "Concordo" button; sending a conversion to an ad platform for a Prospect who did not grant Marketing
 
 **Conversation code** (UI: cód.):
-A short random code appended to the prefilled WhatsApp message, recorded on that `whatsapp_click` so a chat can be traced back to its campaign and page. Resolvable only when the visitor granted Analytics; otherwise the chat arrives without an origin.
+A short random code appended to the prefilled WhatsApp message, recorded on that `whatsapp_click` so a chat can be traced back to its campaign and page. Appended only when the visitor granted Analytics — without the event that maps it, a code means nothing — so otherwise the chat arrives without one.
 _Avoid_: putting UTM text or campaign names in the message itself
 
 **Funnel event**:

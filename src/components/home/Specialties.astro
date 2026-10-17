@@ -1,0 +1,73 @@
+---
+import Icon from "../Icon.astro";
+import SectionHeading from "../SectionHeading.astro";
+import TreatmentPlanMock from "../mockups/TreatmentPlanMock.astro";
+import TraceabilityMock from "../mockups/TraceabilityMock.astro";
+
+const columns = [
+  {
+    icon: "tooth",
+    title: "Odontologia",
+    text: "Odontograma por dente e face, com o que o paciente já tinha separado do que a clínica planejou.",
+    points: [
+      "Condições e tratamentos no mesmo mapa",
+      "Tratamentos em várias sessões, do planejado ao concluído",
+      "Registros por dente ou por região, como arcada ou boca inteira",
+    ],
+    href: "/odontologia",
+    linkLabel: "Conheça o prontuário odontológico",
+    mock: "plan",
+  },
+  {
+    icon: "face",
+    title: "Harmonização orofacial",
+    text: "Faceograma com pontos de aplicação e doses, e a rastreabilidade de cada produto aplicado.",
+    points: [
+      "Regiões, pontos e doses marcados no rosto",
+      "Plano e aplicado no mesmo mapa",
+      "Marca, lote, validade e foto do rótulo de cada produto",
+    ],
+    href: "/harmonizacao-orofacial",
+    linkLabel: "Conheça o prontuário de harmonização",
+    mock: "trace",
+  },
+] as const;
+---
+
+<section class="border-y border-hairline bg-cream py-20 md:py-28" aria-labelledby="especialidades-titulo">
+  <div class="container-page">
+    <SectionHeading
+      id="especialidades-titulo"
+      eyebrow="Um prontuário, duas especialidades"
+      title="Do sorriso ao rosto, sem trocar de sistema"
+      subtitle="O mesmo paciente, a mesma ficha: o que foi feito na boca e no rosto aparece junto, no histórico de cada atendimento."
+    />
+    <div class="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-2">
+      {
+        columns.map((column) => (
+          <article class="flex flex-col gap-8 rounded-[var(--radius-card-lg)] border border-hairline bg-white p-8 shadow-[var(--shadow-card)] md:p-10">
+            <div class="flex flex-col gap-4">
+              <span class="flex size-11 items-center justify-center rounded-[var(--radius-input)] bg-sand-soft text-sand-deep">
+                <Icon name={column.icon} size={22} />
+              </span>
+              <h3 class="text-subheading">{column.title}</h3>
+              <p class="text-charcoal">{column.text}</p>
+              <ul class="flex flex-col gap-2.5 text-[15px]">
+                {column.points.map((point) => (
+                  <li class="flex gap-3">
+                    <Icon name="check" size={18} class="mt-0.5 shrink-0 text-sand-deep" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div aria-hidden="true">{column.mock === "plan" ? <TreatmentPlanMock /> : <TraceabilityMock />}</div>
+            <a href={column.href} class="link-arrow mt-auto self-start">
+              {column.linkLabel} <Icon name="arrow-right" size={16} />
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,106 @@
+---
+import CtaButton from "./CtaButton.astro";
+import Icon from "./Icon.astro";
+import SectionHeading from "./SectionHeading.astro";
+import { formatPrice, plans } from "../config/plans";
+
+/**
+ * Price, renewal, cancellation and Trial-end shown together, in legible type
+ * (Lei 10.962/2004 art. 2º, III; Decreto 7.962/2013 art. 2º, V–VI).
+ */
+interface Props {
+  placement?: string;
+}
+
+const { placement = "pricing" } = Astro.props;
+
+const assurances = [
+  { icon: "sparkle", title: "10 dias grátis", text: "Sem cartão de crédito para começar." },
+  { icon: "card", title: "Escolha no fim do teste", text: "Você escolhe o plano ao cadastrar o cartão." },
+  { icon: "shield", title: "Garantia de 7 dias", text: "Desistiu até 7 dias após a 1ª cobrança? Devolvemos tudo." },
+  { icon: "refresh", title: "Cancele quando quiser", text: "Direto no app, sem falar com ninguém." },
+] as const;
+---
+
+<section id="precos" class="scroll-mt-20 py-20 md:py-28" aria-labelledby="precos-titulo">
+  <div class="container-page">
+    <SectionHeading
+      id="precos-titulo"
+      eyebrow="Preços"
+      title="Um preço claro, sem fidelidade"
+      subtitle="Comece pelo teste grátis de 10 dias no plano que quiser. A assinatura é mensal e você cancela pelo app."
+    />
+
+    <div class="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-5 md:grid-cols-2">
+      {
+        plans.map((plan) => {
+          const highlighted = plan.key === "pro";
+          return (
+            <article
+              class:list={[
+                "flex flex-col rounded-[var(--radius-card-lg)] p-8 md:p-10",
+                highlighted ? "border border-ink bg-white shadow-[var(--shadow-card)]" : "border border-hairline bg-cream",
+              ]}
+              aria-labelledby={`plano-${plan.key}`}
+            >
+              <div class="flex items-center justify-between gap-3">
+                <h3 id={`plano-${plan.key}`} class="text-subheading">
+                  {plan.name}
+                </h3>
+                {highlighted && <span class="chip bg-sand-soft px-3 py-1 text-xs text-sand-deep">Mais completo</span>}
+              </div>
+              <p class="mt-2 text-sm text-charcoal">{plan.tagline}</p>
+
+              <p class="mt-8 flex items-baseline gap-1.5">
+                <span class="text-lg font-medium">R$</span>
+                <span class="text-5xl font-semibold tracking-[-0.04em] tabular-nums">{formatPrice(plan.price)}</span>
+                <span class="text-base text-charcoal">/mês</span>
+              </p>
+              <p class="mt-1 text-sm text-charcoal">Renovação mensal automática</p>
+
+              <ul class="mt-8 flex flex-1 flex-col gap-3 text-[15px]">
+                {plan.features.map((feature) => (
+                  <li class="flex gap-3">
+                    <Icon name="check" size={18} class="mt-0.5 shrink-0 text-sand-deep" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <CtaButton
+                placement={`${placement}_${plan.key}`}
+                plan={plan.key}
+                variant={highlighted ? "primary" : "ghost"}
+                label={`Testar o ${plan.name} grátis`}
+                class="mt-10 w-full"
+              />
+            </article>
+          );
+        })
+      }
+    </div>
+
+    <ul class="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        assurances.map((item) => (
+          <li class="flex flex-col gap-2 rounded-[var(--radius-card)] border border-hairline p-5">
+            <Icon name={item.icon} size={20} class="text-sand-deep" />
+            <span class="text-sm font-semibold">{item.title}</span>
+            <span class="text-sm text-charcoal">{item.text}</span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-charcoal">
+      Durante o teste você usa o plano escolhido sem cadastrar cartão. Se cadastrar o cartão durante o teste, a primeira
+      cobrança acontece no fim dos 10 dias. Se o teste terminar sem cartão, a clínica fica em modo somente leitura (seus
+      dados continuam disponíveis para consulta) até o cartão ser cadastrado, e a cobrança é feita na hora. Cancelando em
+      até 7 dias após a primeira cobrança, devolvemos o valor integral; depois disso, o acesso continua até o fim do
+      período pago, sem reembolso. Valores em reais, por clínica. Condições completas nos <a
+        href="/termos"
+        class="text-ink underline underline-offset-2">Termos de Uso</a
+      >.
+    </p>
+  </div>
+</section>

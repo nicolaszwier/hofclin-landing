@@ -1,0 +1,135 @@
+---
+import "@fontsource/poppins/latin-400.css";
+import "@fontsource/poppins/latin-500.css";
+import "@fontsource/poppins/latin-600.css";
+import "../styles/global.css";
+import poppins600 from "@fontsource/poppins/files/poppins-latin-600-normal.woff2?url";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppButton, { type WhatsAppContext } from "../components/WhatsAppButton.astro";
+import ConsentBanner from "../components/ConsentBanner.astro";
+import { isPlaceholder, publicPath, site } from "../config/site";
+
+interface Props {
+  /** Full <title>; keep under ~60 characters. */
+  title: string;
+  /** Meta description; keep within ~155 characters. */
+  description: string;
+  /** Extra JSON-LD nodes for this page (Organization and WebSite are always present). */
+  jsonLd?: Record<string, unknown>[];
+  whatsappContext?: WhatsAppContext;
+  noindex?: boolean;
+  ogImage?: string;
+}
+
+const { title, description, jsonLd = [], whatsappContext = "home", noindex = false, ogImage = "/og-image.png" } = Astro.props;
+
+const canonical = new URL(publicPath(Astro.url.pathname), site.url).href;
+const ogImageUrl = new URL(ogImage, site.url).href;
+const gtmId = isPlaceholder(site.analytics.gtmId) ? "" : site.analytics.gtmId;
+
+const organization: Record<string, unknown> = {
+  "@type": "Organization",
+  "@id": `${site.url}/#organization`,
+  name: site.name,
+  url: site.url,
+  logo: `${site.url}/images/hofclin-logo-512.png`,
+  ...(isPlaceholder(site.company.legalName) ? {} : { legalName: site.company.legalName }),
+  ...(isPlaceholder(site.company.cnpj) ? {} : { taxID: site.company.cnpj }),
+  ...(isPlaceholder(site.company.email)
+    ? {}
+    : { contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: site.company.email, availableLanguage: "pt-BR" } }),
+};
+const website = {
+  "@type": "WebSite",
+  "@id": `${site.url}/#website`,
+  name: site.name,
+  url: site.url,
+  inLanguage: site.language,
+  publisher: { "@id": `${site.url}/#organization` },
+};
+const structuredData = { "@context": "https://schema.org", "@graph": [organization, website, ...jsonLd] };
+---
+
+<!doctype html>
+<html lang="pt-BR" data-gtm-id={gtmId}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preload" href={poppins600} as="font" type="font/woff2" crossorigin />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={site.locale} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Hofclin — odontologia e harmonização no mesmo prontuário" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+    <!-- Consent Mode v2 defaults: everything optional denied until the visitor decides. -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function gtag() {
+        window.dataLayer.push(arguments);
+      };
+      window.gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "granted",
+        security_storage: "granted",
+        wait_for_update: 500,
+      });
+      window.gtag("set", "ads_data_redaction", true);
+    </script>
+  </head>
+  <body class="min-h-dvh">
+    <a
+      href="#conteudo"
+      class="sr-only z-50 rounded-full bg-ink px-4 py-2 text-sm text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+      >Pular para o conteúdo</a
+    >
+    <Nav />
+    <main id="conteudo">
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppButton context={whatsappContext} />
+    <ConsentBanner />
+
+    <script>
+      import { applyConsent, onConsentChange, readConsent } from "../scripts/consent";
+      import { recordVisit, syncAttributionConsent } from "../scripts/attribution";
+      import { initCtaTracking } from "../scripts/analytics";
+      import { initWhatsAppLinks } from "../scripts/whatsapp";
+
+      const consent = readConsent();
+      recordVisit(consent);
+      if (consent) applyConsent(consent);
+      onConsentChange(syncAttributionConsent);
+      initCtaTracking();
+      initWhatsAppLinks();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/home/Hero.astro";
+import FeatureGrid from "../components/home/FeatureGrid.astro";
+import Specialties from "../components/home/Specialties.astro";
+import FinanceSection from "../components/home/FinanceSection.astro";
+import SecuritySection from "../components/home/SecuritySection.astro";
+import PricingSection from "../components/PricingSection.astro";
+import FaqSection from "../components/FaqSection.astro";
+import FinalCta from "../components/FinalCta.astro";
+import { faqJsonLd, homeFaq } from "../content/faq";
+import { softwareApplicationJsonLd } from "../content/structured-data";
+---
+
+<Base
+  title="Software para odontologia e harmonização orofacial | Hofclin"
+  description="Agenda, prontuário com odontograma e faceograma, anamnese, orçamentos e financeiro para clínicas de odontologia e HOF. Teste grátis por 10 dias."
+  jsonLd={[softwareApplicationJsonLd(), faqJsonLd(homeFaq)]}
+  whatsappContext="home"
+>
+  <Hero />
+  <FeatureGrid />
+  <Specialties />
+  <FinanceSection />
+  <SecuritySection />
+  <PricingSection />
+  <FaqSection items={homeFaq} />
+  <div class="pt-20 md:pt-28">
+    <FinalCta />
+  </div>
+</Base>

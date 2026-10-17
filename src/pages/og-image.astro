@@ -1,0 +1,35 @@
+---
+/**
+ * Source for public/og-image.png (1200×630). Not linked, noindex, excluded from the sitemap.
+ * Regenerate with: pnpm og (needs `pnpm dev` running and Google Chrome installed).
+ */
+import "@fontsource/poppins/latin-500.css";
+import "@fontsource/poppins/latin-600.css";
+import "../styles/global.css";
+import OdontogramMock from "../components/mockups/OdontogramMock.astro";
+import FaceogramMock from "../components/mockups/FaceogramMock.astro";
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>OG image</title>
+  </head>
+  <body class="m-0 overflow-hidden bg-white">
+    <div class="hero-band relative h-[630px] w-[1200px] overflow-hidden">
+      <div class="absolute top-[72px] left-[72px] flex w-[560px] flex-col gap-7">
+        <img src="/images/Hofclin-Horizontal.svg" alt="" width="200" height="50" class="h-12 w-auto self-start" />
+        <p class="text-[64px] leading-[1.02] font-semibold tracking-[-0.04em] text-ink">
+          Odontologia e harmonização no mesmo prontuário
+        </p>
+        <p class="text-2xl text-ink/75">Teste grátis por 10 dias · sem cartão</p>
+      </div>
+      <div class="absolute top-[110px] left-[690px] w-[470px]">
+        <OdontogramMock compact class="w-[470px] -rotate-[3deg]" />
+        <FaceogramMock compact class="mt-[-40px] ml-[60px] w-[400px] rotate-[3deg]" />
+      </div>
+    </div>
+  </body>
+</html>

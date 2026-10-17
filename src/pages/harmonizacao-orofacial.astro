@@ -1,0 +1,122 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import FeatureRow from "../components/FeatureRow.astro";
+import PricingSection from "../components/PricingSection.astro";
+import FaqSection from "../components/FaqSection.astro";
+import FinalCta from "../components/FinalCta.astro";
+import FaceogramMock from "../components/mockups/FaceogramMock.astro";
+import TraceabilityMock from "../components/mockups/TraceabilityMock.astro";
+import AnamnesisMock from "../components/mockups/AnamnesisMock.astro";
+import InsightsMock from "../components/mockups/InsightsMock.astro";
+import QuoteMock from "../components/mockups/QuoteMock.astro";
+import { faqJsonLd, harmonizacaoFaq } from "../content/faq";
+import { breadcrumbJsonLd } from "../content/structured-data";
+---
+
+<Base
+  title="Prontuário de harmonização orofacial e faceograma | Hofclin"
+  description="Faceograma com pontos e doses, rastreabilidade de lote e validade, anamnese assinada e orçamentos para clínicas de HOF. Teste grátis por 10 dias."
+  jsonLd={[
+    breadcrumbJsonLd([
+      { name: "Início", path: "/" },
+      { name: "Harmonização orofacial", path: "/harmonizacao-orofacial" },
+    ]),
+    faqJsonLd(harmonizacaoFaq),
+  ]}
+  whatsappContext="harmonizacao"
+>
+  <PageHero
+    breadcrumb="Harmonização orofacial"
+    tag="Para clínicas de HOF"
+    icon="face"
+    title="Prontuário de harmonização orofacial, ponto a ponto"
+    subtitle="Marque regiões, pontos e doses no faceograma, registre lote e validade de cada produto e tenha o plano e o aplicado no mesmo mapa."
+    placement="harmonizacao_hero"
+  >
+    <FaceogramMock compact />
+  </PageHero>
+
+  <div class="container-page flex flex-col gap-24 py-20 md:gap-32 md:py-28">
+    <FeatureRow
+      icon="face"
+      tag="Faceograma"
+      title="Regiões, pontos de aplicação e doses no rosto"
+      text="O faceograma organiza a harmonização do paciente em tratamentos planejados, concluídos e condições que ele já trazia."
+      points={[
+        "Regiões do rosto com dose por região e unidade",
+        "Pontos exatos de aplicação, quando você quiser registrá-los",
+        "Trabalho bilateral em um único registro, com os dois lados",
+        "Plano e aplicado no mesmo mapa: no atendimento você ajusta as doses reais",
+      ]}
+    >
+      <FaceogramMock />
+    </FeatureRow>
+
+    <FeatureRow
+      reverse
+      icon="flask"
+      tag="Rastreabilidade"
+      title="Lote e validade de cada frasco aplicado"
+      text="Cada procedimento de harmonização guarda os produtos usados, inclusive quando a sessão consome mais de um lote ou marca."
+      points={[
+        "Marca, lote e validade de cada frasco ou seringa",
+        "Data de reconstituição para produtos liofilizados, como a toxina",
+        "Foto do rótulo anexada ao procedimento",
+      ]}
+    >
+      <TraceabilityMock />
+    </FeatureRow>
+
+    <FeatureRow
+      icon="clipboard"
+      tag="Anamnese e assinatura"
+      title="Anamnese pronta para odontologia e harmonização"
+      text="O modelo padrão já pergunta o que importa antes de uma aplicação, e o paciente assina no tablet antes de começar."
+      points={[
+        "Modelo de anamnese geral para odontologia e harmonização facial, editável",
+        "Declarações de ciência de riscos e de autorização de fotos clínicas",
+        "Assinatura eletrônica com termo de aceite e registro de integridade do conteúdo assinado",
+      ]}
+    >
+      <AnamnesisMock />
+    </FeatureRow>
+
+    <FeatureRow
+      reverse
+      icon="refresh"
+      tag="Retornos"
+      title="Quem precisa voltar aparece sozinho"
+      text="Retornos vencidos e tratamentos planejados sem horário viram uma lista pronta para a recepção chamar."
+      points={[
+        "Retornos vencidos de pacientes sem horário futuro",
+        "Tratamentos planejados no faceograma e no odontograma ainda sem agenda",
+        "Aniversariantes do dia e da semana, com mensagem pronta no WhatsApp",
+      ]}
+    >
+      <InsightsMock />
+    </FeatureRow>
+
+    <FeatureRow
+      icon="receipt"
+      tag="Orçamentos"
+      title="Orçamento por região, com link para a paciente"
+      text="Monte o orçamento a partir do que foi planejado no faceograma e envie um link que abre no celular."
+      points={[
+        "Itens ligados ao plano, com a região descrita",
+        "Desconto e validade no próprio orçamento",
+        "Envio pelo WhatsApp e horários gerados a partir do orçamento aceito",
+      ]}
+    >
+      <QuoteMock />
+    </FeatureRow>
+  </div>
+
+  <div class="border-t border-hairline">
+    <PricingSection placement="harmonizacao_pricing" />
+  </div>
+  <FaqSection items={harmonizacaoFaq} title="Dúvidas sobre o prontuário de harmonização" />
+  <div class="pt-20 md:pt-28">
+    <FinalCta placement="harmonizacao_final" />
+  </div>
+</Base>

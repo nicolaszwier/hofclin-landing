@@ -1,0 +1,17 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  id?: string;
+  align?: "center" | "left";
+}
+
+const { eyebrow, title, subtitle, id, align = "center" } = Astro.props;
+---
+
+<div class:list={["flex flex-col gap-4", align === "center" ? "mx-auto max-w-3xl items-center text-center" : "max-w-2xl"]}>
+  {eyebrow && <p class="text-sm font-medium tracking-normal text-sand-deep">{eyebrow}</p>}
+  <h2 id={id} class="text-heading text-balance">{title}</h2>
+  {subtitle && <p class="text-lg text-pretty text-charcoal">{subtitle}</p>}
+</div>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /og-image
+
+Sitemap: https://hofclin.com.br/sitemap-index.xml

@@ -1,0 +1,44 @@
+---
+import Icon from "../Icon.astro";
+
+/** Recreation of planned treatments followed across sessions. Fictional data. */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const entries = [
+  { site: "16", treatment: "Tratamento de canal", sessions: "2 sessões · próxima 23/10", status: "Em andamento" },
+  { site: "36", treatment: "Restauração em resina · O, M", sessions: "Sem horário marcado", status: "Planejado" },
+  { site: "Boca inteira", treatment: "Profilaxia", sessions: "Concluído em 02/10", status: "Concluído" },
+];
+---
+
+<div class:list={["mock-card overflow-hidden", className]}>
+  <div class="flex items-center justify-between gap-3 border-b border-hairline px-4 py-3">
+    <span class="pill-tag"><Icon name="tooth" size={15} class="text-sand-deep" /> Plano de tratamento</span>
+    <span class="text-xs text-charcoal">João Pereira</span>
+  </div>
+  <ul>
+    {
+      entries.map((entry) => (
+        <li class="flex items-center gap-3 border-b border-hairline px-4 py-3 last:border-0">
+          <span class="flex h-7 min-w-7 shrink-0 items-center justify-center rounded-full bg-cream px-2 text-[11px] font-semibold">{entry.site}</span>
+          <span class="flex min-w-0 flex-1 flex-col">
+            <span class="truncate text-xs font-medium">{entry.treatment}</span>
+            <span class="truncate text-[11px] text-charcoal">{entry.sessions}</span>
+          </span>
+          <span
+            class:list={[
+              "chip",
+              entry.status === "Concluído" ? "bg-sand-deep text-white" : entry.status === "Planejado" ? "bg-sand-soft text-sand-deep" : "border border-sand-deep text-sand-deep",
+            ]}
+          >
+            {entry.status}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</div>

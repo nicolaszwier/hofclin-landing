@@ -1,0 +1,60 @@
+---
+import Placeholder from "./Placeholder.astro";
+import { site } from "../config/site";
+
+/** Identification on every page — Decreto 7.962/2013 art. 2º; Encarregado — LGPD art. 41. */
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-hairline bg-cream">
+  <div class="container-page grid grid-cols-1 gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
+    <div class="flex flex-col gap-5">
+      <img src="/images/Hofclin-Horizontal.svg" alt="Hofclin" width="128" height="32" class="h-8 w-auto self-start" loading="lazy" />
+      <p class="max-w-sm text-sm text-charcoal">
+        Gestão para clínicas de odontologia e harmonização orofacial: agenda, prontuário com odontograma e faceograma,
+        orçamentos e financeiro.
+      </p>
+      <address class="flex flex-col gap-1 text-sm text-charcoal not-italic">
+        <span><Placeholder value={site.company.legalName} label="razão social" /></span>
+        <span>CNPJ <Placeholder value={site.company.cnpj} label="CNPJ" /></span>
+        <span><Placeholder value={site.company.address} label="endereço" /></span>
+        <span>
+          <Placeholder value={site.company.email} label="e-mail" /> · <Placeholder value={site.company.phone} label="telefone" />
+        </span>
+        <span class="mt-2">
+          Encarregado de dados: <Placeholder value={site.dpo.name} label="encarregado" /> (<Placeholder
+            value={site.dpo.email}
+            label="e-mail do encarregado"
+          />)
+        </span>
+      </address>
+    </div>
+
+    <nav aria-label="Produto">
+      <h2 class="text-sm font-semibold">Produto</h2>
+      <ul class="mt-4 flex flex-col gap-3 text-sm text-charcoal">
+        <li><a href="/odontologia" class="hover:text-ink">Odontologia</a></li>
+        <li><a href="/harmonizacao-orofacial" class="hover:text-ink">Harmonização orofacial</a></li>
+        <li><a href="/#precos" class="hover:text-ink">Preços</a></li>
+        <li><a href="/#duvidas" class="hover:text-ink">Dúvidas frequentes</a></li>
+        <li><a href={`${site.appUrl}/signin`} class="hover:text-ink">Entrar</a></li>
+      </ul>
+    </nav>
+
+    <nav aria-label="Legal">
+      <h2 class="text-sm font-semibold">Legal</h2>
+      <ul class="mt-4 flex flex-col gap-3 text-sm text-charcoal">
+        <li><a href="/termos" class="hover:text-ink">Termos de Uso</a></li>
+        <li><a href="/privacidade" class="hover:text-ink">Política de Privacidade</a></li>
+        <li><a href="/privacidade#cookies" class="hover:text-ink">Política de Cookies</a></li>
+        <li><a href="/seguranca" class="hover:text-ink">Segurança</a></li>
+        <li>
+          <button type="button" class="text-left hover:text-ink" data-consent-open>Preferências de cookies</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="border-t border-hairline">
+    <p class="container-page py-6 text-xs text-charcoal">© {year} Hofclin. Todos os direitos reservados.</p>
+  </div>
+</footer>

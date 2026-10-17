@@ -1,0 +1,58 @@
+---
+import Icon, { type IconName } from "../Icon.astro";
+import SectionHeading from "../SectionHeading.astro";
+
+/**
+ * Only claims the product can prove today — the defensible wording from
+ * odonto-web/docs/research/termos-de-uso-privacidade-lgpd-saas.md §5.3.
+ */
+const items: { icon: IconName; title: string; text: string }[] = [
+  {
+    icon: "map-pin",
+    title: "Arquivos clínicos no Brasil",
+    text: "Anexos, fotos e imagens de assinatura ficam na AWS em São Paulo, criptografados.",
+  },
+  {
+    icon: "database",
+    title: "Backup a cada 6 horas",
+    text: "Cópia automática do banco de dados, armazenada no Brasil e guardada por 90 dias.",
+  },
+  {
+    icon: "eye-off",
+    title: "Conteúdo clínico é da clínica",
+    text: "A equipe Hofclin não acessa conteúdo clínico, como anamneses, odontogramas, assinaturas e anexos.",
+  },
+  {
+    icon: "users",
+    title: "Cada um vê o que precisa",
+    text: "Permissões por função para dentistas, secretárias e administradores.",
+  },
+];
+---
+
+<section class="border-t border-hairline bg-cream py-20 md:py-28" aria-labelledby="seguranca-titulo">
+  <div class="container-page">
+    <SectionHeading
+      id="seguranca-titulo"
+      eyebrow="Segurança e privacidade"
+      title="Dados de saúde pedem cuidado"
+      subtitle="Prontuário guarda informação sensível. Por isso, dizemos exatamente o que fazemos para protegê-la."
+    />
+    <ul class="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        items.map((item) => (
+          <li class="flex flex-col gap-3 rounded-[var(--radius-card)] border border-hairline bg-white p-6">
+            <span class="flex size-10 items-center justify-center rounded-[var(--radius-icon)] bg-sand-soft text-sand-deep">
+              <Icon name={item.icon} size={20} />
+            </span>
+            <h3 class="text-base font-semibold">{item.title}</h3>
+            <p class="text-sm text-pretty text-charcoal">{item.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-10 text-center">
+      <a href="/seguranca" class="link-arrow">Veja como protegemos os dados <Icon name="arrow-right" size={16} /></a>
+    </p>
+  </div>
+</section>

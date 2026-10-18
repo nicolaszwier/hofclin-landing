@@ -22,23 +22,16 @@ import { site } from "../config/site";
     Hofclin adota hoje para protegê-los.
   </p>
 
-  <h2>Onde os dados ficam</h2>
-  <ul>
-    <li>A aplicação e o banco de dados principal são hospedados na Railway, nos Estados Unidos.</li>
-    <li>Arquivos clínicos (anexos, fotos e imagens de assinatura) ficam na Amazon Web Services em São Paulo, criptografados em repouso.</li>
-    <li>Os backups do banco também ficam na AWS em São Paulo, em um local separado e criptografado.</li>
-  </ul>
-
   <h2>Criptografia</h2>
   <ul>
     <li>Toda comunicação com o site e o aplicativo usa HTTPS.</li>
-    <li>Os arquivos clínicos e os backups são criptografados em repouso pela AWS.</li>
+    <li>Os arquivos clínicos (anexos, fotos e imagens de assinatura) e os backups são criptografados em repouso.</li>
     <li>Senhas nunca são guardadas: guardamos apenas um hash bcrypt.</li>
   </ul>
 
   <h2>Backups</h2>
   <ul>
-    <li>O banco de dados é copiado automaticamente a cada 6 horas e cada cópia é guardada por 90 dias.</li>
+    <li>O banco de dados é copiado automaticamente a cada 6 horas, para um local separado, e cada cópia é guardada por 90 dias.</li>
     <li>As cópias não podem ser alteradas nem apagadas antes desse prazo, nem por nós, o que as protege de erro ou ataque.</li>
     <li>Cada execução é monitorada, e uma falha gera alerta.</li>
     <li>
@@ -70,7 +63,7 @@ import { site } from "../config/site";
   </p>
 
   <h2>Pagamentos</h2>
-  <p>O cartão de crédito é digitado no ambiente do Asaas. O Hofclin não recebe nem guarda dados de cartão.</p>
+  <p>O cartão de crédito é digitado no ambiente do nosso processador de pagamentos. O Hofclin não recebe nem guarda dados de cartão.</p>
 
   <h2>Incidentes</h2>
   <p>

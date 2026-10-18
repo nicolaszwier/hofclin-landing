@@ -88,7 +88,7 @@ import { site } from "../config/site";
       </tr>
       <tr>
         <td>Cobrança</td>
-        <td>Nome, CNPJ, e-mail, telefone e endereço da clínica, enviados ao Asaas. O cartão é digitado no ambiente do Asaas e nunca passa pelo Hofclin.</td>
+        <td>Nome, CNPJ, e-mail, telefone e endereço da clínica, enviados ao processador de pagamentos. O cartão é digitado no ambiente do processador e nunca passa pelo Hofclin.</td>
         <td>Cobrar a assinatura</td>
         <td>Execução de contrato (art. 7º, V)</td>
       </tr>
@@ -108,14 +108,12 @@ import { site } from "../config/site";
   </table>
 
   <h2>4. Com quem compartilhamos</h2>
-  <p>Usamos fornecedores para operar o serviço. Cada um recebe apenas o necessário:</p>
+  <p>Usamos fornecedores para operar o serviço. Cada um recebe apenas o necessário para a sua função:</p>
   <ul>
-    <li><strong>Railway</strong> (Estados Unidos): hospedagem da aplicação e do banco de dados.</li>
-    <li><strong>Amazon Web Services</strong> (São Paulo, Brasil): armazenamento de arquivos clínicos e dos backups do banco.</li>
-    <li><strong>Vercel</strong>: hospedagem deste site e do aplicativo; o tráfego do aplicativo passa pela rede da Vercel.</li>
-    <li><strong>Resend</strong>: envio de e-mails do sistema (boas-vindas, convites, redefinição de senha, avisos de cobrança).</li>
-    <li><strong>Asaas</strong> (Brasil): processamento das cobranças.</li>
-    <li><strong>ViaCEP</strong> (Brasil): consulta do CEP digitado no cadastro de endereço.</li>
+    <li>Hospedagem e infraestrutura: aplicação, banco de dados, arquivos clínicos e backups.</li>
+    <li>Envio de e-mails do sistema: boas-vindas, convites, redefinição de senha e avisos de cobrança.</li>
+    <li>Processamento de pagamentos: cobrança da assinatura.</li>
+    <li>Consulta de CEP: preenchimento do endereço a partir do CEP digitado.</li>
     <li>
       <strong>Google</strong> (Tag Manager, Analytics e Ads), <strong>Microsoft</strong> (Clarity), <strong>Meta</strong> e
       <strong>TikTok</strong>: somente se você aceitar os cookies correspondentes.
@@ -125,10 +123,9 @@ import { site } from "../config/site";
 
   <h2>5. Transferência internacional</h2>
   <p>
-    A aplicação e o banco de dados principal são hospedados nos Estados Unidos, assim como parte dos fornecedores acima.
-    Os arquivos clínicos e os backups ficam no Brasil. A transferência para os Estados Unidos é feita com
-    [mecanismo a definir com o advogado — cláusulas-padrão contratuais da Resolução CD/ANPD nº 19/2024] e com as medidas
-    de segurança descritas na página <a href="/seguranca">Segurança</a>.
+    Alguns fornecedores podem tratar dados fora do Brasil. Quando isso acontece, a transferência segue os mecanismos
+    previstos na LGPD (art. 33) [mecanismo a definir com o advogado] e as medidas de segurança descritas na página
+    <a href="/seguranca">Segurança</a>.
   </p>
 
   <h2 id="cookies" class="scroll-mt-24">6. Cookies e armazenamento no navegador</h2>

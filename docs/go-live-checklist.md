@@ -12,7 +12,8 @@
   - [ ] the international-transfer mechanism for the US hosting (`odonto-api` #110);
   - [ ] the 90-day backup retention against deletion requests (gap G12);
   - [ ] whether `hof_attr` (campaign origin kept without consent) can stay "necessário" under legítimo interesse;
-  - [ ] what happens to clinic data after cancellation (export, retention).
+  - [ ] what happens to clinic data after cancellation (export, retention);
+  - [ ] the site deliberately names no hosting provider and no country where data is stored (decision of 2026-10-18): the privacy policy lists supplier categories and says only that some suppliers may process data outside Brazil. Confirm this satisfies LGPD art. 9 (shared-use information) and Res. CD/ANPD 19/2024 art. 17 (international-transfer transparency), or whether the named list has to live somewhere — e.g. in the DPA sent to clinics.
 - [ ] The Acordo de Tratamento de Dados (DPA) is published and linked where the drafts say `[a publicar]`.
 - [ ] 🔒 `site.legal.reviewed = true` and `site.legal.updatedAt` set to the published date.
 - [ ] The privacy policy promises **6 months** of access logs (Marco Civil art. 15). Railway keeps 7 days today — the API must actually retain them before this text goes live.

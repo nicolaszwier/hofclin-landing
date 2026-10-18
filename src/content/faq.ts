@@ -23,13 +23,7 @@ const noCard: FaqItem = {
 const security: FaqItem = {
   question: "Meus dados e os dos meus pacientes estão seguros?",
   answer:
-    "O acesso é protegido por senha e por permissões por função, os arquivos clínicos ficam criptografados na AWS em São Paulo e o banco de dados tem backup automático a cada 6 horas, guardado no Brasil por 90 dias. A equipe Hofclin não acessa conteúdo clínico, como anamneses, odontogramas, assinaturas e anexos. Os detalhes estão na página de Segurança.",
-};
-
-const dataLocation: FaqItem = {
-  question: "Onde os dados ficam armazenados?",
-  answer:
-    "Os arquivos clínicos (anexos, fotos e imagens de assinatura) e os backups do banco ficam no Brasil, na AWS em São Paulo. O banco de dados principal e a aplicação são hospedados nos Estados Unidos. A Política de Privacidade explica essa transferência internacional e as proteções aplicadas.",
+    "O acesso é protegido por senha e por permissões por função, os arquivos clínicos ficam criptografados e o banco de dados tem backup automático a cada 6 horas, guardado por 90 dias. A equipe Hofclin não acessa conteúdo clínico, como anamneses, odontogramas, assinaturas e anexos. Os detalhes estão na página de Segurança.",
 };
 
 const team: FaqItem = {
@@ -73,7 +67,6 @@ export const homeFaq: FaqItem[] = [
       "Funciona no navegador, sem instalar nada, e foi pensado para o tablet na cadeira e o computador da recepção. O paciente assina a anamnese e o atendimento no próprio tablet, com o dedo ou a caneta.",
   },
   security,
-  dataLocation,
 ];
 
 export const odontologiaFaq: FaqItem[] = [

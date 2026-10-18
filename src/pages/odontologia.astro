@@ -1,0 +1,122 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import FeatureRow from "../components/FeatureRow.astro";
+import PricingSection from "../components/PricingSection.astro";
+import FaqSection from "../components/FaqSection.astro";
+import FinalCta from "../components/FinalCta.astro";
+import OdontogramMock from "../components/mockups/OdontogramMock.astro";
+import TreatmentPlanMock from "../components/mockups/TreatmentPlanMock.astro";
+import AnamnesisMock from "../components/mockups/AnamnesisMock.astro";
+import QuoteMock from "../components/mockups/QuoteMock.astro";
+import AgendaMock from "../components/mockups/AgendaMock.astro";
+import { faqJsonLd, odontologiaFaq } from "../content/faq";
+import { breadcrumbJsonLd } from "../content/structured-data";
+---
+
+<Base
+  title="Prontuário odontológico digital e odontograma | Hofclin"
+  description="Odontograma por dente e face, plano de tratamento em várias sessões, anamnese assinada no tablet e orçamento por dente. Teste o Hofclin grátis por 10 dias."
+  jsonLd={[
+    breadcrumbJsonLd([
+      { name: "Início", path: "/" },
+      { name: "Odontologia", path: "/odontologia" },
+    ]),
+    faqJsonLd(odontologiaFaq),
+  ]}
+  whatsappContext="odontologia"
+>
+  <PageHero
+    breadcrumb="Odontologia"
+    tag="Para clínicas odontológicas"
+    icon="tooth"
+    title="Prontuário odontológico digital, do odontograma ao orçamento"
+    subtitle="Registre o que o paciente já tem, planeje o tratamento dente a dente e acompanhe cada sessão até a conclusão, com a anamnese assinada no tablet."
+    placement="odontologia_hero"
+  >
+    <OdontogramMock compact />
+  </PageHero>
+
+  <div class="container-page flex flex-col gap-24 py-20 md:gap-32 md:py-28">
+    <FeatureRow
+      icon="tooth"
+      tag="Odontograma"
+      title="Odontograma por dente, face e região"
+      text="Cada registro diz onde está e o que é: uma condição que o paciente já tinha ou um tratamento planejado pela clínica."
+      points={[
+        "Condição (como uma coroa feita em outro lugar) separada de tratamento planejado",
+        "Faces do dente em cada registro",
+        "Registros por região: boca inteira, arcada superior, arcada inferior ou uma região sua",
+        "Nada é apagado: tratamentos cancelados ou concluídos continuam no histórico",
+      ]}
+    >
+      <OdontogramMock />
+    </FeatureRow>
+
+    <FeatureRow
+      reverse
+      icon="refresh"
+      tag="Plano de tratamento"
+      title="Tratamentos que atravessam várias sessões"
+      text="Um canal é um tratamento só, mesmo que leve três consultas. Cada atendimento registra a sessão, e o tratamento passa a concluído quando você finaliza."
+      points={[
+        "Atendimentos vinculados ao tratamento planejado",
+        "Conclusão registrada no atendimento que finalizou o trabalho",
+        "Lista de tratamentos planejados sem horário marcado, para chamar o paciente",
+      ]}
+    >
+      <TreatmentPlanMock />
+    </FeatureRow>
+
+    <FeatureRow
+      icon="clipboard"
+      tag="Anamnese e assinatura"
+      title="Anamnese com versões e assinatura no tablet"
+      text="Use o modelo pronto ou crie os seus. O paciente responde e assina no tablet, com o dedo ou a caneta."
+      points={[
+        "Modelos de anamnese editáveis pela clínica",
+        "Cada preenchimento vira uma versão; as anteriores continuam disponíveis para leitura",
+        "Assinatura eletrônica com termo de aceite e registro de integridade do conteúdo assinado",
+      ]}
+    >
+      <AnamnesisMock />
+    </FeatureRow>
+
+    <FeatureRow
+      reverse
+      icon="receipt"
+      tag="Orçamentos"
+      title="Do plano ao orçamento, do orçamento à agenda"
+      text="Os itens do orçamento puxam o dente e as faces do plano de tratamento. Aceito o orçamento, os horários saem dele."
+      points={[
+        "Orçamento numerado com validade, desconto e dentista responsável",
+        "Link para o paciente abrir no celular, sempre com a versão atual",
+        "Envio pelo WhatsApp a partir do próprio orçamento",
+      ]}
+    >
+      <QuoteMock />
+    </FeatureRow>
+
+    <FeatureRow
+      icon="calendar"
+      tag="Agenda"
+      title="Uma agenda que sabe onde cada dentista está"
+      text="Para quem atende em mais de uma clínica, o Hofclin não deixa marcar dois pacientes no mesmo horário, em nenhuma delas."
+      points={[
+        "Visão por dia e por semana, por dentista",
+        "Aviso de conflito de horário entre clínicas",
+        "Agenda no calendário do celular via iCal, só com o primeiro nome do paciente",
+      ]}
+    >
+      <AgendaMock />
+    </FeatureRow>
+  </div>
+
+  <div class="border-t border-hairline">
+    <PricingSection placement="odontologia_pricing" />
+  </div>
+  <FaqSection items={odontologiaFaq} title="Dúvidas sobre o prontuário odontológico" />
+  <div class="pt-20 md:pt-28">
+    <FinalCta placement="odontologia_final" />
+  </div>
+</Base>

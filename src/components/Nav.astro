@@ -1,0 +1,82 @@
+---
+import CtaButton from "./CtaButton.astro";
+import Icon from "./Icon.astro";
+import { publicPath, signinUrl } from "../config/site";
+
+const links = [
+  { href: "/odontologia", label: "Odontologia" },
+  { href: "/harmonizacao-orofacial", label: "Harmonização" },
+  { href: "/#precos", label: "Preços" },
+  { href: "/#duvidas", label: "Dúvidas" },
+];
+const current = publicPath(Astro.url.pathname);
+---
+
+<header class="sticky top-0 z-40 border-b border-transparent bg-white/85 backdrop-blur-md transition-colors" data-nav>
+  <nav class="container-page flex h-16 items-center justify-between gap-6 md:h-[72px]" aria-label="Principal">
+    <a href="/" class="shrink-0" aria-label="Hofclin — página inicial">
+      <img src="/images/Hofclin-Horizontal.svg" alt="Hofclin" width="128" height="32" class="h-7 w-auto md:h-8" />
+    </a>
+
+    <ul class="hidden items-center gap-8 text-sm font-medium lg:flex">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={["transition-colors hover:text-ink", current === link.href ? "text-ink" : "text-charcoal"]}
+              aria-current={current === link.href ? "page" : undefined}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="hidden items-center gap-3 lg:flex">
+      <a href={signinUrl} class="btn btn-ghost btn-md">Entrar</a>
+      <CtaButton placement="nav" size="md" label="Começar grátis" />
+    </div>
+
+    <details class="group lg:hidden" data-mobile-menu>
+      <summary
+        class="flex size-10 cursor-pointer list-none items-center justify-center rounded-full border border-hairline-strong [&::-webkit-details-marker]:hidden"
+        aria-label="Abrir menu"
+      >
+        <Icon name="menu" class="group-open:hidden" />
+        <Icon name="close" class="hidden group-open:block" />
+      </summary>
+      <div class="absolute inset-x-0 top-full border-b border-hairline bg-white shadow-[var(--shadow-card)]">
+        <ul class="container-page flex flex-col py-2 text-base font-medium">
+          {
+            links.map((link) => (
+              <li>
+                <a href={link.href} class="block border-b border-hairline py-4 last:border-0">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="container-page flex flex-col gap-3 pt-2 pb-6">
+          <CtaButton placement="nav_mobile" label="Começar grátis" class="w-full" />
+          <a href={signinUrl} class="btn btn-ghost btn-lg w-full">Entrar</a>
+        </div>
+      </div>
+    </details>
+  </nav>
+</header>
+
+<script>
+  const nav = document.querySelector<HTMLElement>("[data-nav]");
+  const onScroll = () => nav?.classList.toggle("border-hairline", window.scrollY > 8);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  // Close the mobile menu when one of its in-page links is followed.
+  const menu = document.querySelector<HTMLDetailsElement>("[data-mobile-menu]");
+  menu?.addEventListener("click", (event) => {
+    if ((event.target as Element).closest("a")) menu.open = false;
+  });
+</script>

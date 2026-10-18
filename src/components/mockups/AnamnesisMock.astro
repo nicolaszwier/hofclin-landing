@@ -1,0 +1,47 @@
+---
+import Icon from "../Icon.astro";
+
+/** Recreation of a signed Anamnesis version. Fictional data. */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const answers = [
+  { question: "Tem alergia a algum medicamento?", answer: "Sim · dipirona" },
+  { question: "Usa anticoagulante?", answer: "Não" },
+  { question: "Já fez procedimento de harmonização?", answer: "Sim · há 8 meses" },
+];
+---
+
+<div class:list={["mock-card overflow-hidden", className]}>
+  <div class="flex items-center justify-between gap-3 border-b border-hairline px-4 py-3">
+    <span class="pill-tag"><Icon name="clipboard" size={15} class="text-sand-deep" /> Anamnese</span>
+    <span class="text-xs text-charcoal">Versão 3</span>
+  </div>
+  <dl class="px-4 pt-1">
+    {
+      answers.map((row) => (
+        <div class="flex items-start justify-between gap-4 border-b border-hairline py-2.5">
+          <dt class="text-[11px] text-charcoal">{row.question}</dt>
+          <dd class="shrink-0 text-xs font-medium">{row.answer}</dd>
+        </div>
+      ))
+    }
+  </dl>
+  <div class="px-4 py-3">
+    <svg viewBox="0 0 220 44" class="h-10 w-auto text-ink" aria-hidden="true">
+      <path
+        d="M6 30c10-14 18-22 22-20 5 3-9 24-4 25 6 1 14-22 20-20 5 2-3 16 2 17 6 1 10-12 16-11 5 1 2 9 7 9 7 0 12-8 20-8 6 0 3 7 9 7 9 0 17-6 30-6 12 0 30 4 52 2"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"></path>
+    </svg>
+    <div class="mt-1 flex items-center gap-1.5 border-t border-hairline pt-2 text-[11px] text-charcoal">
+      <Icon name="pen" size={13} class="text-sand-deep" />
+      Assinado no tablet por Marina Alves · 16/10 às 09:12
+    </div>
+  </div>
+</div>

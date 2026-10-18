@@ -1,0 +1,74 @@
+---
+import Legal from "../layouts/Legal.astro";
+import Placeholder from "../components/Placeholder.astro";
+import { site } from "../config/site";
+
+/*
+ * DRAFT for counsel review. Required in spirit by Decreto 8.771/2016 art. 16. Every statement
+ * is checked against odonto-api: ADR 0004 (S3 sa-east-1, SSE-S3), ADR 0058 (backups),
+ * ADR 0011 (Railway US), ADR 0012/0052 (what platform admins see), password-hasher.ts (bcrypt 12).
+ * Claims to avoid: odonto-web/docs/research/termos-de-uso-privacidade-lgpd-saas.md §5.3.
+ */
+---
+
+<Legal
+  title="Segurança | Hofclin"
+  description="Como o Hofclin protege os dados das clínicas e dos pacientes: criptografia, backups, controle de acesso e o que a nossa equipe vê."
+  heading="Segurança"
+  path="/seguranca"
+>
+  <p>
+    Prontuário odontológico e de harmonização contém dados de saúde. Esta página descreve, sem exagero, as medidas que o
+    Hofclin adota hoje para protegê-los.
+  </p>
+
+  <h2>Criptografia</h2>
+  <ul>
+    <li>Toda comunicação com o site e o aplicativo usa HTTPS.</li>
+    <li>Os arquivos clínicos (anexos, fotos e imagens de assinatura) e os backups são criptografados em repouso.</li>
+    <li>Senhas nunca são guardadas: guardamos apenas um hash bcrypt.</li>
+  </ul>
+
+  <h2>Backups</h2>
+  <ul>
+    <li>O banco de dados é copiado automaticamente a cada 6 horas, para um local separado, e cada cópia é guardada por 90 dias.</li>
+    <li>As cópias não podem ser alteradas nem apagadas antes desse prazo, nem por nós, o que as protege de erro ou ataque.</li>
+    <li>Cada execução é monitorada, e uma falha gera alerta.</li>
+    <li>
+      Em uma falha grave, podem ser perdidos os dados registrados depois do último backup, ou seja, até 6 horas. A
+      restauração é feita pela nossa equipe e não tem prazo garantido.
+    </li>
+  </ul>
+
+  <h2>Controle de acesso</h2>
+  <ul>
+    <li>Os dados de cada clínica ficam separados: um paciente de uma clínica nunca aparece para outra.</li>
+    <li>Dentro da clínica, cada pessoa tem uma função (administrador, dentista, secretária) e permissões próprias.</li>
+    <li>Um dentista vê os pacientes que atende; o acesso ao prontuário clínico pela secretaria depende de permissão do administrador.</li>
+    <li>Ações importantes ficam registradas em um histórico de auditoria, com quem fez e quando.</li>
+  </ul>
+
+  <h2>O que a equipe Hofclin vê</h2>
+  <p>
+    Para dar suporte, a nossa equipe vê dados cadastrais das clínicas e usuários, dados demográficos de pacientes (como
+    nome e contato), horários da agenda e valores financeiros da clínica. A equipe Hofclin <strong>não acessa conteúdo
+    clínico</strong>: anamneses, odontogramas, observações, procedimentos realizados, assinaturas e anexos.
+  </p>
+
+  <h2>Assinatura do paciente</h2>
+  <p>
+    A assinatura feita no tablet é uma assinatura eletrônica com termo de aceite e registro de integridade: guardamos o
+    momento e uma impressão digital (hash) do conteúdo assinado, que não pode mais ser alterado. Correções viram novos
+    registros.
+  </p>
+
+  <h2>Pagamentos</h2>
+  <p>O cartão de crédito é digitado no ambiente do nosso processador de pagamentos. O Hofclin não recebe nem guarda dados de cartão.</p>
+
+  <h2>Incidentes</h2>
+  <p>
+    Se ocorrer um incidente de segurança que possa trazer risco relevante, comunicaremos as clínicas afetadas e a
+    Autoridade Nacional de Proteção de Dados, conforme a LGPD. Para relatar uma vulnerabilidade, escreva para
+    <Placeholder value={site.company.email} label="e-mail" />.
+  </p>
+</Legal>

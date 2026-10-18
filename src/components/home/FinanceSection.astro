@@ -1,0 +1,45 @@
+---
+import CtaButton from "../CtaButton.astro";
+import Icon from "../Icon.astro";
+import FinanceMock from "../mockups/FinanceMock.astro";
+import CostCalcMock from "../mockups/CostCalcMock.astro";
+
+const points = [
+  "Venda gerada a partir do orçamento aceito ou do atendimento",
+  "Parcelas no PIX, boleto ou cartão, recebidas na data em que o dinheiro entrou",
+  "Contas, caixa e despesas por categoria",
+  "Fechamento do dia por forma de pagamento e lista de inadimplentes",
+  "Calculadora de custos com insumos, custos fixos, taxa da maquininha e margem",
+];
+---
+
+<section class="py-20 md:py-28" aria-labelledby="financeiro-titulo">
+  <div class="container-page grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
+    <div class="flex flex-col gap-6">
+      <span class="pill-tag self-start"><Icon name="wallet" size={15} class="text-sand-deep" /> Financeiro · plano Pro</span>
+      <h2 id="financeiro-titulo" class="text-heading text-balance">O financeiro da clínica, junto do atendimento</h2>
+      <p class="text-lg text-pretty text-charcoal">
+        O que foi orçado vira venda, a venda vira parcelas e as parcelas caem no caixa. Sem digitar duas vezes e sem
+        planilha paralela.
+      </p>
+      <ul class="flex flex-col gap-3 text-[15px]">
+        {
+          points.map((point) => (
+            <li class="flex gap-3">
+              <Icon name="check" size={18} class="mt-0.5 shrink-0 text-sand-deep" />
+              {point}
+            </li>
+          ))
+        }
+      </ul>
+      <div class="flex flex-wrap items-center gap-4 pt-2">
+        <CtaButton placement="finance" plan="pro" label="Testar o Pro grátis" />
+        <a href="#precos" class="link-arrow">Ver preços</a>
+      </div>
+    </div>
+    <div class="relative mx-auto w-full max-w-[520px] pb-10" aria-hidden="true">
+      <FinanceMock class="relative z-10 w-[86%]" />
+      <CostCalcMock class="relative z-20 -mt-6 ml-auto w-[76%] rotate-[2deg]" />
+    </div>
+  </div>
+</section>

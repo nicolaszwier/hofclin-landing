@@ -1,0 +1,139 @@
+---
+/**
+ * Consent banner + preferences dialog, following the ANPD cookie guide as summarised in
+ * odonto-web/docs/research/termos-de-uso-privacidade-lgpd-saas.md §3.4: reject as prominent
+ * as accept, nothing optional on by default, a second level per category, revocable from the
+ * footer ("Preferências de cookies").
+ */
+---
+
+<section
+  class="fixed inset-x-0 bottom-0 z-50 p-3 md:inset-x-auto md:bottom-4 md:left-4 md:max-w-[440px] md:p-0"
+  aria-labelledby="consent-title"
+  data-consent-banner
+  hidden
+>
+  <div class="rounded-[var(--radius-card)] border border-hairline bg-white p-5 shadow-[var(--shadow-card),var(--shadow-mock)]">
+    <h2 id="consent-title" class="text-base font-semibold">Sua privacidade</h2>
+    <p class="mt-2 text-sm leading-relaxed text-charcoal">
+      Usamos cookies necessários para o site funcionar. Com a sua permissão, também usamos cookies analíticos e de
+      marketing para entender as visitas e medir nossos anúncios. Nenhum deles é ativado sem o seu aceite. <a
+        href="/privacidade#cookies"
+        class="text-ink underline underline-offset-2">Saiba mais</a
+      >.
+    </p>
+    <div class="mt-4 grid grid-cols-2 gap-2">
+      <button type="button" class="btn btn-ghost btn-md" data-consent-reject>Rejeitar</button>
+      <button type="button" class="btn btn-ghost btn-md" data-consent-accept>Aceitar todos</button>
+    </div>
+    <button type="button" class="mt-3 w-full text-center text-sm font-medium text-ink underline underline-offset-4" data-consent-open>
+      Personalizar
+    </button>
+  </div>
+</section>
+
+<dialog
+  class="m-auto w-[calc(100%-32px)] max-w-lg rounded-[var(--radius-card)] border border-hairline bg-white p-0 text-ink shadow-[var(--shadow-card)] backdrop:bg-ink/40"
+  aria-labelledby="consent-dialog-title"
+  data-consent-dialog
+>
+  <form method="dialog" class="flex flex-col gap-5 p-6">
+    <div>
+      <h2 id="consent-dialog-title" class="text-lg font-semibold">Preferências de cookies</h2>
+      <p class="mt-1 text-sm text-charcoal">
+        Escolha o que podemos usar. Você pode mudar de ideia quando quiser pelo link no rodapé.
+      </p>
+    </div>
+
+    <fieldset class="flex flex-col gap-3">
+      <legend class="sr-only">Categorias</legend>
+
+      <label class="flex items-start gap-3 rounded-[var(--radius-input)] border border-hairline p-4">
+        <input type="checkbox" checked disabled class="mt-1 size-4 accent-ink" />
+        <span>
+          <span class="block text-sm font-semibold">Necessários <span class="font-normal text-charcoal">(sempre ativos)</span></span>
+          <span class="mt-1 block text-sm text-charcoal">
+            Guardam a sua escolha de cookies e a origem da visita (campanha), para o site funcionar e o cadastro saber de
+            onde você veio.
+          </span>
+        </span>
+      </label>
+
+      <label class="flex cursor-pointer items-start gap-3 rounded-[var(--radius-input)] border border-hairline p-4">
+        <input type="checkbox" name="analytics" class="mt-1 size-4 accent-ink" data-consent-analytics />
+        <span>
+          <span class="block text-sm font-semibold">Analíticos</span>
+          <span class="mt-1 block text-sm text-charcoal">
+            Google Analytics e Microsoft Clarity: contam visitas e mostram como as páginas são usadas.
+          </span>
+        </span>
+      </label>
+
+      <label class="flex cursor-pointer items-start gap-3 rounded-[var(--radius-input)] border border-hairline p-4">
+        <input type="checkbox" name="marketing" class="mt-1 size-4 accent-ink" data-consent-marketing />
+        <span>
+          <span class="block text-sm font-semibold">Marketing</span>
+          <span class="mt-1 block text-sm text-charcoal">
+            Google Ads, Meta e TikTok: medem quais anúncios trouxeram clínicas ao Hofclin, inclusive quando o cadastro
+            acontece depois.
+          </span>
+        </span>
+      </label>
+    </fieldset>
+
+    <div class="grid grid-cols-2 gap-2">
+      <button type="button" class="btn btn-ghost btn-md" data-consent-reject>Rejeitar todos</button>
+      <button type="submit" class="btn btn-ghost btn-md" data-consent-save>Salvar escolhas</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+  import { readConsent, saveConsent } from "../scripts/consent";
+
+  const banner = document.querySelector<HTMLElement>("[data-consent-banner]")!;
+  const dialog = document.querySelector<HTMLDialogElement>("[data-consent-dialog]")!;
+  const analytics = dialog.querySelector<HTMLInputElement>("[data-consent-analytics]")!;
+  const marketing = dialog.querySelector<HTMLInputElement>("[data-consent-marketing]")!;
+
+  // On phones the banner spans the bottom edge, so the floating WhatsApp button rides
+  // above it while it is open. On wider screens the banner sits bottom-left and never overlaps.
+  const syncOffset = () => {
+    const overlaps = !banner.hidden && window.innerWidth < 768;
+    const offset = overlaps ? banner.getBoundingClientRect().height : 0;
+    document.documentElement.style.setProperty("--consent-offset", `${offset}px`);
+  };
+  const hideBanner = () => {
+    banner.hidden = true;
+    syncOffset();
+  };
+
+  const decide = (choice: { analytics: boolean; marketing: boolean }) => {
+    saveConsent(choice);
+    hideBanner();
+    if (dialog.open) dialog.close();
+  };
+
+  if (!readConsent()) {
+    banner.hidden = false;
+    syncOffset();
+    window.addEventListener("resize", syncOffset, { passive: true });
+  }
+
+  document.addEventListener("click", (event) => {
+    const target = event.target as Element;
+    if (target.closest("[data-consent-accept]")) decide({ analytics: true, marketing: true });
+    else if (target.closest("[data-consent-reject]")) decide({ analytics: false, marketing: false });
+    else if (target.closest("[data-consent-open]")) {
+      const current = readConsent();
+      analytics.checked = current?.analytics ?? false;
+      marketing.checked = current?.marketing ?? false;
+      dialog.showModal();
+    }
+  });
+
+  dialog.querySelector("form")!.addEventListener("submit", (event) => {
+    event.preventDefault();
+    decide({ analytics: analytics.checked, marketing: marketing.checked });
+  });
+</script>

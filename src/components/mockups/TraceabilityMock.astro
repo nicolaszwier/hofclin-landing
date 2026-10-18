@@ -1,0 +1,42 @@
+---
+import Icon from "../Icon.astro";
+
+/** Recreation of Applied products on a harmonization line: brand, lot, expiry. Fictional data. */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const products = [
+  { product: "Toxina botulínica tipo A", lot: "TB-48213", expiry: "08/2027", extra: "Reconstituída em 16/10" },
+  { product: "Ácido hialurônico 1 ml", lot: "HA-55120", expiry: "02/2028", extra: "Lábios" },
+  { product: "Ácido hialurônico 1 ml", lot: "HA-55187", expiry: "03/2028", extra: "Malar E/D" },
+];
+---
+
+<div class:list={["mock-card overflow-hidden", className]}>
+  <div class="flex items-center justify-between gap-3 border-b border-hairline px-4 py-3">
+    <span class="pill-tag"><Icon name="flask" size={15} class="text-sand-deep" /> Produtos aplicados</span>
+    <span class="text-xs text-charcoal">Carla Mendes</span>
+  </div>
+  <ul>
+    {
+      products.map((item) => (
+        <li class="border-b border-hairline px-4 py-2.5 last:border-0">
+          <div class="flex items-center justify-between gap-3">
+            <span class="truncate text-xs font-medium">{item.product}</span>
+            <span class="chip shrink-0 bg-cream text-charcoal">Val. {item.expiry}</span>
+          </div>
+          <div class="mt-0.5 flex justify-between gap-3 text-[11px] text-charcoal">
+            <span>Lote {item.lot}</span>
+            <span class="truncate">{item.extra}</span>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+  <div class="flex items-center gap-1.5 border-t border-hairline bg-cream px-4 py-2.5 text-[11px] text-charcoal">
+    <Icon name="check" size={13} class="text-sand-deep" /> Foto do rótulo anexada ao procedimento
+  </div>
+</div>

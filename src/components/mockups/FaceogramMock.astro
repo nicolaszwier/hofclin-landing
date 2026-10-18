@@ -1,0 +1,87 @@
+---
+import Icon from "../Icon.astro";
+
+/** Recreation of the app's Faceograma: injection points with doses, fictional patient. */
+interface Props {
+  compact?: boolean;
+  class?: string;
+}
+
+const { compact = false, class: className } = Astro.props;
+
+const toxin = [
+  { cx: 80, cy: 62 },
+  { cx: 100, cy: 58 },
+  { cx: 120, cy: 62 },
+  { cx: 100, cy: 90 },
+  { cx: 50, cy: 108 },
+  { cx: 150, cy: 108 },
+];
+const filler = [
+  { cx: 66, cy: 142 },
+  { cx: 134, cy: 142 },
+  { cx: 100, cy: 169 },
+];
+const doses = [
+  { region: "Frontal", dose: "10 U", kind: "toxin" },
+  { region: "Glabela", dose: "20 U", kind: "toxin" },
+  { region: "Periorbital E/D", dose: "12 U", kind: "toxin" },
+  { region: "Malar E/D", dose: "1 ml", kind: "filler" },
+  { region: "Lábios", dose: "1 ml", kind: "filler" },
+];
+---
+
+<div class:list={["mock-card overflow-hidden", className]}>
+  <div class="flex flex-wrap items-center justify-between gap-3 border-b border-hairline px-4 py-3">
+    <span class="pill-tag"><Icon name="face" size={15} class="text-sand-deep" /> Faceograma</span>
+    <span class="text-xs text-charcoal">Carla Mendes · 41 anos</span>
+  </div>
+
+  <div class="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] items-center gap-3 px-4 py-4">
+    <svg viewBox="0 0 200 236" class="w-full" role="img" aria-label="Rosto com pontos de aplicação de toxina e preenchedor">
+      <g fill="none" stroke="#8f8486" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M100 14c50 0 70 40 68 88-2 42-18 76-42 100-10 9-18 14-26 14s-16-5-26-14C50 178 34 144 32 102 30 54 50 14 100 14Z"></path>
+        <path d="M58 92q14-9 30-3M112 89q16-6 30 3"></path>
+        <path d="M62 107q12-8 24 0-12 7-24 0ZM114 107q12-8 24 0-12 7-24 0Z"></path>
+        <path d="M100 110q-3 18-8 30 7 6 16 1"></path>
+        <path d="M80 168q10-6 20-2 10-4 20 2M80 168q20 15 40 0"></path>
+      </g>
+      {
+        toxin.map((point) => (
+          <circle cx={point.cx} cy={point.cy} r="5" fill="#a86a2f" stroke="#fff" stroke-width="2" />
+        ))
+      }
+      {
+        filler.map((point) => (
+          <g>
+            <circle cx={point.cx} cy={point.cy} r="7" fill="#fff" stroke="#a86a2f" stroke-width="2" />
+            <circle cx={point.cx} cy={point.cy} r="2.5" fill="#ecba7c" />
+          </g>
+        ))
+      }
+    </svg>
+
+    <div class="flex flex-col gap-2">
+      {
+        doses.slice(0, compact ? 4 : doses.length).map((row) => (
+          <div class="flex items-center justify-between gap-2 rounded-lg bg-cream px-2.5 py-1.5 text-[11px]">
+            <span class="flex min-w-0 items-center gap-1.5">
+              <span class:list={["size-2 shrink-0 rounded-full", row.kind === "toxin" ? "bg-sand-deep" : "border-2 border-sand-deep bg-white"]} />
+              <span class="truncate">{row.region}</span>
+            </span>
+            <span class="font-semibold">{row.dose}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  {
+    !compact && (
+      <div class="flex flex-wrap gap-x-4 gap-y-1.5 border-t border-hairline px-4 py-3 text-[11px] text-charcoal">
+        <span class="flex items-center gap-1.5"><span class="size-2.5 rounded-full bg-sand-deep" />Toxina botulínica</span>
+        <span class="flex items-center gap-1.5"><span class="size-2.5 rounded-full border-2 border-sand-deep" />Ácido hialurônico</span>
+      </div>
+    )
+  }
+</div>

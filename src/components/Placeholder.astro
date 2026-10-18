@@ -1,0 +1,19 @@
+---
+import { isPlaceholder } from "../config/site";
+
+/** Renders a config value, or a loud marker while it is still a placeholder. */
+interface Props {
+  value: string;
+  label: string;
+}
+
+const { value, label } = Astro.props;
+---
+
+{
+  isPlaceholder(value) ? (
+    <mark class="rounded bg-sand-soft px-1 font-medium text-sand-deep">[preencher: {label}]</mark>
+  ) : (
+    value
+  )
+}

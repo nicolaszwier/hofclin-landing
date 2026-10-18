@@ -1,0 +1,75 @@
+---
+import Icon, { type IconName } from "../Icon.astro";
+import SectionHeading from "../SectionHeading.astro";
+import AnamnesisMock from "../mockups/AnamnesisMock.astro";
+import AgendaMock from "../mockups/AgendaMock.astro";
+import QuoteMock from "../mockups/QuoteMock.astro";
+import InsightsMock from "../mockups/InsightsMock.astro";
+
+const features: { icon: IconName; tag: string; title: string; text: string; mock: "anamnesis" | "agenda" | "quote" | "insights" }[] = [
+  {
+    icon: "clipboard",
+    tag: "Prontuário digital",
+    title: "O histórico do paciente, completo e assinado",
+    text: "Anamnese com versões, odontograma, faceograma, atendimentos e anexos. O paciente assina no tablet, com o dedo ou a caneta.",
+    mock: "anamnesis",
+  },
+  {
+    icon: "calendar",
+    tag: "Agenda",
+    title: "O dia da clínica em uma tela",
+    text: "Agenda por dia e semana para cada dentista, com aviso de conflito de horário e a agenda no calendário do celular.",
+    mock: "agenda",
+  },
+  {
+    icon: "receipt",
+    tag: "Orçamentos",
+    title: "Orçamento por dente ou região, com link para o paciente",
+    text: "Monte o orçamento a partir do plano de tratamento, aplique desconto e envie um link que o paciente abre no celular.",
+    mock: "quote",
+  },
+  {
+    icon: "chart",
+    tag: "Insights",
+    title: "Quem precisa voltar, sem planilha",
+    text: "Retornos vencidos, tratamentos planejados sem horário marcado e aniversariantes da semana, prontos para você chamar.",
+    mock: "insights",
+  },
+];
+---
+
+<section class="py-20 md:py-28" aria-labelledby="recursos-titulo">
+  <div class="container-page">
+    <SectionHeading
+      id="recursos-titulo"
+      eyebrow="Tudo em um só lugar"
+      title="Feito para o dia a dia da clínica"
+      subtitle="Do primeiro contato ao retorno, cada etapa do atendimento fica registrada no mesmo sistema."
+    />
+    <div class="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2">
+      {
+        features.map((feature) => (
+          <article class="flex flex-col overflow-hidden rounded-[var(--radius-card-lg)] bg-cream">
+            <div class="flex flex-col gap-4 p-8 pb-0 md:p-10 md:pb-0">
+              <span class="pill-tag self-start">
+                <Icon name={feature.icon} size={15} class="text-sand-deep" />
+                {feature.tag}
+              </span>
+              <h3 class="text-subheading text-balance">{feature.title}</h3>
+              <p class="text-pretty text-charcoal">{feature.text}</p>
+            </div>
+            <div class="mt-8 flex flex-1 items-end justify-center px-6 md:px-10" aria-hidden="true">
+              {/* The card's bottom edge crops the mock's rounded corners; pb-5 keeps its last row visible. */}
+              <div class="w-full max-w-[400px] translate-y-5">
+                {feature.mock === "anamnesis" && <AnamnesisMock class="pb-5" />}
+                {feature.mock === "agenda" && <AgendaMock class="pb-5" />}
+                {feature.mock === "quote" && <QuoteMock class="pb-5" />}
+                {feature.mock === "insights" && <InsightsMock class="pb-5" />}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

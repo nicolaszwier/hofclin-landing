@@ -1,0 +1,40 @@
+---
+import CtaButton from "../CtaButton.astro";
+import Icon from "../Icon.astro";
+import OdontogramMock from "../mockups/OdontogramMock.astro";
+import FaceogramMock from "../mockups/FaceogramMock.astro";
+---
+
+<section class="px-3 pt-2 md:px-4" aria-labelledby="hero-titulo">
+  <div class="hero-band relative overflow-hidden rounded-[28px] md:rounded-[40px]">
+    <div class="container-page flex flex-col items-center pt-14 text-center md:pt-24">
+      <p class="pill-tag border-white/70 bg-white/60 backdrop-blur">
+        <Icon name="sparkle" size={14} class="text-sand-deep" />
+        Odontologia + harmonização orofacial
+      </p>
+      <h1 id="hero-titulo" class="text-display mt-6 max-w-4xl text-balance">
+        Odontologia e harmonização no mesmo prontuário
+      </h1>
+      <p class="mt-6 max-w-xl text-lg text-pretty text-ink/75 md:text-xl">
+        Agenda, odontograma, faceograma, anamnese e orçamentos em um só lugar, para a clínica que cuida do sorriso e do
+        rosto.
+      </p>
+      <div class="mt-9 flex flex-col items-center gap-3">
+        <CtaButton placement="hero" />
+        <p class="text-sm text-ink/70">10 dias grátis · Cartão de crédito não obrigatório</p>
+      </div>
+    </div>
+
+    <!-- Product cards rising out of the band; the band's bottom edge crops them. -->
+    <div class="relative mx-auto mt-14 h-[330px] max-w-5xl px-4 sm:h-[360px] md:mt-20 md:h-[400px]" aria-hidden="true">
+      <OdontogramMock
+        compact
+        class="absolute top-0 left-1/2 w-[min(92vw,470px)] -translate-x-[58%] -rotate-[3deg] md:-translate-x-[86%]"
+      />
+      <FaceogramMock
+        compact
+        class="absolute top-28 left-1/2 w-[min(84vw,400px)] -translate-x-[38%] rotate-[3deg] sm:top-24 md:top-10 md:-translate-x-[8%]"
+      />
+    </div>
+  </div>
+</section>

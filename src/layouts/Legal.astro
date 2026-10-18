@@ -1,0 +1,49 @@
+---
+import Base from "./Base.astro";
+import { site } from "../config/site";
+import { breadcrumbJsonLd } from "../content/structured-data";
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  path: string;
+}
+
+const { title, description, heading, path } = Astro.props;
+const [year, month, day] = site.legal.updatedAt.split("-");
+---
+
+<Base
+  title={title}
+  description={description}
+  whatsappContext="legal"
+  jsonLd={[
+    breadcrumbJsonLd([
+      { name: "Início", path: "/" },
+      { name: heading, path },
+    ]),
+  ]}
+>
+  <article class="container-page max-w-3xl py-16 md:py-24">
+    <nav aria-label="Trilha" class="text-sm text-charcoal">
+      <a href="/" class="hover:text-ink">Início</a> <span aria-hidden="true">/</span>
+      <span class="text-ink" aria-current="page">{heading}</span>
+    </nav>
+    <h1 class="text-heading mt-6">{heading}</h1>
+    <p class="mt-3 text-sm text-charcoal">Última atualização: {day}/{month}/{year}</p>
+
+    {
+      !site.legal.reviewed && (
+        <div class="mt-8 rounded-[var(--radius-card)] border border-sand bg-sand-soft p-5 text-sm text-ink" role="note">
+          <strong class="font-semibold">Rascunho em revisão jurídica.</strong> Este texto ainda não foi revisado por
+          advogado e não deve ser publicado em produção. Trechos entre colchetes dependem de decisão.
+        </div>
+      )
+    }
+
+    <div class="prose-legal mt-10">
+      <slot />
+    </div>
+  </article>
+</Base>

@@ -1,0 +1,30 @@
+---
+import CtaButton from "./CtaButton.astro";
+import type { PlanKey } from "../config/site";
+
+interface Props {
+  title?: string;
+  plan?: PlanKey;
+  placement?: string;
+}
+
+const { title = "Seus primeiros 10 dias são por nossa conta", plan, placement = "final" } = Astro.props;
+---
+
+<section class="px-3 pb-3 md:px-4 md:pb-4" aria-labelledby="cta-final-titulo">
+  <div class="relative overflow-hidden rounded-[28px] bg-ink px-6 py-20 text-center text-white md:rounded-[40px] md:py-28">
+    <svg class="pointer-events-none absolute -top-10 right-[8%] size-40 text-sand opacity-25 md:size-56" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7Z"></path>
+    </svg>
+    <div class="relative mx-auto flex max-w-2xl flex-col items-center gap-6">
+      <h2 id="cta-final-titulo" class="text-heading text-balance">{title}</h2>
+      <p class="max-w-lg text-lg text-white/75">
+        Crie a conta, cadastre a clínica e comece a atender com agenda, prontuário e orçamentos hoje mesmo.
+      </p>
+      <div class="flex flex-col items-center gap-3">
+        <CtaButton placement={placement} plan={plan} />
+        <p class="text-sm text-white/70">10 dias grátis · Cartão de crédito não obrigatório</p>
+      </div>
+    </div>
+  </div>
+</section>

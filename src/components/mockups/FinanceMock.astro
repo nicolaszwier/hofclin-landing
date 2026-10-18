@@ -1,0 +1,53 @@
+---
+import Icon from "../Icon.astro";
+
+/** Recreation of the Dashboard Financeiro block / Fechamento do dia. Fictional data. */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const totals = [
+  { label: "Recebido hoje", value: "3.480,00" },
+  { label: "A receber hoje", value: "1.250,00" },
+  { label: "Em atraso", value: "620,00" },
+];
+const methods = [
+  { label: "PIX", value: "1.720,00", share: 49 },
+  { label: "Crédito", value: "1.260,00", share: 36 },
+  { label: "Dinheiro", value: "500,00", share: 15 },
+];
+---
+
+<div class:list={["mock-card overflow-hidden", className]}>
+  <div class="flex items-center justify-between gap-3 border-b border-hairline px-4 py-3">
+    <span class="pill-tag"><Icon name="wallet" size={15} class="text-sand-deep" /> Fechamento do dia</span>
+    <span class="chip bg-ink text-white">Pro</span>
+  </div>
+  <div class="grid grid-cols-3 divide-x divide-hairline border-b border-hairline">
+    {
+      totals.map((item) => (
+        <div class="px-3 py-3">
+          <p class="text-[10px] text-charcoal">{item.label}</p>
+          <p class="mt-0.5 text-[13px] font-semibold tabular-nums">R$ {item.value}</p>
+        </div>
+      ))
+    }
+  </div>
+  <ul class="flex flex-col gap-2.5 px-4 py-3">
+    {
+      methods.map((item) => (
+        <li class="text-[11px]">
+          <div class="flex justify-between">
+            <span>{item.label}</span>
+            <span class="tabular-nums text-charcoal">R$ {item.value}</span>
+          </div>
+          <div class="mt-1 h-1.5 rounded-full bg-cloud">
+            <div class="h-full rounded-full bg-sand" style={`width: ${item.share}%`} />
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</div>

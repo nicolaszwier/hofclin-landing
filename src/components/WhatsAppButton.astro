@@ -1,0 +1,45 @@
+---
+import { isPlaceholder, site } from "../config/site";
+
+/**
+ * Floating WhatsApp entry, bottom-right. The prefilled message depends on the page;
+ * src/scripts/whatsapp.ts appends the Conversation code at click time.
+ */
+export type WhatsAppContext = "home" | "odontologia" | "harmonizacao" | "legal";
+
+interface Props {
+  context: WhatsAppContext;
+}
+
+const messages: Record<WhatsAppContext, string> = {
+  home: "Olá! Vim pelo site do Hofclin e quero tirar uma dúvida.",
+  odontologia: "Olá! Vim pela página de odontologia do Hofclin e quero tirar uma dúvida.",
+  harmonizacao: "Olá! Vim pela página de harmonização orofacial do Hofclin e quero tirar uma dúvida.",
+  legal: "Olá! Vim pelo site do Hofclin e tenho uma dúvida sobre os termos ou a privacidade.",
+};
+
+const { context } = Astro.props;
+const number = isPlaceholder(site.whatsapp.number) ? "" : site.whatsapp.number;
+const message = messages[context];
+const href = number ? `https://wa.me/${number}?text=${encodeURIComponent(message)}` : "#whatsapp";
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener"
+  class="fixed right-4 z-40 flex size-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-[var(--shadow-button)] transition-[background-color,bottom,transform] duration-200 hover:scale-105 hover:bg-whatsapp-hover md:right-6"
+  style="bottom: calc(16px + var(--consent-offset));"
+  aria-label="Conversar com o Hofclin pelo WhatsApp"
+  data-whatsapp
+  data-whatsapp-number={number}
+  data-whatsapp-message={message}
+  data-whatsapp-context={context}
+  data-whatsapp-placement="floating"
+>
+  <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor" aria-hidden="true">
+    <path
+      d="M16.04 3C9 3 3.27 8.7 3.27 15.72c0 2.25.6 4.45 1.72 6.38L3.16 28.8l6.88-1.8a12.8 12.8 0 0 0 6 1.52h.01c7.04 0 12.77-5.7 12.77-12.73C28.82 8.7 23.09 3 16.04 3Zm0 23.33h-.01a10.6 10.6 0 0 1-5.4-1.47l-.39-.23-4.08 1.07 1.09-3.97-.25-.41a10.5 10.5 0 0 1-1.62-5.6c0-5.83 4.77-10.58 10.66-10.58 5.88 0 10.65 4.75 10.65 10.58 0 5.84-4.77 10.6-10.65 10.6Zm5.84-7.93c-.32-.16-1.89-.93-2.18-1.03-.29-.11-.5-.16-.72.16-.21.32-.82 1.03-1.01 1.24-.18.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.58a9.6 9.6 0 0 1-1.78-2.2c-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.72-1.72-.98-2.36-.26-.62-.52-.53-.72-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.08-1.11 2.64 0 1.56 1.14 3.06 1.3 3.27.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.2 2 .12.61-.09 1.89-.77 2.15-1.51.27-.74.27-1.38.19-1.51-.08-.13-.29-.21-.61-.37Z"
+    ></path>
+  </svg>
+</a>

@@ -1,0 +1,142 @@
+---
+import Legal from "../layouts/Legal.astro";
+import Placeholder from "../components/Placeholder.astro";
+import { site } from "../config/site";
+import { formatPrice, plans } from "../config/plans";
+
+/*
+ * DRAFT for counsel review. Sources: odonto-web/docs/research/termos-de-uso-privacidade-lgpd-saas.md
+ * §3.1 (what the contract must cover), §5.2 (offer), §6.5 (CDC-safe drafting); odonto-api ADR 0022;
+ * decisions from the landing grilling (CONTEXT.md: Trial, Trial plan, Plan choice, Refund window).
+ */
+---
+
+<Legal
+  title="Termos de Uso e Assinatura | Hofclin"
+  description="Condições de uso e de assinatura do Hofclin: teste grátis, planos, cobrança, cancelamento, garantia de 7 dias e responsabilidades."
+  heading="Termos de Uso e Assinatura"
+  path="/termos"
+>
+  <p>
+    Estes termos regem o uso do Hofclin, oferecido por <Placeholder value={site.company.legalName} label="razão social" />,
+    CNPJ <Placeholder value={site.company.cnpj} label="CNPJ" /> ("Hofclin"). Ao criar uma conta ou cadastrar uma clínica,
+    você declara que leu e aceita estes termos e a <a href="/privacidade">Política de Privacidade</a>.
+  </p>
+
+  <h2>1. O serviço</h2>
+  <p>
+    O Hofclin é um software de gestão, acessado pelo navegador, para clínicas de odontologia e harmonização orofacial. Os
+    recursos de cada plano estão descritos na página de <a href="/#precos">preços</a>:
+  </p>
+  <ul>
+    {plans.map((plan) => <li><strong>{plan.name}</strong> — R$ {formatPrice(plan.price)} por mês: {plan.features.join("; ")}.</li>)}
+  </ul>
+  <p>
+    Podemos melhorar e acrescentar recursos. Se uma mudança retirar um recurso do seu plano, avisaremos com
+    [30 dias — a definir] de antecedência, e você poderá cancelar sem custo antes de a mudança valer.
+  </p>
+
+  <h2>2. Conta, clínica e equipe</h2>
+  <ul>
+    <li>Quem cria a clínica se torna o seu primeiro administrador e responde pelas pessoas que convida.</li>
+    <li>Cada pessoa usa a própria conta. Você é responsável por manter sua senha em sigilo.</li>
+    <li>O administrador define as funções e permissões da equipe dentro da clínica.</li>
+  </ul>
+
+  <h2>3. Teste grátis</h2>
+  <ul>
+    <li>Toda clínica nova tem 10 dias de teste grátis, sem precisar de cartão de crédito.</li>
+    <li>O teste começa no plano escolhido no site (ou no Standard, se nenhum foi escolhido).</li>
+    <li>
+      Se o teste terminar sem cartão cadastrado, a clínica passa para o modo somente leitura: os dados continuam
+      disponíveis para consulta, mas não é possível criar ou alterar registros até o cartão ser cadastrado.
+    </li>
+  </ul>
+
+  <h2>4. Assinatura, escolha do plano e pagamento</h2>
+  <ul>
+    <li>Ao cadastrar o cartão, o administrador escolhe o plano que vai assinar, Standard ou Pro.</li>
+    <li>
+      Se o cartão for cadastrado durante o teste, a primeira cobrança acontece no fim do teste. Se for cadastrado depois
+      do fim do teste, a cobrança é feita na hora.
+    </li>
+    <li>A assinatura é mensal, por clínica, e renova automaticamente até ser cancelada.</li>
+    <li>O pagamento é feito por cartão de crédito, por meio de um processador de pagamentos. O Hofclin não recebe nem guarda os dados do cartão.</li>
+    <li>
+      Se uma cobrança falhar, avisaremos por e-mail e no aplicativo. Após 7 dias sem regularização, a clínica passa ao
+      modo somente leitura até o pagamento ser confirmado.
+    </li>
+    <li>
+      O preço pode ser reajustado [uma vez a cada 12 meses, pelo índice a definir], com aviso de [30 dias — a definir];
+      você pode cancelar antes de o novo preço valer.
+    </li>
+  </ul>
+
+  <h2>5. Cancelamento e garantia de 7 dias</h2>
+  <ul>
+    <li>O administrador pode cancelar a qualquer momento, pelo aplicativo, em Configurações → Assinatura.</li>
+    <li>
+      <strong>Garantia de 7 dias:</strong> se o cancelamento acontecer em até 7 dias depois da primeira cobrança,
+      devolvemos o valor integral dessa cobrança.
+    </li>
+    <li>
+      Fora desse prazo, o cancelamento interrompe a renovação, o acesso para criar e alterar registros continua até o fim
+      do período já pago e não há reembolso proporcional.
+    </li>
+    <li>Cancelar durante o teste encerra o teste imediatamente.</li>
+    <li>[Regra de acesso, exportação e guarda dos dados depois do cancelamento — a definir com o advogado.]</li>
+  </ul>
+
+  <h2>6. Dados dos pacientes e responsabilidades da clínica</h2>
+  <ul>
+    <li>
+      A clínica é controladora dos dados dos seus pacientes e o Hofclin é operador, nos termos da LGPD e do [Acordo de
+      Tratamento de Dados — a publicar].
+    </li>
+    <li>
+      A clínica é responsável pela base legal para tratar os dados dos pacientes, por informá-los e pela guarda do
+      prontuário pelo prazo legal.
+    </li>
+    <li>
+      Alguns recursos levam dados a terceiros por decisão da clínica: o link público do orçamento, o calendário iCal do
+      dentista e as mensagens de WhatsApp enviadas do próprio aparelho. Cabe à clínica decidir quando usá-los.
+    </li>
+  </ul>
+
+  <h2>7. Uso adequado</h2>
+  <p>
+    Não é permitido usar o Hofclin para fins ilícitos, tentar acessar dados de outras clínicas, sobrecarregar ou
+    contornar a segurança do serviço, nem revender o acesso sem autorização.
+  </p>
+
+  <h2>8. Disponibilidade e backups</h2>
+  <p>
+    Trabalhamos para manter o serviço disponível, mas ele pode ficar indisponível para manutenção ou por falhas fora do
+    nosso controle. O banco de dados tem backup automático a cada 6 horas; em uma falha grave, os dados registrados nas
+    últimas horas antes do último backup podem ser perdidos. Não garantimos prazo de restauração.
+  </p>
+
+  <h2>9. Propriedade intelectual</h2>
+  <p>
+    O software, a marca e o conteúdo do Hofclin pertencem ao Hofclin. Os dados que a clínica registra pertencem à
+    clínica.
+  </p>
+
+  <h2>10. Limitação de responsabilidade</h2>
+  <p>[Cláusula a redigir com o advogado, com limite e exceções explícitas.]</p>
+
+  <h2>11. Alterações destes termos</h2>
+  <p>
+    Mudanças relevantes serão avisadas por e-mail ou no aplicativo com [30 dias — a definir] de antecedência. Se você não
+    concordar, pode cancelar antes de a mudança valer.
+  </p>
+
+  <h2>12. Lei e foro</h2>
+  <p>Estes termos seguem a lei brasileira. Foro: [a definir com o advogado].</p>
+
+  <h2>13. Contato</h2>
+  <p>
+    Dúvidas, reclamações ou pedidos de cancelamento: <Placeholder value={site.company.email} label="e-mail" /> ou
+    <Placeholder value={site.company.phone} label="telefone" />.
+  </p>
+</Legal>

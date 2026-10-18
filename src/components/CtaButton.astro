@@ -1,0 +1,39 @@
+---
+import Icon from "./Icon.astro";
+import { signupUrl, type PlanKey } from "../config/site";
+
+/**
+ * Every trial CTA. Links to app signup with the Trial plan (docs/attribution-contract.md §1)
+ * and carries the data attributes `cta_click` reads.
+ */
+interface Props {
+  placement: string;
+  plan?: PlanKey;
+  variant?: "primary" | "ghost" | "light";
+  size?: "md" | "lg";
+  label?: string;
+  arrow?: boolean;
+  class?: string;
+}
+
+const {
+  placement,
+  plan,
+  variant = "primary",
+  size = "lg",
+  label = "Comece a usar gratuitamente",
+  arrow = false,
+  class: className,
+} = Astro.props;
+---
+
+<a
+  href={signupUrl(plan)}
+  class:list={["btn", `btn-${variant}`, `btn-${size}`, className]}
+  data-cta
+  data-cta-placement={placement}
+  data-plan={plan ?? "none"}
+>
+  {label}
+  {arrow && <Icon name="arrow-right" size={18} />}
+</a>

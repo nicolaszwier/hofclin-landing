@@ -16,17 +16,17 @@ export const site = {
 
   /** Footer identification — Decreto 7.962/2013, art. 2º. */
   company: {
-    legalName: PLACEHOLDER,
-    cnpj: PLACEHOLDER,
-    address: PLACEHOLDER,
-    email: PLACEHOLDER,
-    phone: PLACEHOLDER,
+    legalName: "NICOLAS ZWIERZYKOWSKI LTDA",
+    cnpj: "60.678.486/0001-43",
+    address: "R CLOTARIO PORTUGAL, 1050, UNIAO DA VITORIA, PR",
+    email: "nicolaszwier@gmail.com",
+    phone: "(42) 998071761",
   },
 
   /** Encarregado pelo tratamento de dados — LGPD art. 41, §1º. */
   dpo: {
-    name: PLACEHOLDER,
-    email: PLACEHOLDER,
+    name: "NICOLAS ZWIERZYKOWSKI",
+    email: "nicolaszwier@gmail.com",
   },
 
   /** Digits only, with country code, e.g. 5541999999999. */

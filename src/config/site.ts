@@ -31,12 +31,12 @@ export const site = {
 
   /** Digits only, with country code, e.g. 5541999999999. */
   whatsapp: {
-    number: PLACEHOLDER,
+    number: "5541999999999", //to-do: replace with real number
   },
 
   analytics: {
     /** GTM-XXXXXXX. GTM loads only after the visitor grants a Consent category. */
-    gtmId: PLACEHOLDER,
+    gtmId: "GTM-NXGWKCT5",
   },
 
   legal: {

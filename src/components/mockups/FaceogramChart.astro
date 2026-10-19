@@ -1,0 +1,29 @@
+---
+import { fillerPoints, toxinPoints } from "../../content/sample-patient";
+
+/** The faceograma drawing (toxin and filler points), shared by the record and the Faceograma preview. */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg viewBox="0 0 200 236" class:list={["w-full", className]} role="img" aria-label="Faceograma com pontos de toxina botulínica na testa, glabela e região periorbital, e de ácido hialurônico nas regiões malares e nos lábios">
+  <g fill="none" stroke="#8f8486" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M100 14c50 0 70 40 68 88-2 42-18 76-42 100-10 9-18 14-26 14s-16-5-26-14C50 178 34 144 32 102 30 54 50 14 100 14Z" />
+    <path d="M58 92q14-9 30-3M112 89q16-6 30 3" />
+    <path d="M62 107q12-8 24 0-12 7-24 0ZM114 107q12-8 24 0-12 7-24 0Z" />
+    <path d="M100 110q-3 18-8 30 7 6 16 1" />
+    <path d="M80 168q10-6 20-2 10-4 20 2M80 168q20 15 40 0" />
+  </g>
+  {toxinPoints.map((point) => <circle cx={point.cx} cy={point.cy} r="5" fill="#a86a2f" stroke="#fff" stroke-width="2" />)}
+  {
+    fillerPoints.map((point) => (
+      <g>
+        <circle cx={point.cx} cy={point.cy} r="7" fill="#fff" stroke="#a86a2f" stroke-width="2" />
+        <circle cx={point.cx} cy={point.cy} r="2.5" fill="#ecba7c" />
+      </g>
+    ))
+  }
+</svg>

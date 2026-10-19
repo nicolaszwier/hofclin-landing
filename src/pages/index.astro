@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
-import Hero from "../components/home/Hero.astro";
-import FeatureGrid from "../components/home/FeatureGrid.astro";
+import PracticeHero from "../components/home/PracticeHero.astro";
+import FeatureTour from "../components/home/FeatureTour.astro";
 import Specialties from "../components/home/Specialties.astro";
 import FinanceSection from "../components/home/FinanceSection.astro";
 import SecuritySection from "../components/home/SecuritySection.astro";
@@ -18,8 +18,8 @@ import { softwareApplicationJsonLd } from "../content/structured-data";
   jsonLd={[softwareApplicationJsonLd(), faqJsonLd(homeFaq)]}
   whatsappContext="home"
 >
-  <Hero />
-  <FeatureGrid />
+  <PracticeHero />
+  <FeatureTour />
   <Specialties />
   <FinanceSection />
   <SecuritySection />

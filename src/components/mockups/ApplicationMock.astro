@@ -1,0 +1,53 @@
+---
+import Icon from "../Icon.astro";
+
+/** One harmonization session, planned doses against applied ones (the shared fictional patient, 02/10). */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const rows = [
+  { region: "Frontal", planned: "10 U", applied: "10 U" },
+  { region: "Glabela", planned: "20 U", applied: "20 U" },
+  { region: "Periorbital E/D", planned: "14 U", applied: "12 U" },
+];
+---
+
+<div class:list={["mock-card overflow-hidden", className]}>
+  <div class="flex items-center justify-between gap-3 border-b border-hairline px-4 py-3">
+    <span class="pill-tag"><Icon name="face" size={15} class="text-sand-deep" /> Toxina botulínica</span>
+    <span class="text-xs text-charcoal">Atendimento de 02/10</span>
+  </div>
+  <table class="w-full text-left text-xs">
+    <thead class="text-[11px] text-charcoal">
+      <tr class="border-b border-hairline">
+        <th scope="col" class="px-4 py-2 font-normal">Região</th>
+        <th scope="col" class="px-2 py-2 text-right font-normal">Planejado</th>
+        <th scope="col" class="px-4 py-2 text-right font-normal">Aplicado</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((row) => (
+          <tr class="border-b border-hairline">
+            <td class="px-4 py-2.5 font-medium">{row.region}</td>
+            <td class="px-2 py-2.5 text-right text-charcoal tabular-nums">{row.planned}</td>
+            <td class="px-4 py-2.5 text-right tabular-nums">
+              <span class:list={["font-semibold", row.planned !== row.applied && "rounded-full bg-sand-soft px-2 py-0.5 text-sand-ink"]}>{row.applied}</span>
+            </td>
+          </tr>
+        ))
+      }
+      <tr>
+        <td class="px-4 py-2.5 text-charcoal">Total</td>
+        <td class="px-2 py-2.5 text-right text-charcoal tabular-nums">44 U</td>
+        <td class="px-4 py-2.5 text-right font-semibold tabular-nums">42 U</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="flex items-center gap-1.5 border-t border-hairline bg-cream px-4 py-2.5 text-[11px] text-charcoal">
+    <Icon name="check" size={13} class="text-sand-deep" /> Dose ajustada no atendimento, sobre o mesmo mapa do plano
+  </div>
+</div>

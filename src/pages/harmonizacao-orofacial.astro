@@ -5,7 +5,7 @@ import FeatureRow from "../components/FeatureRow.astro";
 import PricingSection from "../components/PricingSection.astro";
 import FaqSection from "../components/FaqSection.astro";
 import FinalCta from "../components/FinalCta.astro";
-import FaceogramMock from "../components/mockups/FaceogramMock.astro";
+import ApplicationMock from "../components/mockups/ApplicationMock.astro";
 import TraceabilityMock from "../components/mockups/TraceabilityMock.astro";
 import AnamnesisMock from "../components/mockups/AnamnesisMock.astro";
 import InsightsMock from "../components/mockups/InsightsMock.astro";
@@ -28,19 +28,14 @@ import { breadcrumbJsonLd } from "../content/structured-data";
 >
   <PageHero
     breadcrumb="Harmonização orofacial"
-    tag="Para clínicas de HOF"
-    icon="face"
     title="Prontuário de harmonização orofacial, ponto a ponto"
     subtitle="Marque regiões, pontos e doses no faceograma, registre lote e validade de cada produto e tenha o plano e o aplicado no mesmo mapa."
     placement="harmonizacao_hero"
-  >
-    <FaceogramMock compact />
-  </PageHero>
+    practice="hof"
+  />
 
   <div class="container-page flex flex-col gap-24 py-20 md:gap-32 md:py-28">
     <FeatureRow
-      icon="face"
-      tag="Faceograma"
       title="Regiões, pontos de aplicação e doses no rosto"
       text="O faceograma organiza a harmonização do paciente em tratamentos planejados, concluídos e condições que ele já trazia."
       points={[
@@ -50,13 +45,11 @@ import { breadcrumbJsonLd } from "../content/structured-data";
         "Plano e aplicado no mesmo mapa: no atendimento você ajusta as doses reais",
       ]}
     >
-      <FaceogramMock />
+      <ApplicationMock />
     </FeatureRow>
 
     <FeatureRow
       reverse
-      icon="flask"
-      tag="Rastreabilidade"
       title="Lote e validade de cada frasco aplicado"
       text="Cada procedimento de harmonização guarda os produtos usados, inclusive quando a sessão consome mais de um lote ou marca."
       points={[
@@ -69,8 +62,6 @@ import { breadcrumbJsonLd } from "../content/structured-data";
     </FeatureRow>
 
     <FeatureRow
-      icon="clipboard"
-      tag="Anamnese e assinatura"
       title="Anamnese pronta para odontologia e harmonização"
       text="O modelo padrão já pergunta o que importa antes de uma aplicação, e o paciente assina no tablet antes de começar."
       points={[
@@ -84,8 +75,6 @@ import { breadcrumbJsonLd } from "../content/structured-data";
 
     <FeatureRow
       reverse
-      icon="refresh"
-      tag="Retornos"
       title="Quem precisa voltar aparece sozinho"
       text="Retornos vencidos e tratamentos planejados sem horário viram uma lista pronta para a recepção chamar."
       points={[
@@ -98,8 +87,6 @@ import { breadcrumbJsonLd } from "../content/structured-data";
     </FeatureRow>
 
     <FeatureRow
-      icon="receipt"
-      tag="Orçamentos"
       title="Orçamento por região, com link para a paciente"
       text="Monte o orçamento a partir do que foi planejado no faceograma e envie um link que abre no celular."
       points={[

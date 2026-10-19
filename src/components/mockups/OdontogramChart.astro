@@ -1,0 +1,97 @@
+---
+import { lowerTeeth, toothStates, upperTeeth, type ToothState } from "../../content/sample-patient";
+
+/**
+ * The odontograma drawing, shared by the record and the Odontograma preview.
+ * Two layouts: one row per arch when there is room, one row per quadrant when narrow,
+ * so the tooth numbers never drop below a legible size. The container picks.
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+// One pattern id per instance: a page can render the chart more than once.
+const hatchId = `hatch-${Math.random().toString(36).slice(2, 8)}`;
+
+const PITCH = 26;
+const TOOTH_W = 22;
+const TOOTH_H = 30;
+
+const style = (state: ToothState | undefined, patternId: string) => {
+  if (state === "completed") return { fill: "#a86a2f", stroke: "#a86a2f", dash: undefined };
+  if (state === "planned") return { fill: "#fbefe1", stroke: "#a86a2f", dash: "3 2.5" };
+  if (state === "condition") return { fill: `url(#${patternId})`, stroke: "#62585a", dash: undefined };
+  return { fill: "#ffffff", stroke: "#d9cbc1", dash: undefined };
+};
+
+type Cell = { tooth: number; x: number; y: number; labelY: number };
+
+// Wide: upper arch on top, lower arch below, a gap at the midline.
+const wide: Cell[] = [
+  ...upperTeeth.map((tooth, i) => ({ tooth, x: 4 + i * PITCH + (i >= 8 ? 8 : 0), y: 4, labelY: 52 })),
+  ...lowerTeeth.map((tooth, i) => ({ tooth, x: 4 + i * PITCH + (i >= 8 ? 8 : 0), y: 86, labelY: 74 })),
+];
+
+// Narrow: four quadrant rows of eight.
+const quadrants = [upperTeeth.slice(0, 8), upperTeeth.slice(8), lowerTeeth.slice(0, 8), lowerTeeth.slice(8)];
+const narrow: Cell[] = quadrants.flatMap((row, r) =>
+  row.map((tooth, i) => ({ tooth, x: 4 + i * PITCH, y: 4 + r * 58 + (r >= 2 ? 10 : 0), labelY: 4 + r * 58 + (r >= 2 ? 10 : 0) + 46 })),
+);
+
+const label = "Odontograma: dente 26 com restauração concluída, 16 e 36 com tratamento planejado, 11 com condição registrada";
+---
+
+<div class:list={["odo-chart", className]}>
+  {
+    [
+      // Font sizes keep the numbers at 11px or more across each layout's width range.
+      { cells: wide, viewBox: "0 0 432 120", cls: "odo-wide", fontSize: 11 },
+      { cells: narrow, viewBox: "0 0 212 248", cls: "odo-narrow", fontSize: 8 },
+    ].map(({ cells, viewBox, cls, fontSize }) => (
+      <svg viewBox={viewBox} class:list={["w-full", cls]} role="img" aria-label={label}>
+        <defs>
+          <pattern id={`${hatchId}-${cls}`} width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <rect width="4" height="4" fill="#f5ede6" />
+            <line x1="0" y1="0" x2="0" y2="4" stroke="#8f8486" stroke-width="1" />
+          </pattern>
+        </defs>
+        {cells.map(({ tooth, x, y, labelY }) => {
+          const state = toothStates[tooth];
+          const s = style(state, `${hatchId}-${cls}`);
+          return (
+            <g>
+              <rect x={x} y={y} width={TOOTH_W} height={TOOTH_H} rx="7" fill={s.fill} stroke={s.stroke} stroke-width="1.2" stroke-dasharray={s.dash} />
+              {state === "planned" && <rect x={x + 7} y={y + 10} width="8" height="9" rx="2" fill="#ecba7c" />}
+              {state === "completed" && (
+                <path d={`M${x + 6.5} ${y + 15.5}l3 3 6-6.5`} stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+              )}
+              <text x={x + TOOTH_W / 2} y={labelY} text-anchor="middle" font-size={fontSize} fill="#62585a" font-family="Poppins, sans-serif">
+                {tooth}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+    ))
+  }
+</div>
+
+<style>
+  .odo-chart {
+    container-type: inline-size;
+  }
+  .odo-narrow {
+    display: none;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+  @container (max-width: 430px) {
+    .odo-wide {
+      display: none;
+    }
+    .odo-narrow {
+      display: block;
+    }
+  }
+</style>

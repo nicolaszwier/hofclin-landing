@@ -4,6 +4,9 @@ import Icon from "../Icon.astro";
 import FinanceMock from "../mockups/FinanceMock.astro";
 import CostCalcMock from "../mockups/CostCalcMock.astro";
 
+/** Financeiro (plano Pro): the money follows the care, from accepted quote to the cash register. */
+const flow = ["Orçamento aceito", "Venda", "Parcelas", "Caixa"];
+
 const points = [
   "Venda gerada a partir do orçamento aceito ou do atendimento",
   "Parcelas no PIX, boleto ou cartão, recebidas na data em que o dinheiro entrou",
@@ -13,16 +16,28 @@ const points = [
 ];
 ---
 
-<section class="py-20 md:py-28" aria-labelledby="financeiro-titulo">
-  <div class="container-page grid grid-cols-1 items-center gap-14 lg:grid-cols-2">
+<section class="py-20 md:py-32" aria-labelledby="financeiro-titulo">
+  <div class="container-page grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
     <div class="flex flex-col gap-6">
-      <span class="pill-tag self-start"><Icon name="wallet" size={15} class="text-sand-deep" /> Financeiro · plano Pro</span>
       <h2 id="financeiro-titulo" class="text-heading text-balance">O financeiro da clínica, junto do atendimento</h2>
+      <p class="flex items-center gap-2 text-[15px] text-charcoal">
+        <span class="chip bg-ink px-3 py-1 text-xs text-white">Pro</span> Incluído no plano Pro
+      </p>
       <p class="text-lg text-pretty text-charcoal">
         O que foi orçado vira venda, a venda vira parcelas e as parcelas caem no caixa. Sem digitar duas vezes e sem
         planilha paralela.
       </p>
-      <ul class="flex flex-col gap-3 text-[15px]">
+      <ol class="flex flex-wrap items-center gap-x-2 gap-y-3" aria-label="Do orçamento ao caixa">
+        {
+          flow.map((step, index) => (
+            <li class="flex items-center gap-2">
+              <span class="rounded-full border border-hairline-strong bg-white px-3.5 py-1.5 text-sm font-medium">{step}</span>
+              {index < flow.length - 1 && <Icon name="arrow-right" size={16} class="text-sand-deep" />}
+            </li>
+          ))
+        }
+      </ol>
+      <ul class="flex flex-col gap-3 border-t border-hairline pt-6 text-[15px]">
         {
           points.map((point) => (
             <li class="flex gap-3">
@@ -32,14 +47,14 @@ const points = [
           ))
         }
       </ul>
-      <div class="flex flex-wrap items-center gap-4 pt-2">
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-4 pt-2">
         <CtaButton placement="finance" plan="pro" label="Testar o Pro grátis" />
         <a href="#precos" class="link-arrow">Ver preços</a>
       </div>
     </div>
-    <div class="relative mx-auto w-full max-w-[520px] pb-10" aria-hidden="true">
-      <FinanceMock class="relative z-10 w-[86%]" />
-      <CostCalcMock class="relative z-20 -mt-6 ml-auto w-[76%] rotate-[2deg]" />
+    <div class="relative overflow-hidden rounded-[var(--radius-card-lg)] bg-cream px-4 pt-6 pb-8 sm:px-12 sm:pt-14 sm:pb-12" aria-hidden="true">
+      <FinanceMock class="relative z-10 w-full sm:w-[88%]" />
+      <CostCalcMock class="relative z-20 mt-4 w-full sm:-mt-8 sm:ml-auto sm:w-[80%] sm:rotate-[2deg]" />
     </div>
   </div>
 </section>

@@ -1,0 +1,13 @@
+---
+/**
+ * Text joined by " · ", rendered so a narrow line never starts with the dot:
+ * each part keeps its trailing dot and never splits from it.
+ */
+interface Props {
+  text: string;
+}
+
+const parts = Astro.props.text.split(" · ");
+---
+
+{parts.map((part, index) => <><span class="whitespace-nowrap">{part}{index < parts.length - 1 && " ·"}</span>{index < parts.length - 1 && " "}</>)}

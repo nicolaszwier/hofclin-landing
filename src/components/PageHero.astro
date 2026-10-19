@@ -1,22 +1,30 @@
 ---
 import CtaButton from "./CtaButton.astro";
-import Icon, { type IconName } from "./Icon.astro";
+import Icon from "./Icon.astro";
+import PatientRecord from "./record/PatientRecord.astro";
 
-/** Hero band for feature pages: breadcrumb, H1, CTA, and a product card rising from the band. */
+/**
+ * Hero band for the specialty pages: breadcrumb, H1, CTA, and the home page's record
+ * fixed to this specialty, rising out of the band. A line under it points to the other specialty.
+ */
 interface Props {
   breadcrumb: string;
-  tag: string;
-  icon: IconName;
   title: string;
   subtitle: string;
   placement: string;
+  practice: "odonto" | "hof";
 }
 
-const { breadcrumb, tag, icon, title, subtitle, placement } = Astro.props;
+const { breadcrumb, title, subtitle, placement, practice } = Astro.props;
+
+const other =
+  practice === "odonto"
+    ? { text: "Também faz harmonização orofacial? O faceograma entra no mesmo prontuário.", href: "/harmonizacao-orofacial", label: "Ver o prontuário de harmonização" }
+    : { text: "Também atende odontologia? O odontograma fica no mesmo prontuário.", href: "/odontologia", label: "Ver o prontuário odontológico" };
 ---
 
 <section class="px-3 pt-2 md:px-4" aria-labelledby="page-hero-titulo">
-  <div class="hero-band relative overflow-hidden rounded-[28px] md:rounded-[40px]">
+  <div class="hero-band rounded-[28px] pb-[168px] md:rounded-[40px] md:pb-[232px]">
     <div class="container-page flex flex-col items-center pt-10 text-center md:pt-16">
       <nav aria-label="Trilha" class="text-sm text-ink/70">
         <ol class="flex items-center gap-2">
@@ -25,21 +33,20 @@ const { breadcrumb, tag, icon, title, subtitle, placement } = Astro.props;
           <li aria-current="page" class="text-ink">{breadcrumb}</li>
         </ol>
       </nav>
-      <p class="pill-tag mt-8 border-white/70 bg-white/60 backdrop-blur">
-        <Icon name={icon} size={14} class="text-sand-deep" />
-        {tag}
-      </p>
-      <h1 id="page-hero-titulo" class="text-display-sm mt-6 max-w-4xl text-balance">{title}</h1>
+      <h1 id="page-hero-titulo" class="text-display-sm mt-8 max-w-4xl text-balance">{title}</h1>
       <p class="mt-6 max-w-2xl text-lg text-pretty text-ink/75 md:text-xl">{subtitle}</p>
       <div class="mt-9 flex flex-col items-center gap-3">
         <CtaButton placement={placement} />
         <p class="text-sm text-ink/70">10 dias grátis · Cartão de crédito não obrigatório</p>
       </div>
     </div>
-    <div class="relative mx-auto mt-14 h-[280px] max-w-xl px-4 md:mt-16 md:h-[320px]" aria-hidden="true">
-      <div class="absolute inset-x-4 top-0">
-        <slot />
-      </div>
-    </div>
+  </div>
+
+  <div class="container-page relative -mt-[136px] md:-mt-[192px]">
+    <PatientRecord practice={practice} />
+    <p class="mt-6 flex flex-col items-start gap-2 text-[15px] text-charcoal sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4">
+      {other.text}
+      <a href={other.href} class="link-arrow">{other.label} <Icon name="arrow-right" size={16} /></a>
+    </p>
   </div>
 </section>

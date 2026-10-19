@@ -915,12 +915,12 @@
         "variableId": "2",
         "name": "ID - Clarity",
         "type": "c",
-        "notes": "Microsoft Clarity → Settings → Overview → Project ID. Enquanto o valor for PREENCHER, as tags desta plataforma ficam bloqueadas.",
+        "notes": "Microsoft Clarity → Settings → Overview → Project ID.",
         "parameter": [
           {
             "type": "TEMPLATE",
             "key": "value",
-            "value": "PREENCHER"
+            "value": "z0bahzn2zp"
           }
         ],
         "accountId": "0",

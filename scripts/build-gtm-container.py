@@ -42,7 +42,7 @@ def dlv(key):
 
 UNTIL_SET = f"Enquanto o valor for {PLACEHOLDER}, as tags desta plataforma ficam bloqueadas."
 constant("ID - GA4", "Google Analytics 4 → Administrador → Fluxos de dados → Web → ID da métrica.", "G-JWDLJ212V4")
-constant("ID - Clarity", f"Microsoft Clarity → Settings → Overview → Project ID. {UNTIL_SET}")
+constant("ID - Clarity", "Microsoft Clarity → Settings → Overview → Project ID.", "z0bahzn2zp")
 constant("ID - Meta Pixel", f"Meta Events Manager → Fontes de dados → ID do pixel (só números). {UNTIL_SET}")
 constant("ID - TikTok Pixel", f"TikTok Events Manager → Web → Pixel ID / código. {UNTIL_SET}")
 

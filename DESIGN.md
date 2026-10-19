@@ -1,507 +1,387 @@
-# Letters — Style Reference
-> morning clinic under open sky — a sterile white desk beneath a wash of soft blue, dotted with surgical-blue instruments.
+---
+name: Hofclin
+description: Warm, precise marketing system for clinic software that keeps odontologia and harmonização orofacial in one prontuário.
+colors:
+  crimson: "#ae2351"
+  crimson-hover: "#941c44"
+  sand: "#ecba7c"
+  sand-deep: "#a86a2f"
+  sand-soft: "#fbefe1"
+  ink: "#1c1517"
+  charcoal: "#62585a"
+  slate: "#8f8486"
+  paper: "#ffffff"
+  cream: "#fbf6f2"
+  cloud: "#f5ede6"
+  hairline: "#ece1d9"
+  hairline-strong: "#d9cbc1"
+  whatsapp: "#25d366"
+  whatsapp-hover: "#1ebe5a"
+typography:
+  display:
+    fontFamily: "Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "clamp(2.6rem, 5.2vw + 1rem, 5rem)"
+    fontWeight: 600
+    lineHeight: 1
+    letterSpacing: "-0.04em"
+  display-sm:
+    fontFamily: "Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "clamp(2.4rem, 3.6vw + 1rem, 4rem)"
+    fontWeight: 600
+    lineHeight: 1.02
+    letterSpacing: "-0.04em"
+  headline:
+    fontFamily: "Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "clamp(2rem, 2.6vw + 1rem, 2.75rem)"
+    fontWeight: 600
+    lineHeight: 1.1
+    letterSpacing: "-0.04em"
+  title:
+    fontFamily: "Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "clamp(1.375rem, 1vw + 1rem, 1.75rem)"
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: "-0.035em"
+  price:
+    fontFamily: "Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "3rem"
+    fontWeight: 600
+    lineHeight: 1
+    letterSpacing: "-0.04em"
+    fontFeature: "'tnum' 1"
+  body-lg:
+    fontFamily: "Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 400
+    lineHeight: 1.56
+    letterSpacing: "-0.01em"
+  body:
+    fontFamily: "Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: "-0.01em"
+  body-sm:
+    fontFamily: "Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "0.875rem"
+    fontWeight: 400
+    lineHeight: 1.43
+    letterSpacing: "-0.01em"
+  button:
+    fontFamily: "Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 500
+    lineHeight: 1.5
+    letterSpacing: "-0.01em"
+  eyebrow:
+    fontFamily: "Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "0.875rem"
+    fontWeight: 500
+    lineHeight: 1.43
+    letterSpacing: "normal"
+  label:
+    fontFamily: "Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "0.8125rem"
+    fontWeight: 500
+    lineHeight: 1.5
+    letterSpacing: "-0.01em"
+  chip:
+    fontFamily: "Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    fontSize: "0.6875rem"
+    fontWeight: 500
+    lineHeight: 1.5
+    letterSpacing: "0"
+rounded:
+  icon: "8px"
+  input: "12px"
+  card: "18px"
+  band: "28px"
+  card-lg: "32px"
+  band-lg: "40px"
+  pill: "100px"
+spacing:
+  gutter-sm: "16px"
+  gutter: "32px"
+  grid-gap: "20px"
+  tile-padding: "24px"
+  card-padding-sm: "32px"
+  card-padding: "40px"
+  heading-gap: "56px"
+  section-sm: "80px"
+  section: "112px"
+components:
+  button-primary:
+    backgroundColor: "{colors.crimson}"
+    textColor: "{colors.paper}"
+    typography: "{typography.button}"
+    rounded: "{rounded.pill}"
+    padding: "14px 28px"
+  button-primary-hover:
+    backgroundColor: "{colors.crimson-hover}"
+  button-primary-md:
+    backgroundColor: "{colors.crimson}"
+    textColor: "{colors.paper}"
+    rounded: "{rounded.pill}"
+    padding: "10px 20px"
+  button-ghost:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
+    typography: "{typography.button}"
+    rounded: "{rounded.pill}"
+    padding: "14px 28px"
+  button-light:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    typography: "{typography.button}"
+    rounded: "{rounded.pill}"
+    padding: "14px 28px"
+  button-light-hover:
+    backgroundColor: "{colors.cream}"
+  pill-tag:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    typography: "{typography.label}"
+    rounded: "{rounded.pill}"
+    padding: "4px 12px"
+  chip-highlight:
+    backgroundColor: "{colors.sand-soft}"
+    textColor: "{colors.sand-deep}"
+    typography: "{typography.chip}"
+    rounded: "{rounded.pill}"
+    padding: "4px 12px"
+  chip-done:
+    backgroundColor: "{colors.sand-deep}"
+    textColor: "{colors.paper}"
+    typography: "{typography.chip}"
+    rounded: "{rounded.pill}"
+    padding: "2px 8px"
+  chip-planned:
+    backgroundColor: "{colors.sand-soft}"
+    textColor: "{colors.sand-deep}"
+    typography: "{typography.chip}"
+    rounded: "{rounded.pill}"
+    padding: "2px 8px"
+  icon-tile:
+    backgroundColor: "{colors.sand-soft}"
+    textColor: "{colors.sand-deep}"
+    rounded: "{rounded.icon}"
+    size: "40px"
+  feature-card:
+    backgroundColor: "{colors.cream}"
+    rounded: "{rounded.card-lg}"
+    padding: "40px"
+  surface-card:
+    backgroundColor: "{colors.paper}"
+    rounded: "{rounded.card-lg}"
+    padding: "40px"
+  plan-card:
+    backgroundColor: "{colors.cream}"
+    rounded: "{rounded.card-lg}"
+    padding: "40px"
+  plan-card-highlighted:
+    backgroundColor: "{colors.paper}"
+    rounded: "{rounded.card-lg}"
+    padding: "40px"
+  info-tile:
+    backgroundColor: "{colors.paper}"
+    rounded: "{rounded.card}"
+    padding: "24px"
+  mock-card:
+    backgroundColor: "{colors.paper}"
+    rounded: "{rounded.card}"
+  consent-option:
+    backgroundColor: "{colors.paper}"
+    rounded: "{rounded.input}"
+    padding: "16px"
+  final-cta-band:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+    rounded: "{rounded.band-lg}"
+    padding: "112px 24px"
+  nav:
+    backgroundColor: "rgb(255 255 255 / 0.85)"
+    textColor: "{colors.charcoal}"
+    height: "72px"
+  whatsapp-button:
+    backgroundColor: "{colors.whatsapp}"
+    textColor: "{colors.paper}"
+    rounded: "{rounded.pill}"
+    size: "56px"
+---
 
-**Theme:** light
+# Design System: Hofclin
 
-Source measurements are normalized; roles and recommendations are interpreted. Font summary lists are independent, not paired by position. HTML examples are reconstructions, not source components.
+## Overview
 
-Letters is a medical letterwriting tool that opens with an open-sky gradient hero — a soft blue atmospheric band that sets a calm, clinical tone before dropping into a clean white workspace. The system is 99% monochrome: pure white canvas, near-black text (#070709), pill-shaped dark CTAs, and 18px rounded cards floating on hairline shadows. One vivid blue (#2597d0) is reserved for functional punctuation — icons, micro-graphics, waveform players — never for buttons or large fills. Typography leans on Open Runde, a geometric humanist sans with aggressive negative tracking at display sizes (-0.04em at 80px) that tightens headlines into confident blocks. Components feel medical-instrument light: thin borders, generous card padding, pill buttons, and a reserved use of elevation that lets the sky hero do the emotional work.
+**Creative North Star: "The Warm Clinical Record"**
 
-## Tokens — Colors
+Hofclin looks like a patient chart laid on warm paper. Everything is specific and exact: the faces of a tooth, the points and doses on a face, a lot number and an expiry date. Nothing feels sterile. Every neutral leans toward a warm red-brown, the surfaces alternate between white paper and cream, and every shadow is tinted toward crimson rather than grey. The product itself carries the persuasion. Each section shows the real record as an HTML mockup with fictional data, tilted slightly and cropped by its container, as if a page were sliding out of a folder.
 
-| Name | Value | Token | Role |
-|------|-------|-------|------|
-| Obsidian | `#070709` | `--color-obsidian` | Primary text, filled CTA buttons, and dark UI surfaces — near-black chosen over pure #000 to soften contrast against white canvas |
-| Paper White | `#ffffff` | `--color-paper-white` | Page background, card surfaces, and button text — the primary canvas across all sections below the hero |
-| Cloud Gray | `#f5f5f5` | `--color-cloud-gray` | Secondary card surfaces and section backgrounds — separates feature blocks from main canvas |
-| Sky Tint | `#d7e6f5` | `--color-sky-tint` | Card box-shadow tint and subtle blue-toned surface — keeps elevation feeling atmospheric rather than gray |
-| Charcoal | `#60606c` | `--color-charcoal` | Body text, secondary copy, and muted borders — the dominant neutral for non-heading content |
-| Slate | `#8b8b8b` | `--color-slate` | Tertiary text and inactive border states — used for placeholder labels and disabled affordances |
-| Ink | `#151515` | `--color-ink` | Heading color and strong dividers — slightly lighter than Obsidian for less severe emphasis |
-| Surgical Blue | `#2597d0` | `--color-surgical-blue` | Icon strokes, mic glyph, waveform player, and small functional accents — the single chromatic note across the interface |
-| Sky Gradient | `linear-gradient(180deg, #779bc1 0%, #9abfda 58%, #cbdcec 100%)` | `--color-sky-gradient` | Hero background — vertical wash from medium blue to near-white that establishes the medical-aspirational mood |
+The mood is **warm, precise, and candid**. Warmth comes from the material: cream, sand, and a warm ink. Precision comes from tight display tracking, 1px hairlines, tabular prices, and single-weight line icons. Candor comes from what the system refuses to hide: the fine print under the price is set in legible charcoal at the same width as the plans, and the consent banner gives Reject and Accept the same weight.
 
-## Tokens — Typography
+Components feel **warm and tactile**. Buttons are fully rounded pills that lift on a soft crimson-tinted shadow and press down 1px when clicked. Cards are generously rounded and padded and sit on cream. Product mockups are white sheets with a hairline edge. Each page has one atmospheric moment, a framed sand-light band at the top, and a deep ink band closes the page at the bottom.
 
-### sans-serif — sans-serif — detected in extracted data but not described by AI · `--font-sans-serif`
-- **Weights:** 400, 700
-- **Sizes:** 12px
-- **Line height:** 1.2
-- **Role:** sans-serif — detected in extracted data but not described by AI
+The system explicitly rejects **spa or beauty-salon gloss** (rose gold, glossy stock photos of faces, soft-focus aesthetics imagery) and **generic startup gradients** (purple-blue washes, glassmorphism, floating 3D blobs).
 
-### Open Runde — Primary display and heading face — geometric humanist with tight tracking at large sizes; the -0.04em at 80px compresses the headline into a single confident block. Use for all headings, nav, and large text. · `--font-open-runde`
-- **Substitute:** Inter Tight, General Sans, or Manrope
-- **Weights:** 400, 500, 600, 700, 900
-- **Sizes:** 10, 12, 14, 16, 17, 18, 20, 28, 44, 80
-- **Line height:** 0.90, 1.10, 1.20, 1.40, 1.49, 1.50
-- **Letter spacing:** -0.0400em at display (80px), -0.0100em at body (16-18px), normal at small (10-12px)
-- **OpenType features:** `'ss01' on`
-- **Role:** Primary display and heading face — geometric humanist with tight tracking at large sizes; the -0.04em at 80px compresses the headline into a single confident block. Use for all headings, nav, and large text.
+**Key Characteristics:**
+- Warm monochrome canvas: paper, cream, and cloud, with warm ink and charcoal text.
+- One action color: Hofclin Crimson appears only on the primary CTA and in the logo.
+- Burnished Sand marks everything that is information rather than action: icons, checkmarks, eyebrows, and the marks inside mockups.
+- Poppins at 400, 500, and 600, with display tracking pulled to -0.04em.
+- Pills for everything you can press or tag, and 18–32px corners for everything that holds content.
+- Product mockups with fictional data serve as the imagery. There are no photographs.
 
-### Inter — Secondary body and UI text — used for small labels, nav items, and inline links where a more neutral reading rhythm is needed. Pairs with Open Runde for hierarchy contrast. · `--font-inter`
-- **Substitute:** system-ui, -apple-system
-- **Weights:** 400, 500
-- **Sizes:** 14
-- **Line height:** 1.20, 1.40, 1.50
-- **Letter spacing:** -0.0220em at 14px, -0.0100em at 14px
-- **Role:** Secondary body and UI text — used for small labels, nav items, and inline links where a more neutral reading rhythm is needed. Pairs with Open Runde for hierarchy contrast.
+## Colors
 
-### The Doctor FreeVersion — Decorative handwritten/doctor's note face — used only in the Before/After card illustrations to evoke clinical handwriting. Not for functional UI text. · `--font-the-doctor-freeversion`
-- **Substitute:** Caveat, Kalam
-- **Weights:** 400
-- **Sizes:** 14, 38
-- **Line height:** 0.90, 1.40
-- **Letter spacing:** -0.0100em
-- **Role:** Decorative handwritten/doctor's note face — used only in the Before/After card illustrations to evoke clinical handwriting. Not for functional UI text.
+The palette is a warm monochrome with one action color (crimson) and one informational accent family (sand).
 
-### Open Runde Semibold — Open Runde Semibold — detected in extracted data but not described by AI · `--font-open-runde-semibold`
-- **Weights:** 400
-- **Sizes:** 16px, 17px, 18px, 44px
-- **Line height:** 1.1, 1.32, 1.4, 1.49
-- **Letter spacing:** -0.04, -0.011, -0.01, -0.009
-- **Role:** Open Runde Semibold — detected in extracted data but not described by AI
+### Primary
+- **Hofclin Crimson** (`crimson`): the fill of the primary CTA ("Comece a usar gratuitamente", "Começar grátis", "Testar o Pro grátis") and the main color of the logo. It is the same color as the app's primary, so the hand-off from landing to app feels like one product.
+- **Pressed Crimson** (`crimson-hover`): the hover state of the primary button, and nothing else.
 
-### Open Runde Medium — Open Runde Medium — detected in extracted data but not described by AI · `--font-open-runde-medium`
-- **Weights:** 400
-- **Sizes:** 11px, 12px, 14px, 17px, 28px, 40px
-- **Line height:** 1.09, 1.2, 1.3, 1.33, 1.4, 1.43
-- **Letter spacing:** -0.08, -0.04, -0.012, -0.01, -0.007, -0.006, -0.001, 0.02
-- **Role:** Open Runde Medium — detected in extracted data but not described by AI
+### Secondary
+- **Warm Sand** (`sand`): the logo's second color, the base of the hero gradient, the fill inside filler points on the faceograma mockup, and the low-opacity sparkle on the final CTA band. Never used for text.
+- **Burnished Sand** (`sand-deep`): the same hue deepened until it reads at icon size. It colors every line icon, checkmark, eyebrow, highlighted chip text, toxin points on the faceograma, and "done" chips in the mockups.
+- **Sand Wash** (`sand-soft`): the tile behind section icons, the "Mais completo" chip, "planned" chips in the mockups, and the text-selection highlight.
 
-### Open Runde Regular — Open Runde Regular — detected in extracted data but not described by AI · `--font-open-runde-regular`
-- **Weights:** 400
-- **Sizes:** 12px, 13px, 14px, 17px
-- **Line height:** 1.14, 1.33, 1.4, 1.43, 1.45
-- **Letter spacing:** -0.012, -0.01, -0.006
-- **Role:** Open Runde Regular — detected in extracted data but not described by AI
+### Neutral
+- **Warm Ink** (`ink`): headings, primary text, the outline of the highlighted plan card, the focus ring, and the background of the final CTA band. It replaces pure black everywhere.
+- **Warm Charcoal** (`charcoal`): secondary copy, subtitles, card descriptions, the fine print under the price, and inactive nav links.
+- **Mauve Slate** (`slate`): line art inside mockups, such as the face outline on the faceograma.
+- **Paper** (`paper`): the page canvas, mockup sheets, and the surface of elevated cards.
+- **Cream** (`cream`): alternating section backgrounds (Especialidades, Segurança, Dúvidas, footer), feature cards, mockup wells, and the standard plan card.
+- **Cloud** (`cloud`): quiet fills inside mockups, such as the "Atendido" chip.
+- **Hairline** (`hairline`): 1px dividers, card borders, FAQ separators, and the nav border once the page scrolls.
+- **Strong Hairline** (`hairline-strong`): ghost-button and pill-tag borders, and the round mobile-menu trigger.
 
-### Open Runde Bold — Open Runde Bold — detected in extracted data but not described by AI · `--font-open-runde-bold`
-- **Weights:** 400
-- **Sizes:** 20px, 28px
-- **Line height:** 1.2, 1.4
-- **Letter spacing:** -0.04, -0.01
-- **Role:** Open Runde Bold — detected in extracted data but not described by AI
+### Third-party
+- **WhatsApp Green** (`whatsapp`, `whatsapp-hover`): only on the floating WhatsApp button, which is currently switched off.
 
-### Type Scale
+### Named Rules
+**The One Action Color Rule.** Hofclin Crimson fills the primary CTA and appears in the logo, and nowhere else. It is never used for text, links, icons, borders, section backgrounds, or chart marks. If something is not a button that starts the Trial, it is not crimson.
 
-| Role | Family | Weight | Size | Line Height | Letter Spacing | Token |
-|------|--------|--------|------|-------------|----------------|-------|
-| caption | — | — | 12px | 1.2 | -0.01px | `--text-caption` |
-| body-sm | — | — | 14px | 1.4 | -0.01px | `--text-body-sm` |
-| body | — | — | 16px | 1.49 | -0.01px | `--text-body` |
-| body-lg | — | — | 18px | 1.4 | -0.01px | `--text-body-lg` |
-| subheading | — | — | 20px | 1.4 | -0.04px | `--text-subheading` |
-| heading-sm | — | — | 28px | 1.2 | -0.04px | `--text-heading-sm` |
-| heading | — | — | 44px | 1.1 | -0.04px | `--text-heading` |
-| display | — | — | 80px | 0.9 | -0.04px | `--text-display` |
+**The Sand Marks Rule.** Information is marked in Burnished Sand and actions in Crimson. Icons, checkmarks, eyebrows, and mockup marks use `sand-deep`. Sand is never body text.
 
-## Tokens — Spacing & Shapes
+**The No Cold Grey Rule.** Every neutral carries the warm red-brown undertone. Pure black, cool greys, and blue-greys are never used, and neither are Tailwind's default `gray`, `zinc`, or `slate` scales.
 
-**Base unit:** 4px
+## Typography
 
-**Density:** comfortable
+**Display Font:** Poppins (with ui-sans-serif, system-ui, -apple-system, Segoe UI)
+**Body Font:** Poppins (same stack)
 
-### Spacing Scale
+**Character:** A single geometric sans does all the work. At display sizes it is pulled tight to -0.04em so headlines read as confident blocks. At body sizes it relaxes to -0.01em. Only the 400, 500, and 600 weights ship (latin subset, self-hosted via `@fontsource/poppins`, with 600 preloaded).
 
-| Name | Value | Token |
-|------|-------|-------|
-| 4 | 4px | `--spacing-4` |
-| 8 | 8px | `--spacing-8` |
-| 12 | 12px | `--spacing-12` |
-| 16 | 16px | `--spacing-16` |
-| 20 | 20px | `--spacing-20` |
-| 24 | 24px | `--spacing-24` |
-| 28 | 28px | `--spacing-28` |
-| 32 | 32px | `--spacing-32` |
-| 36 | 36px | `--spacing-36` |
-| 40 | 40px | `--spacing-40` |
-| 52 | 52px | `--spacing-52` |
-| 56 | 56px | `--spacing-56` |
-| 80 | 80px | `--spacing-80` |
-| 96 | 96px | `--spacing-96` |
-| 100 | 100px | `--spacing-100` |
-| 120 | 120px | `--spacing-120` |
+### Hierarchy
+- **Display** (`display`): the home hero H1 only, one per page. It sets in two or three balanced lines.
+- **Display Small** (`display-sm`): H1s on feature pages, which carry longer, keyword-bearing titles.
+- **Headline** (`headline`): section H2s, the final CTA, and feature-row titles.
+- **Title** (`title`): card and plan H3s.
+- **Price** (`price`): the plan amount, with tabular numerals. "R$" and "/mês" sit beside it at body sizes.
+- **Body Large** (`body-lg`): hero and section subtitles, in charcoal on paper and cream and in 75% Warm Ink on the hero band. Hero subtitles cap at about 36rem.
+- **Body** (`body`): default running text. Feature lists set slightly smaller, at 15px.
+- **Body Small** (`body-sm`): fine print, tile text, footer links, and the consent banner.
+- **Eyebrow** (`eyebrow`): the sentence-case label above a section heading, in Burnished Sand. It is never uppercase and never tracked out.
+- **Label** (`label`): pill-tag text.
+- **Chip** (`chip`): status chips inside mockups, plus the "Mais completo" badge set at 12px.
 
-### Border Radius
+### Named Rules
+**The Tight Heading Rule.** Display and headline sizes always carry -0.04em tracking, and titles carry -0.035em. Flattening the tracking makes Poppins look generic.
 
-| Element | Value |
-|---------|-------|
-| tags | 100px |
-| cards | 18px |
-| icons | 8px |
-| inputs | 12px |
-| buttons | 100px |
-| nav-pills | 100px |
-| large-cards | 32-48px |
-
-### Shadows
-
-| Name | Value | Token |
-|------|-------|-------|
-| subtle | `rgba(228, 229, 231, 0.24) 0px 1px 2px 0px` | `--shadow-subtle` |
-| subtle-2 | `rgba(36, 36, 40, 0.1) 0px 1px 2px 0px, rgba(36, 36, 40, 0...` | `--shadow-subtle-2` |
-| subtle-3 | `rgba(23, 107, 197, 0.08) 0px 1px 1px 0px, rgba(23, 107, 1...` | `--shadow-subtle-3` |
-| xl | `rgba(16, 55, 132, 0.03) 0px 17px 37px 0px, rgba(16, 55, 1...` | `--shadow-xl` |
-
-### Layout
-
-- **Page max-width:** 1200px
-- **Section gap:** 80-120px
-- **Card padding:** 40-48px
-- **Element gap:** 12-16px
-
-## Components
-
-### Pill Primary Button
-**Role:** Hero and feature CTAs — 'Sign up for free'
-
-Filled pill button, 100px border-radius, 12-16px vertical padding, 24px horizontal padding. Background: #070709 (Obsidian). Text: white, Open Runde 14-16px weight 500, letter-spacing -0.01em. Carries a four-layer soft drop shadow: rgba(36,36,40,0.1) 0 1px 2px, rgba(36,36,40,0.09) 0 3px 3px, rgba(36,36,40,0.05) 0 6px 4px, rgba(36,36,40,0.01) 0 11px 4px — a barely-perceptible lift.
-
-### Outlined Ghost Button
-**Role:** Secondary actions, login, utility nav
-
-Pill-shaped (100px radius) with transparent fill, 1px border in #000 or #bebecc, Open Runde 14px weight 500 in #070709. Used in the nav bar for 'Login' — sits beside the filled Sign up button for visual contrast without competing for weight.
-
-### Feature Card
-**Role:** Large product capability cards — 'Letters' and 'Transcribe' blocks
-
-White surface, 18-32px border-radius, generous 40-48px internal padding. Carries the signature blue-tinted shadow: rgba(16,55,132,0.03) 0 17px 37px, 0 67px 67px, 0 150px 90px — large, very low-opacity, atmospheric. Inside: pill tag at top with icon (envelope/mic in #2597d0), 28-44px heading in Open Runde weight 600, supporting copy in #60606c.
-
-### Upload Drop Zone
-**Role:** Document upload affordance inside feature cards
-
-Dashed 1px border in #bebecc, 12px radius, 16px padding. Centered icon (envelope in #2597d0) above 12px Open Runde label. On hover: border darkens to #8b8b8b, no fill change.
-
-### Waveform Audio Player
-**Role:** Consultation recording player inside Transcribe card
-
-White card with 12px radius, 16px padding. Horizontal waveform rendered in #2597d0 (surgical blue) against white — the single most expressive use of chromatic color in the product UI. Play/pause dot in matching blue.
-
-### Before/After Document Card
-**Role:** Hero illustration showing transformation from handwritten to typed letter
-
-Two overlapping white cards, 12-18px radius, slight rotation for stacked effect. 'Before' card uses The Doctor FreeVersion font with cursive text; 'After' card uses Open Runde body text. Each card has a small pill tag with checkmark/icon in #2597d0 at the top.
-
-### Top Navigation Bar
-**Role:** Site-wide primary navigation
-
-Sticky top bar, white background, 1px bottom border in #000 or transparent. Left: logo (Letters wordmark + icon). Center: horizontal nav links — 'Use cases', 'Features', 'Pricing', 'Our doctors' in Inter 14px weight 500, #070709. Right: 'Login' ghost button + 'Sign up' filled pill button (same as hero CTA).
-
-### Pill Tag / Chip
-**Role:** Category labels inside feature cards (Letters, Transcribe)
-
-100px radius, 4-6px vertical padding, 10-14px horizontal padding. White background with 1px border in #000. Icon (envelope/mic in #2597d0) + label in Open Runde 12-14px weight 500, #070709.
-
-### Section Heading Block
-**Role:** Section intros like 'Save [5] hours a week with Letters'
-
-Centered stack: 28-44px Open Runde heading, weight 600, letter-spacing -0.04em, #070709. Optional inline number/emoji in #2597d0 for emphasis. No subtitle — heading stands alone on white.
-
-### Hero Headline
-**Role:** Above-the-fold primary message
-
-80px Open Runde weight 600, line-height 0.90, letter-spacing -0.04em, white text. Two lines, tight stacked rhythm. Sits centered on the sky gradient with 20-28px between lines.
-
-### Hero Subtext
-**Role:** Supporting copy below hero headline
-
-16-18px Open Runde weight 400, line-height 1.49, letter-spacing -0.01em, white. Two short lines, centered, max-width ~480px. Color is white at 90% opacity over the sky gradient for softness.
-
-## Do's and Don'ts
-
-### Do
-- Use 100px border-radius for all buttons, tags, and pill-shaped elements — full rounding is the signature shape language
-- Set display headings at 80px Open Runde weight 600 with letter-spacing -0.04em and line-height 0.90 — the tight stack is a defining rhythm
-- Use #070709 (Obsidian) for all filled CTAs — never a chromatic button background, the near-black is the action color
-- Apply the sky gradient only to the hero band; keep all other sections on pure white or #f5f5f5
-- Reserve #2597d0 (Surgical Blue) for icons, waveform players, and small functional accents under 24px — never as a button fill or large surface
-- Use the blue-tinted shadow stack (rgba(16,55,132,0.03) at large blur radii) for feature cards to keep elevation feeling atmospheric rather than corporate
-- Center-align section headings and hero text — the layout rhythm is symmetrical, not asymmetric
-- Use 40-48px internal padding on feature cards to maintain the spacious, clinical density
-
-### Don't
-- Never use a chromatic color as a CTA button background — the system is intentionally monochrome for action
-- Never flatten the letter-spacing on large headings — the -0.04em at 44px+ is what makes Open Runde feel confident rather than generic
-- Never apply the sky gradient below the hero — it loses meaning if repeated across sections
-- Never use shadows with high opacity (>0.1) on cards — the system relies on barely-visible, large-radius shadows
-- Don't pair Open Runde with other geometric sans-serifs like Helvetica or Roboto — the specific humanist geometry is part of the brand
-- Never use The Doctor font for functional UI text — it is decorative only, for the handwritten note illustrations
-- Don't place white cards directly on the sky gradient without internal padding — the cards need breathing room from the atmospheric background
-- Avoid using #2597d0 for text longer than 2 words — it is for icons and micro-graphics, not body copy
-
-## Surfaces
-
-| Level | Name | Value | Purpose |
-|-------|------|-------|---------|
-| 1 | Sky Canvas | `#779bc1` | Hero gradient background — atmospheric top band |
-| 2 | Paper Canvas | `#ffffff` | Primary page background for all content sections below the hero |
-| 3 | Cloud Surface | `#f5f5f5` | Card and section backgrounds that need separation from the white canvas |
-| 4 | Sky Tint Surface | `#d7e6f5` | Subtle blue-tinted surface used in shadow tints and selected highlights |
-| 5 | Obsidian Surface | `#070709` | Filled CTA buttons, dark mode accents, and inverse UI elements |
-
-## Elevation
-
-- **Feature Card:** `rgba(16, 55, 132, 0.03) 0px 17px 37px 0px, rgba(16, 55, 132, 0.03) 0px 67px 67px 0px, rgba(16, 55, 132, 0.02) 0px 150px 90px 0px`
-- **Pill Primary Button:** `rgba(36, 36, 40, 0.1) 0px 1px 2px 0px, rgba(36, 36, 40, 0.09) 0px 3px 3px 0px, rgba(36, 36, 40, 0.05) 0px 6px 4px 0px, rgba(36, 36, 40, 0.01) 0px 11px 4px 0px`
-- **Upload Drop Zone:** `rgba(228, 229, 231, 0.24) 0px 1px 2px 0px`
-- **Blue Accent Element:** `rgba(23, 107, 197, 0.08) 0px 1px 1px 0px, rgba(23, 107, 197, 0.07) 0px 3px 3px 0px`
-
-## Imagery
-
-Imagery is almost entirely UI-product — no lifestyle photography, no abstract 3D renders. The visual language is built from product cards showing the app's own interface: a Before/After document comparison, an upload zone with dashed border, and a waveform audio player. The only atmospheric visual is the sky gradient hero. Icons are flat, single-color line icons in #2597d0 (envelope, microphone, checkmark) — consistent stroke weight, no filled variants. Illustration style is restrained: product mockups on white with subtle rotation for depth, never tilted dramatically. The handwritten font (The Doctor) provides the only organic/handmade element, used exclusively to evoke clinical penmanship in the Before card.
+**The Balanced Line Rule.** Headings use `text-wrap: balance` and paragraphs use `text-wrap: pretty`. No heading is left with a one-word last line.
 
 ## Layout
 
-Full-bleed sky gradient hero with centered headline and subtext, CTA pill below. Transitions seamlessly to a white content area with generous section padding (80-120px). Feature sections use a 2-column grid of large rounded cards (18-32px radius) with equal proportions. Section headings are always centered, single-column, above the card grid. Navigation is a sticky white top bar with center-aligned link cluster and right-aligned auth actions. Overall rhythm: one atmospheric hero band, then alternating white and #f5f5f5 sections with consistent vertical breathing room. No sidebar, no mega-menu, no asymmetric layouts — the page reads as a calm, symmetrical column.
+The page is a centered column with a max width of 1200px and side gutters of 16px (32px from 768px up). Sections stack vertically with 80px of vertical padding, 112px from 768px up. Paper and cream sections alternate, and a cream section is usually edged with hairline borders.
 
-## Agent Prompt Guide
+Two framed bands bracket every marketing page. The **hero band** is inset from the viewport by 12px (16px from 768px up) rather than running full-bleed. It has rounded corners, carries the sand-light gradient, and centers an eyebrow or breadcrumb, the H1, a subtitle, the CTA, and the "10 dias grátis · Cartão de crédito não obrigatório" reassurance line. Product mockups rise out of its bottom edge and are cropped by it. The **final CTA band** mirrors the hero at the foot of the page in Warm Ink with white text.
 
-## Quick Color Reference
-- text (primary): #070709 Obsidian
-- text (secondary): #60606c Charcoal
-- background: #ffffff Paper White
-- surface (alt): #f5f5f5 Cloud Gray
-- border: #000000 / #bebecc (use #bebecc for hairlines)
-- accent: #2597d0 Surgical Blue (icons/waveforms only)
-- primary action: #070709 (filled action)
+Section intros use a centered stack (eyebrow, H2, subtitle) capped at about 48rem, with 56px before the content. Content grids are two columns from 768px or 1024px up, with a 20px gap. Small tiles (assurances, security) go four-up from 1024px. Feature pages use alternating split rows: text and a check-list on one side, a cream well holding a mockup on the other, swapping sides from row to row.
 
-## 3-5 Example Component Prompts
-1. **Hero section**: Full-bleed sky gradient background (linear-gradient 180deg, #779bc1 → #cbdcec). Centered 80px Open Runde weight 600 headline in white, letter-spacing -0.04em, line-height 0.90. Subtext: 18px Open Runde weight 400, white at 90% opacity, max-width 480px. Below: filled pill button — #070709 background, 100px radius, white text 'Sign up for free', 12px 24px padding, with the four-layer soft shadow stack.
+The navigation is sticky: 64px tall (72px on desktop), white at 85% opacity with a backdrop blur, and it gains a hairline bottom border after 8px of scroll. Below 1024px the links collapse into a `<details>` menu behind a round 40px trigger. Anchor jumps offset by 88px so headings clear the nav.
 
-2. **Feature card**: White surface, 18px border-radius, 48px padding. Pill tag at top (100px radius, 1px black border, 4px 12px padding) with envelope icon in #2597d0 + label 'Letters' in Open Runde 12px weight 500. Below: 28px Open Runde weight 600 heading, then 16px weight 400 body in #60606c. Drop shadow: rgba(16,55,132,0.03) at 17px/67px/150px blur radii.
+Breakpoints are Tailwind's defaults: 640px, 768px, and 1024px. Every layout must hold at 375px with no horizontal scroll. Wide legal tables scroll inside their own box.
 
-3. **Upload drop zone**: 12px border-radius, 1px dashed border in #bebecc, 16px padding. Centered envelope icon in #2597d0, 12px label below in Open Runde weight 500. On hover: border darkens to #8b8b8b.
+## Elevation & Depth
 
-4. **Waveform audio player**: White card, 12px radius, 16px padding. Horizontal audio waveform rendered in #2597d0 Surgical Blue across full width. Play/pause dot in matching blue at left.
+Depth is mostly tonal: cream against paper, with 1px hairlines. Shadows are reserved for things that should feel lifted off the page, and every shadow is tinted with the crimson-brown `rgb(85 12 36)`, never neutral black.
 
-5. **Before/After document pair**: Two overlapping white cards (18px radius) with 8px rotation difference for stacked effect. Before card: The Doctor font cursive handwriting. After card: Open Runde 14px weight 400 body text. Each has a small pill tag with checkmark icon in #2597d0 at the top center.
+### Shadow Vocabulary
+- **Card** (`box-shadow: 0 17px 37px 0 rgb(85 12 36 / 0.035), 0 67px 67px 0 rgb(85 12 36 / 0.03), 0 150px 90px 0 rgb(85 12 36 / 0.02)`): a large, near-invisible ambient lift for white cards that sit on cream or white, such as the specialty cards and the highlighted Pro plan. Also used for the mobile menu sheet and the consent dialog.
+- **Mock** (`box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.06), 0 12px 32px -8px rgb(85 12 36 / 0.12)`): product mockup sheets. It is slightly crisper, so a mockup reads as a separate piece of paper.
+- **Button** (`box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.18), 0 3px 3px 0 rgb(85 12 36 / 0.12), 0 6px 4px 0 rgb(85 12 36 / 0.06), 0 11px 4px 0 rgb(85 12 36 / 0.01)`): the four-layer lift under filled buttons (primary, light, WhatsApp).
+- **Hairline** (`box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.06)`): a whisper of separation for small elements.
 
-6. **Top navigation**: Sticky white bar, 1px bottom border. Left: 'Letters' wordmark + icon. Center: 4 nav links in Inter 14px weight 500, #070709. Right: outlined ghost 'Login' button (1px black border, 100px radius) + filled pill 'Sign up' button (#070709, 100px radius, white text).
+### Named Rules
+**The Tinted Shadow Rule.** Every shadow uses `rgb(85 12 36 / ≤0.18)`. A grey or black shadow breaks the warmth of the page.
 
-## Typography Quick Reference
-- Display: 80px / 0.90 / -0.04em / weight 600
-- Heading: 44px / 1.10 / -0.04em / weight 600
-- Subheading: 28px / 1.20 / -0.04em / weight 600
-- Body: 16-18px / 1.40-1.49 / -0.01em / weight 400
-- Caption: 12px / 1.20 / -0.01em / weight 500
+**The Tonal-First Rule.** Separate with cream and hairlines before reaching for a shadow. A cream card on a paper section needs no shadow, while a white card on a cream section gets the Card shadow.
 
-## Similar Brands
+## Shapes
 
-- **Linear** — Same monochrome discipline with one restrained accent color, pill-shaped CTAs, and tight geometric sans-serif headings with negative tracking
-- **Notion** — Comfortable density with rounded cards floating on near-white surfaces and a minimal icon-driven visual language
-- **Cal.com** — Light theme with generous card padding, 18-32px rounded corners, and a single brand color used sparingly for icons and micro-interactions
-- **Mercury** — Near-black filled pill CTAs against white surfaces, clinical spaciousness, and the use of gradient hero bands as the only atmospheric color moment
-- **Vercel** — Minimal monochrome palette with sharp typographic hierarchy and pill-shaped interactive elements throughout
+The form language is soft and consistent. Anything you press or that labels something is a full pill (100px): buttons, pill tags, chips, the round menu trigger, and the WhatsApp button. Anything that holds content is a rounded rectangle on a short scale: 8px for icon tiles, 12px for consent options and larger icon tiles, 18px for mockup sheets, info tiles, and the consent banner, 32px for feature, specialty, plan, and FAQ containers, and 28px (40px from 768px up) for the hero and final CTA bands.
 
-## Quick Start
+Borders are always 1px hairlines. The only heavier outline is the Warm Ink border on the highlighted plan card. Mockups are the one place shapes break the grid: they tilt by ±2–3°, overlap in pairs, and are clipped by the bottom edge of their container. That cropping is deliberate, and a mockup is never shown floating whole in empty space.
 
-### CSS Custom Properties
+Icons are custom single-weight line drawings (1.6px stroke, round caps and joins, `currentColor`) at 14–22px. Filled icon variants are never used.
 
-```css
-:root {
-  /* Colors */
-  --color-obsidian: #070709;
-  --color-paper-white: #ffffff;
-  --color-cloud-gray: #f5f5f5;
-  --color-sky-tint: #d7e6f5;
-  --color-charcoal: #60606c;
-  --color-slate: #8b8b8b;
-  --color-ink: #151515;
-  --color-surgical-blue: #2597d0;
-  --color-sky-gradient: #779bc1;
-  --gradient-sky-gradient: linear-gradient(180deg, #779bc1 0%, #9abfda 58%, #cbdcec 100%);
+## Components
 
-  /* Typography — Font Families */
-  --font-sans-serif: 'sans-serif', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-open-runde: 'Open Runde', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-the-doctor-freeversion: 'The Doctor FreeVersion', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-open-runde-semibold: 'Open Runde Semibold', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-open-runde-medium: 'Open Runde Medium', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-open-runde-regular: 'Open Runde Regular', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-open-runde-bold: 'Open Runde Bold', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+### Buttons
+Warm, tactile pills that lift and press.
+- **Shape:** full pill (100px), with label and optional arrow icon spaced 8px apart, never wrapping.
+- **Primary:** Hofclin Crimson fill, white Poppins 500 text, the Button shadow. Large is `14px 28px` at 16px; medium (nav) is `10px 20px` at 15px.
+- **Hover / Active / Focus:** the fill deepens to Pressed Crimson over 160ms ease, and on press the button drops 1px (`translateY(1px)`). Focus shows a 2px Warm Ink outline offset by 3px, the global focus style.
+- **Ghost:** transparent with a Strong Hairline border and Warm Ink text. On hover the border darkens to Warm Ink. It is used for "Entrar", the Standard plan CTA, and every consent button.
+- **Light:** a white fill with the Button shadow for use on dark or gradient grounds. On hover it shifts to cream.
 
-  /* Typography — Scale */
-  --text-caption: 12px;
-  --leading-caption: 1.2;
-  --tracking-caption: -0.01px;
-  --text-body-sm: 14px;
-  --leading-body-sm: 1.4;
-  --tracking-body-sm: -0.01px;
-  --text-body: 16px;
-  --leading-body: 1.49;
-  --tracking-body: -0.01px;
-  --text-body-lg: 18px;
-  --leading-body-lg: 1.4;
-  --tracking-body-lg: -0.01px;
-  --text-subheading: 20px;
-  --leading-subheading: 1.4;
-  --tracking-subheading: -0.04px;
-  --text-heading-sm: 28px;
-  --leading-heading-sm: 1.2;
-  --tracking-heading-sm: -0.04px;
-  --text-heading: 44px;
-  --leading-heading: 1.1;
-  --tracking-heading: -0.04px;
-  --text-display: 80px;
-  --leading-display: 0.9;
-  --tracking-display: -0.04px;
+### Chips and Tags
+- **Pill tag:** white, Strong Hairline border, 13px Poppins 500 Warm Ink with a Burnished Sand icon. It labels feature cards and mockup headers ("Prontuário digital", "Faceograma"). On a hero band it turns translucent white with a blur.
+- **Status chips (inside mockups):** 11px Poppins 500 pills. Done is Burnished Sand with white text, planned is Sand Wash with Burnished Sand text, and in progress is outlined in Burnished Sand. In the agenda, attended is Cloud with charcoal text and scheduled is outlined in Strong Hairline. State is shown through sand depth, never through green, amber, or red.
+- **Highlight chip:** Sand Wash with Burnished Sand text ("Mais completo"), and only one per view.
 
-  /* Typography — Weights */
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-black: 900;
+### Cards / Containers
+- **Feature card:** cream, 32px corners, 32px padding (40px on desktop) on top. The mockup well below bleeds to the bottom edge, which crops the mockup.
+- **Surface card:** white, 32px corners, hairline border, Card shadow. It is used on cream sections, such as the specialty columns.
+- **Plan cards:** Standard is cream with a hairline border. Pro is white with a Warm Ink border and the Card shadow. Both are 32px corners with 40px padding, and the CTA is pinned to the bottom of each.
+- **Info tiles:** white or transparent, hairline border, 18px corners, 20–24px padding, an icon (bare, or in a Sand Wash tile), then a semibold title and charcoal text.
+- **FAQ:** one white 32px container with hairline dividers between native `<details>` rows. The question sets in Poppins 500, the charcoal chevron rotates 180° when open, and the answer sets in 15px charcoal at 1.625 line-height.
 
-  /* Spacing */
-  --spacing-unit: 4px;
-  --spacing-4: 4px;
-  --spacing-8: 8px;
-  --spacing-12: 12px;
-  --spacing-16: 16px;
-  --spacing-20: 20px;
-  --spacing-24: 24px;
-  --spacing-28: 28px;
-  --spacing-32: 32px;
-  --spacing-36: 36px;
-  --spacing-40: 40px;
-  --spacing-52: 52px;
-  --spacing-56: 56px;
-  --spacing-80: 80px;
-  --spacing-96: 96px;
-  --spacing-100: 100px;
-  --spacing-120: 120px;
+### Product Mockups (signature component)
+White sheets (18px corners, hairline border, Mock shadow) that rebuild real screens in HTML and SVG: the odontograma, faceograma, anamnese with its signature line, agenda, orçamento, insights, finance, and cost calculator. A mockup header is a pill tag plus a charcoal meta line (patient name, age, or version). All marks inside use the sand family over slate line art. All names and data are fictional, mockups are `aria-hidden`, and they are never used as screenshots of real patient records.
 
-  /* Layout */
-  --page-max-width: 1200px;
-  --section-gap: 80-120px;
-  --card-padding: 40-48px;
-  --element-gap: 12-16px;
+### Inputs / Fields
+The landing has no text inputs; signup happens in the app. The only form controls are the consent dialog's checkboxes. Each sits in a 12px-cornered option card with a hairline border, 16px padding, a semibold title, and a charcoal description, and the checkbox is accented in Warm Ink.
 
-  /* Border Radius */
-  --radius-lg: 10px;
-  --radius-2xl: 18px;
-  --radius-3xl: 24px;
-  --radius-3xl-2: 32px;
-  --radius-3xl-3: 36px;
-  --radius-3xl-4: 40px;
-  --radius-full: 48px;
-  --radius-full-2: 60px;
-  --radius-full-3: 100px;
-  --radius-full-4: 120px;
-  --radius-full-5: 135px;
+### Navigation
+The logo (horizontal SVG, 28–32px tall) sits on the left. Links in the center are 14px Poppins 500 charcoal and turn Warm Ink on hover or when they are the current page (`aria-current`). On the right are ghost "Entrar" and primary "Começar grátis". On mobile a round hairline trigger opens a full-width white sheet with stacked links and full-width buttons.
 
-  /* Named Radii */
-  --radius-tags: 100px;
-  --radius-cards: 18px;
-  --radius-icons: 8px;
-  --radius-inputs: 12px;
-  --radius-buttons: 100px;
-  --radius-nav-pills: 100px;
-  --radius-large-cards: 32-48px;
+### Consent Banner
+A white card with 18px corners and stacked Card and Mock shadows. It sits bottom-left on desktop (max 440px wide) and spans the bottom edge on mobile. **Reject and Accept are both Ghost buttons of equal size, side by side**, with "Personalizar" as an underlined text button below. Consent UI never uses the primary crimson button.
 
-  /* Shadows */
-  --shadow-subtle: rgba(228, 229, 231, 0.24) 0px 1px 2px 0px;
-  --shadow-subtle-2: rgba(36, 36, 40, 0.1) 0px 1px 2px 0px, rgba(36, 36, 40, 0.09) 0px 3px 3px 0px, rgba(36, 36, 40, 0.05) 0px 6px 4px 0px, rgba(36, 36, 40, 0.01) 0px 11px 4px 0px;
-  --shadow-subtle-3: rgba(23, 107, 197, 0.08) 0px 1px 1px 0px, rgba(23, 107, 197, 0.07) 0px 3px 3px 0px;
-  --shadow-xl: rgba(16, 55, 132, 0.03) 0px 17px 37px 0px, rgba(16, 55, 132, 0.03) 0px 67px 67px 0px, rgba(16, 55, 132, 0.02) 0px 150px 90px 0px;
+### Final CTA Band
+A Warm Ink band with 28px corners (40px from 768px up). It holds a white headline, a subtitle in 75% white, the primary crimson CTA, and the reassurance line. A large Warm Sand sparkle at 25% opacity sits in the top-right corner, the only decorative mark in the system.
 
-  /* Surfaces */
-  --surface-sky-canvas: #779bc1;
-  --surface-paper-canvas: #ffffff;
-  --surface-cloud-surface: #f5f5f5;
-  --surface-sky-tint-surface: #d7e6f5;
-  --surface-obsidian-surface: #070709;
-}
-```
+## Do's and Don'ts
 
-### Tailwind v4
+### Do:
+- **Do** reserve Hofclin Crimson (#ae2351) for the primary Trial CTA fill, with #941c44 on hover.
+- **Do** color icons, checkmarks, eyebrows, and mockup marks with Burnished Sand (#a86a2f).
+- **Do** tint every shadow with `rgb(85 12 36)` and keep its opacity at or below 0.18.
+- **Do** alternate paper and cream sections, and separate them with 1px hairlines (#ece1d9).
+- **Do** use full pills (100px) for every button, tag, and chip, and 18px or 32px corners for content containers.
+- **Do** pull display and headline tracking to -0.04em, and balance heading lines.
+- **Do** set prices in Poppins 600 with tabular numerals.
+- **Do** show the product as an HTML mockup with fictional data, tilted ±2–3° and cropped by its container's edge.
+- **Do** keep the sand-light gradient on the framed hero band only, with one per page.
+- **Do** give consent choices equal visual weight: both Ghost, same size, side by side.
 
-```css
-@theme {
-  /* Colors */
-  --color-obsidian: #070709;
-  --color-paper-white: #ffffff;
-  --color-cloud-gray: #f5f5f5;
-  --color-sky-tint: #d7e6f5;
-  --color-charcoal: #60606c;
-  --color-slate: #8b8b8b;
-  --color-ink: #151515;
-  --color-surgical-blue: #2597d0;
-  --color-sky-gradient: #779bc1;
-
-  /* Typography */
-  --font-sans-serif: 'sans-serif', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-open-runde: 'Open Runde', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-the-doctor-freeversion: 'The Doctor FreeVersion', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-open-runde-semibold: 'Open Runde Semibold', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-open-runde-medium: 'Open Runde Medium', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-open-runde-regular: 'Open Runde Regular', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-open-runde-bold: 'Open Runde Bold', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
-  /* Typography — Scale */
-  --text-caption: 12px;
-  --leading-caption: 1.2;
-  --tracking-caption: -0.01px;
-  --text-body-sm: 14px;
-  --leading-body-sm: 1.4;
-  --tracking-body-sm: -0.01px;
-  --text-body: 16px;
-  --leading-body: 1.49;
-  --tracking-body: -0.01px;
-  --text-body-lg: 18px;
-  --leading-body-lg: 1.4;
-  --tracking-body-lg: -0.01px;
-  --text-subheading: 20px;
-  --leading-subheading: 1.4;
-  --tracking-subheading: -0.04px;
-  --text-heading-sm: 28px;
-  --leading-heading-sm: 1.2;
-  --tracking-heading-sm: -0.04px;
-  --text-heading: 44px;
-  --leading-heading: 1.1;
-  --tracking-heading: -0.04px;
-  --text-display: 80px;
-  --leading-display: 0.9;
-  --tracking-display: -0.04px;
-
-  /* Spacing */
-  --spacing-4: 4px;
-  --spacing-8: 8px;
-  --spacing-12: 12px;
-  --spacing-16: 16px;
-  --spacing-20: 20px;
-  --spacing-24: 24px;
-  --spacing-28: 28px;
-  --spacing-32: 32px;
-  --spacing-36: 36px;
-  --spacing-40: 40px;
-  --spacing-52: 52px;
-  --spacing-56: 56px;
-  --spacing-80: 80px;
-  --spacing-96: 96px;
-  --spacing-100: 100px;
-  --spacing-120: 120px;
-
-  /* Border Radius */
-  --radius-lg: 10px;
-  --radius-2xl: 18px;
-  --radius-3xl: 24px;
-  --radius-3xl-2: 32px;
-  --radius-3xl-3: 36px;
-  --radius-3xl-4: 40px;
-  --radius-full: 48px;
-  --radius-full-2: 60px;
-  --radius-full-3: 100px;
-  --radius-full-4: 120px;
-  --radius-full-5: 135px;
-
-  /* Shadows */
-  --shadow-subtle: rgba(228, 229, 231, 0.24) 0px 1px 2px 0px;
-  --shadow-subtle-2: rgba(36, 36, 40, 0.1) 0px 1px 2px 0px, rgba(36, 36, 40, 0.09) 0px 3px 3px 0px, rgba(36, 36, 40, 0.05) 0px 6px 4px 0px, rgba(36, 36, 40, 0.01) 0px 11px 4px 0px;
-  --shadow-subtle-3: rgba(23, 107, 197, 0.08) 0px 1px 1px 0px, rgba(23, 107, 197, 0.07) 0px 3px 3px 0px;
-  --shadow-xl: rgba(16, 55, 132, 0.03) 0px 17px 37px 0px, rgba(16, 55, 132, 0.03) 0px 67px 67px 0px, rgba(16, 55, 132, 0.02) 0px 150px 90px 0px;
-}
-```
+### Don't:
+- **Don't** use crimson for text, links, icons, borders, backgrounds, or decoration.
+- **Don't** use pure black, cool greys, or Tailwind's default grey scales; Warm Ink (#1c1517) and Warm Charcoal (#62585a) cover every text need.
+- **Don't** introduce green, amber, or red status colors in mockups; show state with sand depth, cloud, or an outline.
+- **Don't** reach for spa or beauty-salon gloss: rose gold, glossy stock photos of faces, soft-focus aesthetics imagery.
+- **Don't** use generic startup gradients: purple-blue washes, glassmorphism, floating 3D blobs.
+- **Don't** load a Poppins weight above 600, or add a second typeface.
+- **Don't** use filled or multi-color icons; the set is single-weight 1.6px line art.
+- **Don't** use WhatsApp Green anywhere except the floating WhatsApp button.
+- **Don't** put real patient names, photos, or data into any visual, ever.

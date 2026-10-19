@@ -1,0 +1,495 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-19T20:55:40.483Z",
+  "title": "Design System: Hofclin",
+  "extensions": {
+    "colorMeta": {
+      "crimson": {
+        "role": "primary",
+        "displayName": "Hofclin Crimson",
+        "canonical": "oklch(49.9% 0.175 7.3)",
+        "tonalRamp": [
+          "#1e0007",
+          "#4b001c",
+          "#7d0134",
+          "#ac204f",
+          "#d44a70",
+          "#fd6f91",
+          "#ffb0be",
+          "#ffe8eb"
+        ]
+      },
+      "crimson-hover": {
+        "role": "primary",
+        "displayName": "Pressed Crimson",
+        "canonical": "oklch(44.3% 0.156 7.2)",
+        "tonalRamp": [
+          "#1e0007",
+          "#4b001c",
+          "#7d0034",
+          "#a52e52",
+          "#cc5372",
+          "#f47794",
+          "#ffb0be",
+          "#fee8ec"
+        ]
+      },
+      "sand": {
+        "role": "secondary",
+        "displayName": "Warm Sand",
+        "canonical": "oklch(82.0% 0.098 71.8)",
+        "tonalRamp": [
+          "#130900",
+          "#362001",
+          "#5c3a02",
+          "#835713",
+          "#a7783a",
+          "#cb9b5d",
+          "#f1bf81",
+          "#ffebd4"
+        ]
+      },
+      "sand-deep": {
+        "role": "secondary",
+        "displayName": "Burnished Sand",
+        "canonical": "oklch(58.0% 0.108 61.3)",
+        "tonalRamp": [
+          "#150700",
+          "#391d01",
+          "#623502",
+          "#8c500e",
+          "#b17238",
+          "#d6955b",
+          "#fdb97f",
+          "#feeadb"
+        ]
+      },
+      "sand-soft": {
+        "role": "secondary",
+        "displayName": "Sand Wash",
+        "canonical": "oklch(95.8% 0.023 71.8)",
+        "tonalRamp": [
+          "#110903",
+          "#2c2319",
+          "#4a4035",
+          "#6a5f53",
+          "#8b8074",
+          "#aea396",
+          "#d3c7ba",
+          "#f8ecde"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Warm Ink",
+        "canonical": "oklch(20.5% 0.012 -0.8)",
+        "tonalRamp": [
+          "#0f090b",
+          "#2a2325",
+          "#483f42",
+          "#675e61",
+          "#897f82",
+          "#aca2a5",
+          "#d0c6c9",
+          "#f6ebee"
+        ]
+      },
+      "charcoal": {
+        "role": "neutral",
+        "displayName": "Warm Charcoal",
+        "canonical": "oklch(47.1% 0.013 3.9)",
+        "tonalRamp": [
+          "#10090a",
+          "#2b2224",
+          "#493f41",
+          "#685e60",
+          "#8a7f81",
+          "#ada2a4",
+          "#d1c6c8",
+          "#f7ebed"
+        ]
+      },
+      "slate": {
+        "role": "neutral",
+        "displayName": "Mauve Slate",
+        "canonical": "oklch(62.4% 0.014 5.0)",
+        "tonalRamp": [
+          "#10090a",
+          "#2b2224",
+          "#493f41",
+          "#685e60",
+          "#8a7f81",
+          "#ada2a4",
+          "#d2c6c8",
+          "#f7ebed"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "cream": {
+        "role": "neutral",
+        "displayName": "Cream",
+        "canonical": "oklch(97.6% 0.008 61.5)",
+        "tonalRamp": [
+          "#0e0a08",
+          "#282421",
+          "#45413e",
+          "#64605d",
+          "#86817e",
+          "#a9a4a0",
+          "#cdc8c4",
+          "#f2ede9"
+        ]
+      },
+      "cloud": {
+        "role": "neutral",
+        "displayName": "Cloud",
+        "canonical": "oklch(95.0% 0.013 63.9)",
+        "tonalRamp": [
+          "#0f0a06",
+          "#2a241f",
+          "#47413b",
+          "#67605a",
+          "#88817b",
+          "#aba39d",
+          "#cfc8c1",
+          "#f5ede6"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(91.6% 0.016 58.6)",
+        "tonalRamp": [
+          "#100905",
+          "#2b231d",
+          "#49403a",
+          "#695f58",
+          "#8a8079",
+          "#ada39b",
+          "#d2c7bf",
+          "#f7ece4"
+        ]
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Strong Hairline",
+        "canonical": "oklch(85.1% 0.021 58.0)",
+        "tonalRamp": [
+          "#120904",
+          "#2d231b",
+          "#4b3f37",
+          "#6b5f56",
+          "#8c8076",
+          "#b0a299",
+          "#d4c6bc",
+          "#faebe1"
+        ]
+      },
+      "whatsapp": {
+        "role": "third-party",
+        "displayName": "WhatsApp Green",
+        "canonical": "oklch(76.1% 0.201 149.7)",
+        "tonalRamp": [
+          "#001003",
+          "#002e10",
+          "#025021",
+          "#037533",
+          "#039d46",
+          "#03c65b",
+          "#4cec7e",
+          "#c7ffd1"
+        ]
+      },
+      "whatsapp-hover": {
+        "role": "third-party",
+        "displayName": "WhatsApp Green (hover)",
+        "canonical": "oklch(70.3% 0.188 149.6)",
+        "tonalRamp": [
+          "#001003",
+          "#002e0f",
+          "#025021",
+          "#047533",
+          "#049d46",
+          "#29c460",
+          "#5cea83",
+          "#c8ffd2"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Home hero H1 only; one per page."
+      },
+      "display-sm": {
+        "displayName": "Display Small",
+        "purpose": "Feature-page H1s with longer, keyword-bearing titles."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section H2s, final CTA, feature-row titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card and plan H3s."
+      },
+      "price": {
+        "displayName": "Price",
+        "purpose": "Plan amount, tabular numerals."
+      },
+      "body-lg": {
+        "displayName": "Body Large",
+        "purpose": "Hero and section subtitles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default running text."
+      },
+      "body-sm": {
+        "displayName": "Body Small",
+        "purpose": "Fine print, tiles, footer, consent."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Large button labels (medium buttons set at 15px)."
+      },
+      "eyebrow": {
+        "displayName": "Eyebrow",
+        "purpose": "Sentence-case Burnished Sand label above section headings."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Pill-tag text."
+      },
+      "chip": {
+        "displayName": "Chip",
+        "purpose": "Status chips inside product mockups."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card",
+        "value": "0 17px 37px 0 rgb(85 12 36 / 0.035), 0 67px 67px 0 rgb(85 12 36 / 0.03), 0 150px 90px 0 rgb(85 12 36 / 0.02)",
+        "purpose": "Ambient lift for white cards on cream or white: specialty cards, the Pro plan, mobile menu, consent dialog."
+      },
+      {
+        "name": "mock",
+        "value": "0 1px 2px 0 rgb(85 12 36 / 0.06), 0 12px 32px -8px rgb(85 12 36 / 0.12)",
+        "purpose": "Product mockup sheets — a separate piece of paper."
+      },
+      {
+        "name": "button",
+        "value": "0 1px 2px 0 rgb(85 12 36 / 0.18), 0 3px 3px 0 rgb(85 12 36 / 0.12), 0 6px 4px 0 rgb(85 12 36 / 0.06), 0 11px 4px 0 rgb(85 12 36 / 0.01)",
+        "purpose": "Four-layer lift under filled buttons."
+      },
+      {
+        "name": "hairline",
+        "value": "0 1px 2px 0 rgb(85 12 36 / 0.06)",
+        "purpose": "Whisper of separation for small elements."
+      }
+    ],
+    "gradients": [
+      {
+        "name": "hero",
+        "value": "radial-gradient(120% 70% at 50% -10%, rgb(255 255 255 / 0.55), transparent 60%), linear-gradient(180deg, #eebf8d 0%, #f4d5b6 52%, #fbf6f2 100%)",
+        "purpose": "Sand-light wash on the framed hero band only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-change",
+        "value": "160ms ease",
+        "purpose": "Button fills, borders, link underlines, nav link color."
+      },
+      {
+        "name": "press",
+        "value": "translateY(1px)",
+        "purpose": "Buttons on :active."
+      },
+      {
+        "name": "whatsapp-hover",
+        "value": "200ms, scale(1.05)",
+        "purpose": "Floating WhatsApp button hover."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "All animation and transition durations under prefers-reduced-motion; smooth scroll off."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The Trial CTA — the only crimson element on the page besides the logo.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Comece a usar gratuitamente</a>",
+      "css": ".ds-btn-primary { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 100px; font-weight: 500; font-size: 1rem; letter-spacing: -0.01em; white-space: nowrap; padding: 14px 28px; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; background: var(--color-crimson, #ae2351); color: #fff; box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.18), 0 3px 3px 0 rgb(85 12 36 / 0.12), 0 6px 4px 0 rgb(85 12 36 / 0.06), 0 11px 4px 0 rgb(85 12 36 / 0.01); } .ds-btn-primary:hover { background: var(--color-crimson-hover, #941c44); } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-ink, #1c1517); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary actions: Entrar, the Standard plan CTA, and every consent choice.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Entrar</a>",
+      "css": ".ds-btn-ghost { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 100px; font-weight: 500; font-size: 1rem; letter-spacing: -0.01em; white-space: nowrap; padding: 14px 28px; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; background: transparent; color: var(--color-ink, #1c1517); border-color: var(--color-hairline-strong, #d9cbc1); } .ds-btn-ghost:hover { border-color: var(--color-ink, #1c1517); } .ds-btn-ghost:active { transform: translateY(1px); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--color-ink, #1c1517); outline-offset: 3px; }"
+    },
+    {
+      "name": "Light Button",
+      "kind": "button",
+      "refersTo": "button-light",
+      "description": "White lifted pill for dark or gradient grounds.",
+      "html": "<div class=\"ds-light-ground\"><a class=\"ds-btn-light\" href=\"#\">Ver preços</a></div>",
+      "css": ".ds-light-ground { background: var(--color-ink, #1c1517); padding: 24px; border-radius: 18px; } .ds-btn-light { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 100px; font-weight: 500; font-size: 1rem; letter-spacing: -0.01em; white-space: nowrap; padding: 14px 28px; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; background: #fff; color: var(--color-ink, #1c1517); box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.18), 0 3px 3px 0 rgb(85 12 36 / 0.12), 0 6px 4px 0 rgb(85 12 36 / 0.06), 0 11px 4px 0 rgb(85 12 36 / 0.01); } .ds-btn-light:hover { background: var(--color-cream, #fbf6f2); } .ds-btn-light:active { transform: translateY(1px); } .ds-btn-light:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }"
+    },
+    {
+      "name": "Pill Tag and Status Chips",
+      "kind": "chip",
+      "refersTo": "pill-tag",
+      "description": "Pill tag labels cards and mockups; status chips show state through sand depth only.",
+      "html": "<div class=\"ds-chip-row\"><span class=\"ds-pill-tag\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"5\" y=\"4.5\" width=\"14\" height=\"16.5\" rx=\"2.5\"/><path d=\"M9 4.5V3.8c0-.7.5-1.3 1.2-1.3h3.6c.7 0 1.2.6 1.2 1.3v.7\"/><path d=\"M8.5 10h7M8.5 13.5h7M8.5 17h4\"/></svg> Prontuário digital</span><span class=\"ds-chip ds-chip-done\">Concluído</span><span class=\"ds-chip ds-chip-planned\">Planejado</span><span class=\"ds-chip ds-chip-progress\">Em andamento</span><span class=\"ds-chip ds-chip-highlight\">Mais completo</span></div>",
+      "css": ".ds-chip-row { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: flex; flex-wrap: wrap; align-items: center; gap: 10px; } .ds-pill-tag { display: inline-flex; align-items: center; gap: 6px; border-radius: 100px; border: 1px solid var(--color-hairline-strong, #d9cbc1); background: #fff; padding: 4px 12px; font-size: 0.8125rem; font-weight: 500; color: var(--color-ink, #1c1517); } .ds-pill-tag svg { color: var(--color-sand-deep, #a86a2f); } .ds-chip { display: inline-flex; align-items: center; border-radius: 100px; padding: 2px 8px; font-size: 0.6875rem; font-weight: 500; line-height: 1.5; border: 1px solid transparent; } .ds-chip-done { background: var(--color-sand-deep, #a86a2f); color: #fff; } .ds-chip-planned { background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-deep, #a86a2f); } .ds-chip-progress { border-color: var(--color-sand-deep, #a86a2f); color: var(--color-sand-deep, #a86a2f); } .ds-chip-highlight { background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-deep, #a86a2f); padding: 4px 12px; font-size: 0.75rem; }"
+    },
+    {
+      "name": "Specialty Card",
+      "kind": "card",
+      "refersTo": "surface-card",
+      "description": "White 32px card on cream with sand icon tile, check-list and arrow link.",
+      "html": "<article class=\"ds-card\"><span class=\"ds-icon-tile\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7.5 3.5c-2.4 0-4 1.9-4 4.6 0 2.2.9 3.5 1.4 5.3.5 1.8.6 3.8 1.2 5.5.4 1.1 1.6 1.4 2.2.3.7-1.3.8-3.8 1.6-4.9.6-.8 1.6-.8 2.2 0 .8 1.1.9 3.6 1.6 4.9.6 1.1 1.8.8 2.2-.3.6-1.7.7-3.7 1.2-5.5.5-1.8 1.4-3.1 1.4-5.3 0-2.7-1.6-4.6-4-4.6-1.7 0-2.6 1-4.5 1s-2.8-1-4.5-1Z\"/></svg></span><h3 class=\"ds-card-title\">Odontologia</h3><p class=\"ds-card-text\">Odontograma por dente e face, com o que o paciente já tinha separado do que a clínica planejou.</p><ul class=\"ds-checks\"><li><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m5 12.5 4.2 4.2L19 7\"/></svg> Condições e tratamentos no mesmo mapa</li><li><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m5 12.5 4.2 4.2L19 7\"/></svg> Tratamentos em várias sessões</li></ul><a class=\"ds-link-arrow\" href=\"#\">Conheça o prontuário odontológico <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></article>",
+      "css": ".ds-card { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: flex; flex-direction: column; gap: 16px; max-width: 420px; background: #fff; border: 1px solid var(--color-hairline, #ece1d9); border-radius: 32px; padding: 40px; box-shadow: 0 17px 37px 0 rgb(85 12 36 / 0.035), 0 67px 67px 0 rgb(85 12 36 / 0.03), 0 150px 90px 0 rgb(85 12 36 / 0.02); color: var(--color-ink, #1c1517); letter-spacing: -0.01em; } .ds-icon-tile { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-deep, #a86a2f); } .ds-card-title { margin: 0; font-size: 1.75rem; line-height: 1.2; font-weight: 600; letter-spacing: -0.035em; } .ds-card-text { margin: 0; color: var(--color-charcoal, #62585a); line-height: 1.5; } .ds-checks { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; } .ds-checks li { display: flex; gap: 12px; } .ds-checks svg { flex-shrink: 0; margin-top: 2px; color: var(--color-sand-deep, #a86a2f); } .ds-link-arrow { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; font-weight: 500; color: var(--color-ink, #1c1517); text-decoration: underline; text-decoration-color: var(--color-hairline-strong, #d9cbc1); text-underline-offset: 4px; transition: text-decoration-color 160ms ease; } .ds-link-arrow:hover { text-decoration-color: var(--color-ink, #1c1517); } .ds-link-arrow:focus-visible { outline: 2px solid var(--color-ink, #1c1517); outline-offset: 3px; }"
+    },
+    {
+      "name": "Plan Card (Pro)",
+      "kind": "card",
+      "refersTo": "plan-card-highlighted",
+      "description": "Highlighted plan: white, ink outline, tabular price, crimson CTA pinned to the bottom.",
+      "html": "<article class=\"ds-plan\"><div class=\"ds-plan-head\"><h3>Pro</h3><span class=\"ds-plan-badge\">Mais completo</span></div><p class=\"ds-plan-tag\">Tudo do Standard, mais o financeiro completo da clínica.</p><p class=\"ds-plan-price\"><span class=\"ds-cur\">R$</span><span class=\"ds-amt\">149,99</span><span class=\"ds-per\">/mês</span></p><p class=\"ds-plan-tag\">Renovação mensal automática</p><a class=\"ds-plan-cta\" href=\"#\">Testar o Pro grátis</a></article>",
+      "css": ".ds-plan { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: flex; flex-direction: column; max-width: 400px; background: #fff; border: 1px solid var(--color-ink, #1c1517); border-radius: 32px; padding: 40px; box-shadow: 0 17px 37px 0 rgb(85 12 36 / 0.035), 0 67px 67px 0 rgb(85 12 36 / 0.03), 0 150px 90px 0 rgb(85 12 36 / 0.02); color: var(--color-ink, #1c1517); letter-spacing: -0.01em; } .ds-plan-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; } .ds-plan-head h3 { margin: 0; font-size: 1.75rem; font-weight: 600; letter-spacing: -0.035em; } .ds-plan-badge { border-radius: 100px; padding: 4px 12px; font-size: 0.75rem; font-weight: 500; background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-deep, #a86a2f); } .ds-plan-tag { margin: 8px 0 0; font-size: 0.875rem; color: var(--color-charcoal, #62585a); } .ds-plan-price { margin: 32px 0 0; display: flex; align-items: baseline; gap: 6px; } .ds-cur { font-size: 1.125rem; font-weight: 500; } .ds-amt { font-size: 3rem; line-height: 1; font-weight: 600; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; } .ds-per { color: var(--color-charcoal, #62585a); } .ds-plan-cta { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 100px; font-weight: 500; font-size: 1rem; letter-spacing: -0.01em; white-space: nowrap; padding: 14px 28px; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; margin-top: 40px; background: var(--color-crimson, #ae2351); color: #fff; box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.18), 0 3px 3px 0 rgb(85 12 36 / 0.12), 0 6px 4px 0 rgb(85 12 36 / 0.06), 0 11px 4px 0 rgb(85 12 36 / 0.01); } .ds-plan-cta:hover { background: var(--color-crimson-hover, #941c44); } .ds-plan-cta:active { transform: translateY(1px); } .ds-plan-cta:focus-visible { outline: 2px solid var(--color-ink, #1c1517); outline-offset: 3px; }"
+    },
+    {
+      "name": "Product Mockup",
+      "kind": "custom",
+      "refersTo": "mock-card",
+      "description": "Signature component: a fictional-data screen rebuilt in HTML, tilted and lifted like a sheet of paper.",
+      "html": "<div class=\"ds-mock-well\"><div class=\"ds-mock\"><div class=\"ds-mock-head\"><span class=\"ds-mock-tag\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"5\" y=\"4.5\" width=\"14\" height=\"16.5\" rx=\"2.5\"/><path d=\"M9 4.5V3.8c0-.7.5-1.3 1.2-1.3h3.6c.7 0 1.2.6 1.2 1.3v.7\"/><path d=\"M8.5 10h7M8.5 13.5h7M8.5 17h4\"/></svg> Plano de tratamento</span><span class=\"ds-mock-meta\">João Pereira</span></div><ul class=\"ds-mock-rows\"><li><span><b>Tratamento de canal</b><small>2 sessões · próxima 23/10</small></span><em class=\"ds-m-progress\">Em andamento</em></li><li><span><b>Restauração em resina · D, M</b><small>Sem horário marcado</small></span><em class=\"ds-m-planned\">Planejado</em></li><li><span><b>Profilaxia</b><small>Boca inteira</small></span><em class=\"ds-m-done\">Concluído</em></li></ul></div></div>",
+      "css": ".ds-mock-well { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); background: var(--color-cream, #fbf6f2); border-radius: 32px; padding: 40px 32px 0; overflow: hidden; max-width: 460px; } .ds-mock { background: #fff; border: 1px solid var(--color-hairline, #ece1d9); border-radius: 18px; box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.06), 0 12px 32px -8px rgb(85 12 36 / 0.12); transform: rotate(-2deg) translateY(12px); color: var(--color-ink, #1c1517); letter-spacing: -0.01em; } .ds-mock-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--color-hairline, #ece1d9); } .ds-mock-tag { display: inline-flex; align-items: center; gap: 6px; border-radius: 100px; border: 1px solid var(--color-hairline-strong, #d9cbc1); padding: 4px 12px; font-size: 0.8125rem; font-weight: 500; } .ds-mock-tag svg { color: var(--color-sand-deep, #a86a2f); } .ds-mock-meta { font-size: 0.75rem; color: var(--color-charcoal, #62585a); } .ds-mock-rows { list-style: none; margin: 0; padding: 4px 16px 20px; } .ds-mock-rows li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--color-hairline, #ece1d9); } .ds-mock-rows li:last-child { border-bottom: 0; } .ds-mock-rows b { display: block; font-size: 0.8125rem; font-weight: 500; } .ds-mock-rows small { font-size: 0.6875rem; color: var(--color-charcoal, #62585a); } .ds-mock-rows em { font-style: normal; border-radius: 100px; padding: 2px 8px; font-size: 0.6875rem; font-weight: 500; white-space: nowrap; border: 1px solid transparent; } .ds-m-done { background: var(--color-sand-deep, #a86a2f); color: #fff; } .ds-m-planned { background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-deep, #a86a2f); } .ds-m-progress { border-color: var(--color-sand-deep, #a86a2f) !important; color: var(--color-sand-deep, #a86a2f); }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Sticky translucent bar: logo, charcoal links with an ink current state, ghost Entrar plus crimson CTA.",
+      "html": "<header class=\"ds-nav\"><span class=\"ds-nav-logo\">hofclin</span><nav class=\"ds-nav-links\"><a href=\"#\" aria-current=\"page\">Odontologia</a><a href=\"#\">Harmonização</a><a href=\"#\">Preços</a><a href=\"#\">Dúvidas</a></nav><div class=\"ds-nav-actions\"><a class=\"ds-nav-ghost\" href=\"#\">Entrar</a><a class=\"ds-nav-cta\" href=\"#\">Começar grátis</a></div></header>",
+      "css": ".ds-nav { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 72px; padding: 0 32px; background: rgb(255 255 255 / 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-hairline, #ece1d9); letter-spacing: -0.01em; } .ds-nav-logo { font-weight: 600; font-size: 1.375rem; letter-spacing: -0.04em; color: var(--color-crimson, #ae2351); } .ds-nav-links { display: flex; gap: 32px; font-size: 0.875rem; font-weight: 500; } .ds-nav-links a { color: var(--color-charcoal, #62585a); text-decoration: none; transition: color 160ms ease; } .ds-nav-links a:hover, .ds-nav-links a[aria-current=\"page\"] { color: var(--color-ink, #1c1517); } .ds-nav-links a:focus-visible { outline: 2px solid var(--color-ink, #1c1517); outline-offset: 3px; } .ds-nav-actions { display: flex; gap: 12px; } .ds-nav-ghost, .ds-nav-cta { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 100px; font-weight: 500; font-size: 1rem; letter-spacing: -0.01em; white-space: nowrap; padding: 14px 28px; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; padding: 10px 20px; font-size: 0.9375rem; } .ds-nav-ghost { color: var(--color-ink, #1c1517); border-color: var(--color-hairline-strong, #d9cbc1); } .ds-nav-ghost:hover { border-color: var(--color-ink, #1c1517); } .ds-nav-cta { background: var(--color-crimson, #ae2351); color: #fff; box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.18), 0 3px 3px 0 rgb(85 12 36 / 0.12), 0 6px 4px 0 rgb(85 12 36 / 0.06), 0 11px 4px 0 rgb(85 12 36 / 0.01); } .ds-nav-cta:hover { background: var(--color-crimson-hover, #941c44); } .ds-nav-ghost:focus-visible, .ds-nav-cta:focus-visible { outline: 2px solid var(--color-ink, #1c1517); outline-offset: 3px; }"
+    },
+    {
+      "name": "Consent Banner",
+      "kind": "custom",
+      "refersTo": "button-ghost",
+      "description": "Cookie choice with equal-weight Reject and Accept — never the crimson button.",
+      "html": "<section class=\"ds-consent\"><h2>Sua privacidade</h2><p>Usamos cookies necessários para o site funcionar. Com a sua permissão, também usamos cookies analíticos e de marketing. <a href=\"#\">Saiba mais</a>.</p><div class=\"ds-consent-actions\"><button type=\"button\">Rejeitar</button><button type=\"button\">Aceitar todos</button></div><button type=\"button\" class=\"ds-consent-more\">Personalizar</button></section>",
+      "css": ".ds-consent { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); max-width: 440px; background: #fff; border: 1px solid var(--color-hairline, #ece1d9); border-radius: 18px; padding: 20px; box-shadow: 0 17px 37px 0 rgb(85 12 36 / 0.035), 0 67px 67px 0 rgb(85 12 36 / 0.03), 0 150px 90px 0 rgb(85 12 36 / 0.02), 0 1px 2px 0 rgb(85 12 36 / 0.06), 0 12px 32px -8px rgb(85 12 36 / 0.12); color: var(--color-ink, #1c1517); letter-spacing: -0.01em; } .ds-consent h2 { margin: 0; font-size: 1rem; font-weight: 600; } .ds-consent p { margin: 8px 0 0; font-size: 0.875rem; line-height: 1.625; color: var(--color-charcoal, #62585a); } .ds-consent p a { color: var(--color-ink, #1c1517); text-underline-offset: 2px; } .ds-consent-actions { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; } .ds-consent-actions button { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 100px; font-weight: 500; font-size: 1rem; letter-spacing: -0.01em; white-space: nowrap; padding: 14px 28px; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; padding: 10px 20px; font-size: 0.9375rem; background: transparent; color: var(--color-ink, #1c1517); border-color: var(--color-hairline-strong, #d9cbc1); } .ds-consent-actions button:hover { border-color: var(--color-ink, #1c1517); } .ds-consent-actions button:focus-visible, .ds-consent-more:focus-visible { outline: 2px solid var(--color-ink, #1c1517); outline-offset: 3px; } .ds-consent-more { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); margin-top: 12px; width: 100%; background: none; border: 0; font-size: 0.875rem; font-weight: 500; color: var(--color-ink, #1c1517); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Warm Clinical Record",
+    "overview": "Hofclin looks like a patient chart laid on warm paper. Everything is specific and exact: the faces of a tooth, the points and doses on a face, a lot number and an expiry date. Nothing feels sterile. Every neutral leans toward a warm red-brown, the surfaces alternate between white paper and cream, and every shadow is tinted toward crimson rather than grey. The product itself carries the persuasion. Each section shows the real record as an HTML mockup with fictional data, tilted slightly and cropped by its container, as if a page were sliding out of a folder.\n\nThe mood is **warm, precise, and candid**. Warmth comes from the material: cream, sand, and a warm ink. Precision comes from tight display tracking, 1px hairlines, tabular prices, and single-weight line icons. Candor comes from what the system refuses to hide: the fine print under the price is set in legible charcoal at the same width as the plans, and the consent banner gives Reject and Accept the same weight.\n\nComponents feel **warm and tactile**. Buttons are fully rounded pills that lift on a soft crimson-tinted shadow and press down 1px when clicked. Cards are generously rounded and padded and sit on cream. Product mockups are white sheets with a hairline edge. Each page has one atmospheric moment, a framed sand-light band at the top, and a deep ink band closes the page at the bottom.\n\nThe system explicitly rejects **spa or beauty-salon gloss** (rose gold, glossy stock photos of faces, soft-focus aesthetics imagery) and **generic startup gradients** (purple-blue washes, glassmorphism, floating 3D blobs).",
+    "keyCharacteristics": [
+      "Warm monochrome canvas: paper, cream, and cloud, with warm ink and charcoal text.",
+      "One action color: Hofclin Crimson appears only on the primary CTA and in the logo.",
+      "Burnished Sand marks everything that is information rather than action: icons, checkmarks, eyebrows, and the marks inside mockups.",
+      "Poppins at 400, 500, and 600, with display tracking pulled to -0.04em.",
+      "Pills for everything you can press or tag, and 18–32px corners for everything that holds content.",
+      "Product mockups with fictional data serve as the imagery. There are no photographs."
+    ],
+    "rules": [
+      {
+        "name": "The One Action Color Rule",
+        "body": "Hofclin Crimson fills the primary CTA and appears in the logo, and nowhere else. It is never used for text, links, icons, borders, section backgrounds, or chart marks. If something is not a button that starts the Trial, it is not crimson.",
+        "section": "colors"
+      },
+      {
+        "name": "The Sand Marks Rule",
+        "body": "Information is marked in Burnished Sand and actions in Crimson. Icons, checkmarks, eyebrows, and mockup marks use `sand-deep`. Sand is never body text.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Cold Grey Rule",
+        "body": "Every neutral carries the warm red-brown undertone. Pure black, cool greys, and blue-greys are never used, and neither are Tailwind's default `gray`, `zinc`, or `slate` scales.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tight Heading Rule",
+        "body": "Display and headline sizes always carry -0.04em tracking, and titles carry -0.035em. Flattening the tracking makes Poppins look generic.",
+        "section": "typography"
+      },
+      {
+        "name": "The Balanced Line Rule",
+        "body": "Headings use `text-wrap: balance` and paragraphs use `text-wrap: pretty`. No heading is left with a one-word last line.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tinted Shadow Rule",
+        "body": "Every shadow uses `rgb(85 12 36 / ≤0.18)`. A grey or black shadow breaks the warmth of the page.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Tonal-First Rule",
+        "body": "Separate with cream and hairlines before reaching for a shadow. A cream card on a paper section needs no shadow, while a white card on a cream section gets the Card shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** reserve Hofclin Crimson (#ae2351) for the primary Trial CTA fill, with #941c44 on hover.",
+      "**Do** color icons, checkmarks, eyebrows, and mockup marks with Burnished Sand (#a86a2f).",
+      "**Do** tint every shadow with `rgb(85 12 36)` and keep its opacity at or below 0.18.",
+      "**Do** alternate paper and cream sections, and separate them with 1px hairlines (#ece1d9).",
+      "**Do** use full pills (100px) for every button, tag, and chip, and 18px or 32px corners for content containers.",
+      "**Do** pull display and headline tracking to -0.04em, and balance heading lines.",
+      "**Do** set prices in Poppins 600 with tabular numerals.",
+      "**Do** show the product as an HTML mockup with fictional data, tilted ±2–3° and cropped by its container's edge.",
+      "**Do** keep the sand-light gradient on the framed hero band only, with one per page.",
+      "**Do** give consent choices equal visual weight: both Ghost, same size, side by side."
+    ],
+    "donts": [
+      "**Don't** use crimson for text, links, icons, borders, backgrounds, or decoration.",
+      "**Don't** use pure black, cool greys, or Tailwind's default grey scales; Warm Ink (#1c1517) and Warm Charcoal (#62585a) cover every text need.",
+      "**Don't** introduce green, amber, or red status colors in mockups; show state with sand depth, cloud, or an outline.",
+      "**Don't** reach for spa or beauty-salon gloss: rose gold, glossy stock photos of faces, soft-focus aesthetics imagery.",
+      "**Don't** use generic startup gradients: purple-blue washes, glassmorphism, floating 3D blobs.",
+      "**Don't** load a Poppins weight above 600, or add a second typeface.",
+      "**Don't** use filled or multi-color icons; the set is single-weight 1.6px line art.",
+      "**Don't** use WhatsApp Green anywhere except the floating WhatsApp button.",
+      "**Don't** put real patient names, photos, or data into any visual, ever."
+    ]
+  }
+}

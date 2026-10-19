@@ -23,7 +23,7 @@ export const plans: Plan[] = [
     features: [
       "Agenda com visão de dia e semana",
       "Prontuário digital com odontograma, faceograma e anamnese",
-      "Orçamentos com link para o paciente",
+      "Orçamentos com link e PDF para o paciente",
       "Insights de retornos, aniversários e tratamentos pendentes",
       "Agenda no calendário do celular (iCal)",
     ],

@@ -115,7 +115,7 @@ const structuredData = { "@context": "https://schema.org", "@graph": [organizati
       <slot />
     </main>
     <Footer />
-    <WhatsAppButton context={whatsappContext} />
+    {site.whatsapp.enabled && <WhatsAppButton context={whatsappContext} />}
     <ConsentBanner />
 
     <script>

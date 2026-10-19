@@ -21,12 +21,16 @@ const year = new Date().getFullYear();
         <span>
           <Placeholder value={site.company.email} label="e-mail" /> · <Placeholder value={site.company.phone} label="telefone" />
         </span>
-        <span class="mt-2">
-          Encarregado de dados: <Placeholder value={site.dpo.name} label="encarregado" /> (<Placeholder
-            value={site.dpo.email}
-            label="e-mail do encarregado"
-          />)
-        </span>
+        {
+          site.dpo.showInFooter && (
+            <span class="mt-2">
+              Encarregado de dados: <Placeholder value={site.dpo.name} label="encarregado" /> (<Placeholder
+                value={site.dpo.email}
+                label="e-mail do encarregado"
+              />)
+            </span>
+          )
+        }
       </address>
     </div>
 

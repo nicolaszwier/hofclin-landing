@@ -1,19 +1,26 @@
 ---
 import Icon from "../Icon.astro";
 
-/** Recreation of the Dashboard's compact agenda list for one day. Fictional data. */
+/**
+ * Recreation of one dentist's agenda for a day, with a pré-cadastro booked by name and
+ * phone only and a closed slot. Fictional data.
+ */
 interface Props {
   class?: string;
 }
 
 const { class: className } = Astro.props;
 
-const appointments = [
+type Row =
+  | { time: string; patient: string; procedure: string; area: "odonto" | "hof"; status: "Atendido" | "Agendado"; lead?: boolean }
+  | { time: string; closed: string };
+
+const rows: Row[] = [
   { time: "08:30", patient: "Marina Alves", procedure: "Avaliação", area: "odonto", status: "Atendido" },
-  { time: "09:30", patient: "João Pereira", procedure: "Restauração · 26", area: "odonto", status: "Atendido" },
   { time: "11:00", patient: "Carla Mendes", procedure: "Toxina botulínica", area: "hof", status: "Agendado" },
+  { time: "12:00", closed: "Almoço" },
   { time: "14:00", patient: "Rafael Costa", procedure: "Preenchimento labial", area: "hof", status: "Agendado" },
-  { time: "15:30", patient: "Beatriz Lima", procedure: "Limpeza", area: "odonto", status: "Agendado" },
+  { time: "15:30", patient: "Lucas Andrade", procedure: "Avaliação", area: "odonto", status: "Agendado", lead: true },
 ];
 ---
 
@@ -24,17 +31,35 @@ const appointments = [
   </div>
   <ul>
     {
-      appointments.map((item) => (
-        <li class="flex items-center gap-3 border-b border-hairline px-4 py-2.5 last:border-0">
-          <span class="w-10 shrink-0 text-xs font-semibold tabular-nums">{item.time}</span>
-          <span class:list={["h-8 w-1 shrink-0 rounded-full", item.area === "hof" ? "bg-sand" : "bg-hairline-strong"]} />
-          <span class="flex min-w-0 flex-1 flex-col">
-            <span class="truncate text-xs font-medium">{item.patient}</span>
-            <span class="truncate text-[11px] text-charcoal">{item.procedure}</span>
-          </span>
-          <span class:list={["chip", item.status === "Atendido" ? "bg-cloud text-charcoal" : "border border-hairline-strong text-ink"]}>{item.status}</span>
-        </li>
-      ))
+      rows.map((item) =>
+        "closed" in item ? (
+          <li class="flex items-center gap-3 border-b border-hairline bg-cloud px-4 py-2.5 last:border-0">
+            <span class="w-10 shrink-0 text-xs font-semibold tabular-nums text-charcoal">{item.time}</span>
+            <span class="h-8 w-1 shrink-0 rounded-full border border-dashed border-hairline-strong" />
+            <span class="flex min-w-0 flex-1 flex-col">
+              <span class="truncate text-xs font-medium text-charcoal">Agenda fechada</span>
+              <span class="truncate text-[11px] text-charcoal">{item.closed}</span>
+            </span>
+          </li>
+        ) : (
+          <li class="flex items-center gap-3 border-b border-hairline px-4 py-2.5 last:border-0">
+            <span class="w-10 shrink-0 text-xs font-semibold tabular-nums">{item.time}</span>
+            <span class:list={["h-8 w-1 shrink-0 rounded-full", item.area === "hof" ? "bg-sand" : "bg-hairline-strong"]} />
+            <span class="flex min-w-0 flex-1 flex-col">
+              <span class="truncate text-xs font-medium">{item.patient}</span>
+              {item.lead ? (
+                <span class="flex min-w-0 items-center gap-1.5">
+                  <span class="chip shrink-0 border border-sand-deep px-1.5 py-0 text-[10px] leading-[14px] text-sand-ink">Pré-cadastro</span>
+                  <span class="hidden truncate text-[11px] text-charcoal sm:block">{item.procedure}</span>
+                </span>
+              ) : (
+                <span class="truncate text-[11px] text-charcoal">{item.procedure}</span>
+              )}
+            </span>
+            <span class:list={["chip", item.status === "Atendido" ? "bg-cloud text-charcoal" : "border border-hairline-strong text-ink"]}>{item.status}</span>
+          </li>
+        ),
+      )
     }
   </ul>
 </div>

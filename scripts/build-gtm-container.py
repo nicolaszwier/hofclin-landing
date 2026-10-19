@@ -2,8 +2,9 @@
 """Builds docs/gtm/hofclin-gtm-container.json, a GTM container to import (Admin → Importar contêiner).
 
 Everything docs/analytics-setup.md describes, as data: the four platform IDs are Constant
-variables to fill in after import; every tag requires its Consent type; Clarity, Meta and
-TikTok tags do nothing while their ID is empty. Run: python3 scripts/build-gtm-container.py
+variables; every tag requires its Consent type. GTM rejects an empty constant, so an ID not
+known yet holds PLACEHOLDER, and a blocking trigger keeps that platform's tags from firing
+until the constant is changed in GTM. Run: python3 scripts/build-gtm-container.py
 """
 import json
 from pathlib import Path
@@ -11,6 +12,7 @@ from pathlib import Path
 ALL_PAGES = "2147479553"  # GTM built-in "All Pages" trigger
 ANALYTICS = "analytics_storage"
 ADS = "ad_storage"
+PLACEHOLDER = "PREENCHER"
 
 ids = iter(range(1, 1000))
 def next_id() -> str:
@@ -27,8 +29,8 @@ def consent(kind):
 
 variables, triggers, tags = [], [], []
 
-def constant(name, note):
-    variables.append({"variableId": next_id(), "name": name, "type": "c", "notes": note, "parameter": [t("value", "")]})
+def constant(name, note, value=PLACEHOLDER):
+    variables.append({"variableId": next_id(), "name": name, "type": "c", "notes": note, "parameter": [t("value", value)]})
 
 def dlv(key):
     name = f"DLV - {key}"
@@ -38,10 +40,11 @@ def dlv(key):
     })
     return "{{" + name + "}}"
 
-constant("ID - GA4", "Google Analytics 4 → Administrador → Fluxos de dados → Web → ID da métrica (G-XXXXXXXXXX).")
-constant("ID - Clarity", "Microsoft Clarity → Settings → Overview → Project ID. Vazio = tag não faz nada.")
-constant("ID - Meta Pixel", "Meta Events Manager → Fontes de dados → ID do pixel (só números). Vazio = tag não faz nada.")
-constant("ID - TikTok Pixel", "TikTok Events Manager → Web → Pixel ID / código. Vazio = tag não faz nada.")
+UNTIL_SET = f"Enquanto o valor for {PLACEHOLDER}, as tags desta plataforma ficam bloqueadas."
+constant("ID - GA4", "Google Analytics 4 → Administrador → Fluxos de dados → Web → ID da métrica.", "G-JWDLJ212V4")
+constant("ID - Clarity", f"Microsoft Clarity → Settings → Overview → Project ID. {UNTIL_SET}")
+constant("ID - Meta Pixel", f"Meta Events Manager → Fontes de dados → ID do pixel (só números). {UNTIL_SET}")
+constant("ID - TikTok Pixel", f"TikTok Events Manager → Web → Pixel ID / código. {UNTIL_SET}")
 
 ATTR = ["attr_first_source", "attr_first_medium", "attr_first_campaign", "attr_last_source", "attr_last_medium", "attr_last_campaign"]
 # Pushed by track() on every landing Funnel event (src/scripts/analytics.ts), so both GA4 events forward it.
@@ -61,11 +64,26 @@ def custom_event(event):
 cta_trigger = custom_event("cta_click")
 wa_trigger = custom_event("whatsapp_click")
 
-def tag(name, type_, parameter, trigger, kind, notes=""):
+def blocked_until_set(variable):
+    """Exception trigger: matches every event while the ID constant still holds PLACEHOLDER."""
+    trigger_id = next_id()
+    triggers.append({
+        "triggerId": trigger_id, "name": f"Bloquear - {variable} não preenchido", "type": "CUSTOM_EVENT",
+        "customEventFilter": [{"type": "MATCH_REGEX", "parameter": [t("arg0", "{{_event}}"), t("arg1", ".*")]}],
+        "filter": [{"type": "EQUALS", "parameter": [t("arg0", "{{" + variable + "}}"), t("arg1", PLACEHOLDER)]}],
+    })
+    return trigger_id
+
+ga4_block = blocked_until_set("ID - GA4")
+clarity_block = blocked_until_set("ID - Clarity")
+meta_block = blocked_until_set("ID - Meta Pixel")
+tiktok_block = blocked_until_set("ID - TikTok Pixel")
+
+def tag(name, type_, parameter, trigger, kind, notes="", blocking=None):
     tags.append({
         "tagId": next_id(), "name": name, "type": type_, "parameter": parameter,
-        "firingTriggerId": [trigger], "tagFiringOption": "ONCE_PER_EVENT",
-        "consentSettings": consent(kind), "notes": notes,
+        "firingTriggerId": [trigger], **({"blockingTriggerId": [blocking]} if blocking else {}),
+        "tagFiringOption": "ONCE_PER_EVENT", "consentSettings": consent(kind), **({"notes": notes} if notes else {}),
     })
 
 def ga4_event(event, keys, trigger):
@@ -75,13 +93,13 @@ def ga4_event(event, keys, trigger):
         t("eventName", event),
         t("measurementIdOverride", "{{ID - GA4}}"),
         {"type": "LIST", "key": "eventSettingsTable", "list": rows},
-    ], trigger, ANALYTICS)
+    ], trigger, ANALYTICS, blocking=ga4_block)
 
-def html(name, script, trigger, kind, notes=""):
-    tag(name, "html", [t("html", f"<script>\n{script.strip()}\n</script>"), b("supportDocumentWrite", False)], trigger, kind, notes)
+def html(name, script, trigger, kind, blocking, notes=""):
+    tag(name, "html", [t("html", f"<script>\n{script.strip()}\n</script>"), b("supportDocumentWrite", False)], trigger, kind, notes, blocking)
 
 tag("GA4 - Google tag", "googtag", [t("tagId", "{{ID - GA4}}")], ALL_PAGES, ANALYTICS,
-    "Pageviews e medição otimizada. A landing só carrega o GTM depois do consentimento.")
+    "Pageviews e medição otimizada. A landing só carrega o GTM depois do consentimento.", ga4_block)
 ga4_event("cta_click", CTA, cta_trigger)
 ga4_event("whatsapp_click", WA, wa_trigger)
 tag("Google Ads - Conversion Linker", "gclidw", [
@@ -90,33 +108,33 @@ tag("Google Ads - Conversion Linker", "gclidw", [
 
 html("Clarity - base", """
 (function (id) {
-  if (!id) return;
+  if (!id || id === "PREENCHER") return;
   (function (c, l, a, r, i, t, y) {
     c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
     t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
     y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
   })(window, document, "clarity", "script", id);
 })({{ID - Clarity}});
-""", ALL_PAGES, ANALYTICS)
+""", ALL_PAGES, ANALYTICS, clarity_block)
 
 html("Meta Pixel - base", """
 (function (id) {
-  if (!id) return;
+  if (!id || id === "PREENCHER") return;
   !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
     if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v;
     s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
   fbq("init", id);
   fbq("track", "PageView");
 })({{ID - Meta Pixel}});
-""", ALL_PAGES, ADS)
+""", ALL_PAGES, ADS, meta_block)
 
 html("Meta Pixel - Contact (WhatsApp)", """
-if (window.fbq && {{ID - Meta Pixel}}) fbq("track", "Contact");
-""", wa_trigger, ADS, "Não dispare Lead/CompleteRegistration/Purchase aqui: a API envia (ADR 0001).")
+if (window.fbq) fbq("track", "Contact");
+""", wa_trigger, ADS, meta_block, "Não dispare Lead/CompleteRegistration/Purchase aqui: a API envia (ADR 0001).")
 
 html("TikTok Pixel - base", """
 (function (id) {
-  if (!id) return;
+  if (!id || id === "PREENCHER") return;
   !function (w, d, t) {
     w.TiktokAnalyticsObject = t; var ttq = w[t] = w[t] || [];
     ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie", "disableCookie", "holdConsent", "revokeConsent", "grantConsent"];
@@ -131,11 +149,11 @@ html("TikTok Pixel - base", """
     ttq.page();
   }(window, document, "ttq");
 })({{ID - TikTok Pixel}});
-""", ALL_PAGES, ADS)
+""", ALL_PAGES, ADS, tiktok_block)
 
 html("TikTok Pixel - Contact (WhatsApp)", """
-if (window.ttq && {{ID - TikTok Pixel}}) ttq.track("Contact");
-""", wa_trigger, ADS)
+if (window.ttq) ttq.track("Contact");
+""", wa_trigger, ADS, tiktok_block)
 
 base = {"accountId": "0", "containerId": "0"}
 for item in variables + triggers + tags:

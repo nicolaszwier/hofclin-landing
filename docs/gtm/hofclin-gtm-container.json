@@ -17,7 +17,7 @@
     },
     "tag": [
       {
-        "tagId": "20",
+        "tagId": "24",
         "name": "GA4 - Google tag",
         "type": "googtag",
         "parameter": [
@@ -29,6 +29,9 @@
         ],
         "firingTriggerId": [
           "2147479553"
+        ],
+        "blockingTriggerId": [
+          "20"
         ],
         "tagFiringOption": "ONCE_PER_EVENT",
         "consentSettings": {
@@ -48,7 +51,7 @@
         "containerId": "0"
       },
       {
-        "tagId": "21",
+        "tagId": "25",
         "name": "GA4 - cta_click",
         "type": "gaawe",
         "parameter": [
@@ -227,6 +230,9 @@
         "firingTriggerId": [
           "18"
         ],
+        "blockingTriggerId": [
+          "20"
+        ],
         "tagFiringOption": "ONCE_PER_EVENT",
         "consentSettings": {
           "consentStatus": "NEEDED",
@@ -240,12 +246,11 @@
             ]
           }
         },
-        "notes": "",
         "accountId": "0",
         "containerId": "0"
       },
       {
-        "tagId": "22",
+        "tagId": "26",
         "name": "GA4 - whatsapp_click",
         "type": "gaawe",
         "parameter": [
@@ -424,6 +429,9 @@
         "firingTriggerId": [
           "19"
         ],
+        "blockingTriggerId": [
+          "20"
+        ],
         "tagFiringOption": "ONCE_PER_EVENT",
         "consentSettings": {
           "consentStatus": "NEEDED",
@@ -437,12 +445,11 @@
             ]
           }
         },
-        "notes": "",
         "accountId": "0",
         "containerId": "0"
       },
       {
-        "tagId": "23",
+        "tagId": "27",
         "name": "Google Ads - Conversion Linker",
         "type": "gclidw",
         "parameter": [
@@ -483,14 +490,14 @@
         "containerId": "0"
       },
       {
-        "tagId": "24",
+        "tagId": "28",
         "name": "Clarity - base",
         "type": "html",
         "parameter": [
           {
             "type": "TEMPLATE",
             "key": "html",
-            "value": "<script>\n(function (id) {\n  if (!id) return;\n  (function (c, l, a, r, i, t, y) {\n    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };\n    t = l.createElement(r); t.async = 1; t.src = \"https://www.clarity.ms/tag/\" + i;\n    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);\n  })(window, document, \"clarity\", \"script\", id);\n})({{ID - Clarity}});\n</script>"
+            "value": "<script>\n(function (id) {\n  if (!id || id === \"PREENCHER\") return;\n  (function (c, l, a, r, i, t, y) {\n    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };\n    t = l.createElement(r); t.async = 1; t.src = \"https://www.clarity.ms/tag/\" + i;\n    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);\n  })(window, document, \"clarity\", \"script\", id);\n})({{ID - Clarity}});\n</script>"
           },
           {
             "type": "BOOLEAN",
@@ -500,6 +507,9 @@
         ],
         "firingTriggerId": [
           "2147479553"
+        ],
+        "blockingTriggerId": [
+          "21"
         ],
         "tagFiringOption": "ONCE_PER_EVENT",
         "consentSettings": {
@@ -514,19 +524,18 @@
             ]
           }
         },
-        "notes": "",
         "accountId": "0",
         "containerId": "0"
       },
       {
-        "tagId": "25",
+        "tagId": "29",
         "name": "Meta Pixel - base",
         "type": "html",
         "parameter": [
           {
             "type": "TEMPLATE",
             "key": "html",
-            "value": "<script>\n(function (id) {\n  if (!id) return;\n  !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };\n    if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = \"2.0\"; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v;\n    s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, \"script\", \"https://connect.facebook.net/en_US/fbevents.js\");\n  fbq(\"init\", id);\n  fbq(\"track\", \"PageView\");\n})({{ID - Meta Pixel}});\n</script>"
+            "value": "<script>\n(function (id) {\n  if (!id || id === \"PREENCHER\") return;\n  !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };\n    if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = \"2.0\"; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v;\n    s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, \"script\", \"https://connect.facebook.net/en_US/fbevents.js\");\n  fbq(\"init\", id);\n  fbq(\"track\", \"PageView\");\n})({{ID - Meta Pixel}});\n</script>"
           },
           {
             "type": "BOOLEAN",
@@ -536,6 +545,9 @@
         ],
         "firingTriggerId": [
           "2147479553"
+        ],
+        "blockingTriggerId": [
+          "22"
         ],
         "tagFiringOption": "ONCE_PER_EVENT",
         "consentSettings": {
@@ -550,19 +562,18 @@
             ]
           }
         },
-        "notes": "",
         "accountId": "0",
         "containerId": "0"
       },
       {
-        "tagId": "26",
+        "tagId": "30",
         "name": "Meta Pixel - Contact (WhatsApp)",
         "type": "html",
         "parameter": [
           {
             "type": "TEMPLATE",
             "key": "html",
-            "value": "<script>\nif (window.fbq && {{ID - Meta Pixel}}) fbq(\"track\", \"Contact\");\n</script>"
+            "value": "<script>\nif (window.fbq) fbq(\"track\", \"Contact\");\n</script>"
           },
           {
             "type": "BOOLEAN",
@@ -572,6 +583,9 @@
         ],
         "firingTriggerId": [
           "19"
+        ],
+        "blockingTriggerId": [
+          "22"
         ],
         "tagFiringOption": "ONCE_PER_EVENT",
         "consentSettings": {
@@ -591,14 +605,14 @@
         "containerId": "0"
       },
       {
-        "tagId": "27",
+        "tagId": "31",
         "name": "TikTok Pixel - base",
         "type": "html",
         "parameter": [
           {
             "type": "TEMPLATE",
             "key": "html",
-            "value": "<script>\n(function (id) {\n  if (!id) return;\n  !function (w, d, t) {\n    w.TiktokAnalyticsObject = t; var ttq = w[t] = w[t] || [];\n    ttq.methods = [\"page\", \"track\", \"identify\", \"instances\", \"debug\", \"on\", \"off\", \"once\", \"ready\", \"alias\", \"group\", \"enableCookie\", \"disableCookie\", \"holdConsent\", \"revokeConsent\", \"grantConsent\"];\n    ttq.setAndDefer = function (t, e) { t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))); }; };\n    for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);\n    ttq.instance = function (t) { for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]); return e; };\n    ttq.load = function (e, n) { var r = \"https://analytics.tiktok.com/i18n/pixel/events.js\"; ttq._i = ttq._i || {}; ttq._i[e] = []; ttq._i[e]._u = r;\n      ttq._t = ttq._t || {}; ttq._t[e] = +new Date; ttq._o = ttq._o || {}; ttq._o[e] = n || {};\n      n = d.createElement(\"script\"); n.type = \"text/javascript\"; n.async = !0; n.src = r + \"?sdkid=\" + e + \"&lib=\" + t;\n      e = d.getElementsByTagName(\"script\")[0]; e.parentNode.insertBefore(n, e); };\n    ttq.load(id);\n    ttq.page();\n  }(window, document, \"ttq\");\n})({{ID - TikTok Pixel}});\n</script>"
+            "value": "<script>\n(function (id) {\n  if (!id || id === \"PREENCHER\") return;\n  !function (w, d, t) {\n    w.TiktokAnalyticsObject = t; var ttq = w[t] = w[t] || [];\n    ttq.methods = [\"page\", \"track\", \"identify\", \"instances\", \"debug\", \"on\", \"off\", \"once\", \"ready\", \"alias\", \"group\", \"enableCookie\", \"disableCookie\", \"holdConsent\", \"revokeConsent\", \"grantConsent\"];\n    ttq.setAndDefer = function (t, e) { t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))); }; };\n    for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);\n    ttq.instance = function (t) { for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]); return e; };\n    ttq.load = function (e, n) { var r = \"https://analytics.tiktok.com/i18n/pixel/events.js\"; ttq._i = ttq._i || {}; ttq._i[e] = []; ttq._i[e]._u = r;\n      ttq._t = ttq._t || {}; ttq._t[e] = +new Date; ttq._o = ttq._o || {}; ttq._o[e] = n || {};\n      n = d.createElement(\"script\"); n.type = \"text/javascript\"; n.async = !0; n.src = r + \"?sdkid=\" + e + \"&lib=\" + t;\n      e = d.getElementsByTagName(\"script\")[0]; e.parentNode.insertBefore(n, e); };\n    ttq.load(id);\n    ttq.page();\n  }(window, document, \"ttq\");\n})({{ID - TikTok Pixel}});\n</script>"
           },
           {
             "type": "BOOLEAN",
@@ -609,6 +623,9 @@
         "firingTriggerId": [
           "2147479553"
         ],
+        "blockingTriggerId": [
+          "23"
+        ],
         "tagFiringOption": "ONCE_PER_EVENT",
         "consentSettings": {
           "consentStatus": "NEEDED",
@@ -622,19 +639,18 @@
             ]
           }
         },
-        "notes": "",
         "accountId": "0",
         "containerId": "0"
       },
       {
-        "tagId": "28",
+        "tagId": "32",
         "name": "TikTok Pixel - Contact (WhatsApp)",
         "type": "html",
         "parameter": [
           {
             "type": "TEMPLATE",
             "key": "html",
-            "value": "<script>\nif (window.ttq && {{ID - TikTok Pixel}}) ttq.track(\"Contact\");\n</script>"
+            "value": "<script>\nif (window.ttq) ttq.track(\"Contact\");\n</script>"
           },
           {
             "type": "BOOLEAN",
@@ -645,6 +661,9 @@
         "firingTriggerId": [
           "19"
         ],
+        "blockingTriggerId": [
+          "23"
+        ],
         "tagFiringOption": "ONCE_PER_EVENT",
         "consentSettings": {
           "consentStatus": "NEEDED",
@@ -658,7 +677,6 @@
             ]
           }
         },
-        "notes": "",
         "accountId": "0",
         "containerId": "0"
       }
@@ -711,6 +729,170 @@
         ],
         "accountId": "0",
         "containerId": "0"
+      },
+      {
+        "triggerId": "20",
+        "name": "Bloquear - ID - GA4 não preenchido",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "MATCH_REGEX",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": ".*"
+              }
+            ]
+          }
+        ],
+        "filter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{ID - GA4}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "PREENCHER"
+              }
+            ]
+          }
+        ],
+        "accountId": "0",
+        "containerId": "0"
+      },
+      {
+        "triggerId": "21",
+        "name": "Bloquear - ID - Clarity não preenchido",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "MATCH_REGEX",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": ".*"
+              }
+            ]
+          }
+        ],
+        "filter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{ID - Clarity}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "PREENCHER"
+              }
+            ]
+          }
+        ],
+        "accountId": "0",
+        "containerId": "0"
+      },
+      {
+        "triggerId": "22",
+        "name": "Bloquear - ID - Meta Pixel não preenchido",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "MATCH_REGEX",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": ".*"
+              }
+            ]
+          }
+        ],
+        "filter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{ID - Meta Pixel}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "PREENCHER"
+              }
+            ]
+          }
+        ],
+        "accountId": "0",
+        "containerId": "0"
+      },
+      {
+        "triggerId": "23",
+        "name": "Bloquear - ID - TikTok Pixel não preenchido",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "MATCH_REGEX",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{_event}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": ".*"
+              }
+            ]
+          }
+        ],
+        "filter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              {
+                "type": "TEMPLATE",
+                "key": "arg0",
+                "value": "{{ID - TikTok Pixel}}"
+              },
+              {
+                "type": "TEMPLATE",
+                "key": "arg1",
+                "value": "PREENCHER"
+              }
+            ]
+          }
+        ],
+        "accountId": "0",
+        "containerId": "0"
       }
     ],
     "variable": [
@@ -718,12 +900,12 @@
         "variableId": "1",
         "name": "ID - GA4",
         "type": "c",
-        "notes": "Google Analytics 4 → Administrador → Fluxos de dados → Web → ID da métrica (G-XXXXXXXXXX).",
+        "notes": "Google Analytics 4 → Administrador → Fluxos de dados → Web → ID da métrica.",
         "parameter": [
           {
             "type": "TEMPLATE",
             "key": "value",
-            "value": ""
+            "value": "G-JWDLJ212V4"
           }
         ],
         "accountId": "0",
@@ -733,12 +915,12 @@
         "variableId": "2",
         "name": "ID - Clarity",
         "type": "c",
-        "notes": "Microsoft Clarity → Settings → Overview → Project ID. Vazio = tag não faz nada.",
+        "notes": "Microsoft Clarity → Settings → Overview → Project ID. Enquanto o valor for PREENCHER, as tags desta plataforma ficam bloqueadas.",
         "parameter": [
           {
             "type": "TEMPLATE",
             "key": "value",
-            "value": ""
+            "value": "PREENCHER"
           }
         ],
         "accountId": "0",
@@ -748,12 +930,12 @@
         "variableId": "3",
         "name": "ID - Meta Pixel",
         "type": "c",
-        "notes": "Meta Events Manager → Fontes de dados → ID do pixel (só números). Vazio = tag não faz nada.",
+        "notes": "Meta Events Manager → Fontes de dados → ID do pixel (só números). Enquanto o valor for PREENCHER, as tags desta plataforma ficam bloqueadas.",
         "parameter": [
           {
             "type": "TEMPLATE",
             "key": "value",
-            "value": ""
+            "value": "PREENCHER"
           }
         ],
         "accountId": "0",
@@ -763,12 +945,12 @@
         "variableId": "4",
         "name": "ID - TikTok Pixel",
         "type": "c",
-        "notes": "TikTok Events Manager → Web → Pixel ID / código. Vazio = tag não faz nada.",
+        "notes": "TikTok Events Manager → Web → Pixel ID / código. Enquanto o valor for PREENCHER, as tags desta plataforma ficam bloqueadas.",
         "parameter": [
           {
             "type": "TEMPLATE",
             "key": "value",
-            "value": ""
+            "value": "PREENCHER"
           }
         ],
         "accountId": "0",

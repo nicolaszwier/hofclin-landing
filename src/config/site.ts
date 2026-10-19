@@ -27,10 +27,14 @@ export const site = {
   dpo: {
     name: "NICOLAS ZWIERZYKOWSKI",
     email: "nicolaszwier@gmail.com",
+    /** Shows the encarregado line in the footer. Hidden for now; /privacidade still names them. */
+    showInFooter: false,
   },
 
-  /** Digits only, with country code, e.g. 5541999999999. */
   whatsapp: {
+    /** Shows the floating button. Hidden until the real number is set. */
+    enabled: false,
+    /** Digits only, with country code, e.g. 5541999999999. */
     number: "5541999999999", //to-do: replace with real number
   },
 

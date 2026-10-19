@@ -27,6 +27,7 @@
 
 ### Contact
 - [ ] 🔒 `site.whatsapp.number` (digits with country code, e.g. `5541999999999`).
+- [ ] `site.whatsapp.enabled = true` — the floating button stays hidden until then.
 
 ### Domain and search
 - [ ] Vercel project for this repo, production domain `hofclin.com.br`, plus `www.hofclin.com.br` (redirected to the apex by `vercel.json`).

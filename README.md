@@ -11,7 +11,7 @@ Astro (static output) + Tailwind v4, deployed on Vercel. Every user-visible stri
 - [`docs/adr/`](./docs/adr) — decisions (0001: conversions are server-side; no pixels in the app).
 - [`docs/go-live-checklist.md`](./docs/go-live-checklist.md) — what must be true before production.
 - [`docs/analytics-setup.md`](./docs/analytics-setup.md) — GTM, GA4, BigQuery, Clarity, Meta, TikTok.
-- [`DESIGN.md`](./DESIGN.md) — the visual reference (inspiration only, re-themed to Hofclin).
+- [`DESIGN.md`](./DESIGN.md) — the shipped design system: tokens, components and rules (mirrors `src/styles/global.css`).
 
 ## Develop
 

@@ -1,7 +1,7 @@
 ---
 import Icon from "../Icon.astro";
 
-/** Recreation of a Quote with its public link and WhatsApp share. Fictional data. */
+/** Recreation of a Quote with its public link, the link's view stamp, and WhatsApp share. Fictional data. */
 interface Props {
   class?: string;
 }
@@ -20,7 +20,9 @@ const items = [
     <span class="pill-tag"><Icon name="receipt" size={15} class="text-sand-deep" /> Orçamento nº 0142</span>
     <span class="text-xs text-charcoal">Válido até 15/11</span>
   </div>
-  <ul class="px-4 pt-2">
+  {/* The app's carimbo for the public link, in its own format; it never says "Não visualizado". */}
+  <p class="flex px-4 pt-2"><span class="chip bg-cloud text-charcoal">Visualizado 2× — última vez há 3 horas</span></p>
+  <ul class="px-4">
     {
       items.map((item) => (
         <li class="flex items-center justify-between gap-3 border-b border-hairline py-2.5">

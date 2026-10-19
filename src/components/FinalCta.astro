@@ -8,7 +8,7 @@ interface Props {
   placement?: string;
 }
 
-const { title = "Seus primeiros 10 dias são por nossa conta", plan, placement = "final" } = Astro.props;
+const { title = "10 dias para testar com os seus pacientes", plan, placement = "final" } = Astro.props;
 ---
 
 <section class="px-3 pb-3 md:px-4 md:pb-4" aria-labelledby="cta-final-titulo">
@@ -19,11 +19,12 @@ const { title = "Seus primeiros 10 dias são por nossa conta", plan, placement =
     <div class="relative mx-auto flex max-w-2xl flex-col items-center gap-6">
       <h2 id="cta-final-titulo" class="text-heading text-balance">{title}</h2>
       <p class="max-w-lg text-lg text-white/75">
-        Crie a conta, cadastre a clínica e comece a atender com agenda, prontuário e orçamentos hoje mesmo.
+        Cadastre a clínica com nome e CNPJ, e um checklist na tela inicial mostra o resto: procedimentos, modelo de
+        anamnese e convite da equipe. Funciona no navegador, sem instalar nada.
       </p>
       <div class="flex flex-col items-center gap-3">
         <CtaButton placement={placement} plan={plan} />
-        <p class="text-sm text-white/70">10 dias grátis · Cartão de crédito não obrigatório</p>
+        <p class="text-sm text-white/70">Sem cartão de crédito · Você só paga se decidir continuar</p>
       </div>
     </div>
   </div>

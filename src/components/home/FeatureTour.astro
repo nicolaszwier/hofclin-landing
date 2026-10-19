@@ -15,24 +15,24 @@ const features: { id: string; icon: IconName; label: string; title: string; text
     id: "anamnese",
     icon: "clipboard",
     label: "Anamnese e assinatura",
-    title: "O histórico do paciente, completo e assinado",
-    text: "Anamnese com versões, odontograma, faceograma, atendimentos e anexos. O paciente assina no tablet, com o dedo ou a caneta.",
+    title: "Anamnese assinada no tablet, com cada versão guardada",
+    text: "Use o modelo pronto para odontologia e harmonização ou monte os seus. O paciente assina com o dedo ou a caneta, e cada atualização vira uma nova versão, sem apagar a anterior.",
     mock: "anamnesis",
   },
   {
     id: "agenda",
     icon: "calendar",
     label: "Agenda",
-    title: "O dia da clínica em uma tela",
-    text: "Agenda por dia e semana para cada dentista, com aviso de conflito de horário e a agenda no calendário do celular.",
+    title: "Paciente novo entra na agenda só com nome e telefone",
+    text: "O cadastro completo fica para quando ele chegar, e o prontuário avisa o que falta. A agenda mostra o dia e a semana de cada dentista, fecha horários de folga e não deixa marcar dois pacientes no mesmo horário.",
     mock: "agenda",
   },
   {
     id: "orcamentos",
     icon: "receipt",
     label: "Orçamentos",
-    title: "Orçamento por dente ou região, com link para o paciente",
-    text: "Monte o orçamento a partir do plano de tratamento, aplique desconto e envie um link que o paciente abre no celular.",
+    title: "Orçamento que sai do plano e chega pelo WhatsApp",
+    text: "Selecione os tratamentos planejados e o orçamento já vem com o dente ou a região de cada item. O paciente abre o link no celular, você vê quando ele abriu, e os que vencem em 7 dias ficam separados para acompanhar.",
     mock: "quote",
   },
   {
@@ -40,7 +40,7 @@ const features: { id: string; icon: IconName; label: string; title: string; text
     icon: "chart",
     label: "Retornos e pendências",
     title: "Quem precisa voltar, sem planilha",
-    text: "Retornos vencidos, tratamentos planejados sem horário marcado e aniversariantes da semana, prontos para você chamar.",
+    text: "Você define o intervalo de retorno de cada procedimento. Quando ele vence e o paciente não tem horário marcado, o nome entra na lista, junto dos tratamentos planejados sem agenda e dos aniversariantes da semana.",
     mock: "insights",
   },
 ];
@@ -51,8 +51,8 @@ const features: { id: string; icon: IconName; label: string; title: string; text
     <div class="lg:sticky lg:top-32 lg:self-start">
       <SectionHeading
         id="recursos-titulo"
-        title="Feito para o dia a dia da clínica"
-        subtitle="Do primeiro contato ao retorno, cada etapa do atendimento fica registrada no mesmo prontuário."
+        title="Do primeiro horário ao retorno"
+        subtitle="Cada etapa alimenta a próxima: a anamnese assinada fica no prontuário, o plano vira orçamento e o retorno aparece quando vence."
       />
       <ol class="mt-10 hidden border-t border-hairline lg:block">
         {

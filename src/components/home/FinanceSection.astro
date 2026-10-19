@@ -8,10 +8,11 @@ import CostCalcMock from "../mockups/CostCalcMock.astro";
 const flow = ["Orçamento aceito", "Venda", "Parcelas", "Caixa"];
 
 const points = [
-  "Venda gerada a partir do orçamento aceito ou do atendimento",
-  "Parcelas no PIX, boleto ou cartão, recebidas na data em que o dinheiro entrou",
-  "Contas, caixa e despesas por categoria",
-  "Fechamento do dia por forma de pagamento e lista de inadimplentes",
+  "Venda gerada a partir do orçamento aceito ou do atendimento, sem digitar de novo",
+  "Atendimento realizado sem venda fica sinalizado, e o fechamento do dia mostra quantos tiveram venda",
+  "Parcelas no PIX, boleto ou cartão, com a taxa da maquininha descontada e o recebimento na data em que o dinheiro entrou",
+  "A receber, a pagar e caixa, com despesas por categoria",
+  "Lista de inadimplentes com mensagem de cobrança pronta para o WhatsApp",
   "Calculadora de custos com insumos, custos fixos, taxa da maquininha e margem",
 ];
 ---

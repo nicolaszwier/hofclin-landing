@@ -24,8 +24,8 @@ const stripCell = [
 
 const assurances = [
   { icon: "sparkle", title: "10 dias grátis", text: "Sem cartão de crédito para começar." },
-  { icon: "card", title: "Escolha no fim do teste", text: "Você escolhe o plano ao cadastrar o cartão." },
-  { icon: "shield", title: "Garantia de 7 dias", text: "Desistiu até 7 dias após a 1ª cobrança? Devolvemos tudo." },
+  { icon: "card", title: "Escolha o plano depois", text: "Ao cadastrar o cartão, você escolhe Standard ou Pro, seja qual for o que testou." },
+  { icon: "shield", title: "Garantia de 7 dias", text: "Cancelou até 7 dias após a 1ª cobrança? Devolvemos o valor integral." },
   { icon: "refresh", title: "Cancele quando quiser", text: "Direto no app, sem falar com ninguém." },
 ] as const;
 ---
@@ -54,7 +54,7 @@ const assurances = [
                 <h3 id={`plano-${plan.key}`} class="text-subheading">
                   {plan.name}
                 </h3>
-                {highlighted && <span class="chip bg-sand-soft px-3 py-1 text-xs text-sand-ink">Mais completo</span>}
+                {highlighted && <span class="chip bg-sand-soft px-3 py-1 text-xs text-sand-ink">Com financeiro</span>}
               </div>
               <p class="mt-2 text-sm text-charcoal">{plan.tagline}</p>
 

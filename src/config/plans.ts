@@ -32,7 +32,7 @@ export const plans: Plan[] = [
     key: "pro",
     name: "Pro",
     price: 149.99,
-    tagline: "Tudo do Standard, mais o financeiro completo da clínica.",
+    tagline: "Tudo do Standard, mais o financeiro da clínica.",
     features: [
       "Tudo do plano Standard",
       "Financeiro: vendas, parcelas, contas, caixa e despesas",

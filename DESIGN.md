@@ -145,8 +145,8 @@ components:
     rounded: "{rounded.pill}"
     padding: "5px"
   practice-switch-thumb:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
+    backgroundColor: "{colors.sand-soft}"
+    textColor: "{colors.sand-ink}"
     rounded: "{rounded.pill}"
     height: "48px"
   pill-tag:
@@ -265,7 +265,7 @@ The palette is a warm monochrome with one action color (crimson) and one informa
 - **Sand Wash** (`sand-soft`): the ground under the record avatar, the "Mais completo" badge, planned and harmonização chips, planned teeth, the small icon circles inside the Retornos preview, and the text-selection highlight.
 
 ### Neutral
-- **Warm Ink** (`ink`): headings, primary text, the practice-switch thumb, the outline of the highlighted plan card, the focus ring, and the background of the final CTA band. It replaces pure black everywhere.
+- **Warm Ink** (`ink`): headings, primary text, the outline of the highlighted plan card, the focus ring, and the background of the final CTA band. It replaces pure black everywhere.
 - **Warm Charcoal** (`charcoal`): secondary copy, subtitles, the fine print under the price, unchecked switch segments, inactive tour rows, and inactive nav links.
 - **Mauve Slate** (`slate`): line art inside previews, such as the face outline on the faceograma, and the icons of inactive feature-tour rows.
 - **Paper** (`paper`): the page canvas, the patient record sheet, preview sheets, the switch track, and the surface of elevated cards.
@@ -334,8 +334,8 @@ Depth is mostly tonal: cream against paper, with 1px hairlines. Shadows are rese
 ### Shadow Vocabulary
 - **Card** (`box-shadow: 0 17px 37px 0 rgb(85 12 36 / 0.035), 0 67px 67px 0 rgb(85 12 36 / 0.03), 0 150px 90px 0 rgb(85 12 36 / 0.02)`): a large, near-invisible ambient lift for white sheets that sit over a band or on cream, such as the patient record and the highlighted Pro plan. Also used for the mobile menu sheet and the consent dialog.
 - **Mock** (`box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.06), 0 12px 32px -8px rgb(85 12 36 / 0.12)`): product preview sheets. It is slightly crisper, so a preview reads as a separate piece of paper.
-- **Button** (`box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.18), 0 3px 3px 0 rgb(85 12 36 / 0.12), 0 6px 4px 0 rgb(85 12 36 / 0.06), 0 11px 4px 0 rgb(85 12 36 / 0.01)`): the four-layer lift under filled buttons (primary, light, WhatsApp) and under the practice-switch thumb.
-- **Hairline** (`box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.06)`): a whisper of separation for small elements, such as the practice-switch track.
+- **Button** (`box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.18), 0 3px 3px 0 rgb(85 12 36 / 0.12), 0 6px 4px 0 rgb(85 12 36 / 0.06), 0 11px 4px 0 rgb(85 12 36 / 0.01)`): the four-layer lift under filled buttons (primary, light, WhatsApp).
+- **Hairline** (`box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.06)`): a whisper of separation for small elements, such as the practice-switch track and its thumb.
 
 ### Named Rules
 **The Tinted Shadow Rule.** Every shadow uses `rgb(85 12 36 / ≤0.18)`. A grey or black shadow breaks the warmth of the page.
@@ -365,9 +365,9 @@ Warm, tactile pills that lift and press.
 The home hero asks "O que a sua clínica faz?" and the answer recomposes the record below it.
 - **Structure:** a native fieldset whose legend is the question (15px Poppins 500, 80% Warm Ink), over three equal radio segments: Odontologia, Harmonização, and As duas (checked by default). Phones show short labels (Odonto, HOF).
 - **Track:** a white pill with a Strong Hairline border, 5px of inner padding, and the Hairline shadow. Segments are 48px tall (52px from 768px up), charcoal Poppins 500 with a Burnished Sand icon, and turn Warm Ink on hover.
-- **Thumb:** a Warm Ink pill with the Button shadow slides under the checked segment. The checked label turns white and its icon turns Warm Sand.
+- **Thumb:** a Sand Wash pill with a 1px inset Burnished Sand ring (3:1 or more against the white track) and the Hairline shadow slides under the checked segment. The checked label turns Inked Sand at Poppins 600. The selection reads as information, not as an action, so it stays light and never takes Warm Ink or crimson.
 - **Focus:** the radio stays invisible and full-size over its segment; keyboard focus draws the global ink ring on the segment label.
-- **Motion:** the thumb slides as its own view-transition group over 360ms on `cubic-bezier(0.16, 1, 0.3, 1)`, with a CSS transform transition as the fallback. The subtitles above it share one grid cell and swap by visibility, so the switch never moves.
+- **Motion:** the thumb slides with a 280ms CSS transform transition on `cubic-bezier(0.16, 1, 0.3, 1)`, starting on the click frame. The subtitles above it share one grid cell and swap by visibility, so the switch never moves.
 
 ### Patient Record (signature component)
 One fictional patient's prontuário (Marina Alves, 34), shared by every preview on the site so the odontograma, faceograma, history, anamnese, and products all describe one person.
@@ -375,8 +375,8 @@ One fictional patient's prontuário (Marina Alves, 34), shared by every preview 
 - **Patient bar:** a 44px Sand Wash avatar with Inked Sand initials, the name in Poppins 600, a 13px charcoal meta line that ends "dados fictícios", and specialty chips following the Area Code Rule.
 - **Panes:** odontograma and faceograma side by side from 1024px, divided by a hairline, each with a 15px semibold title, a Burnished Sand icon, a chart, and a legend. Each pane is a size container: when one pane has the record to itself (from 760px of pane width) it opens a side list (procedures by tooth, or products with lot and expiry); below 420px the face stacks above its doses; below 430px the odontograma switches from two arch rows to four quadrant rows so tooth numbers stay at 11px or more.
 - **History:** a ruled list of visits with date, title, detail, and an area chip, filtered to the chosen specialty.
-- **State:** the practice is set by `data-practice` on an ancestor, or fixed per page on the specialty pages. Before the script runs, the checked radio drives the same states through `:has()`, so the switch works without JavaScript.
-- **Motion:** the sheet, both panes, and the history morph through named view transitions over 450ms on `cubic-bezier(0.16, 1, 0.3, 1)`. Pane snapshots keep their natural size (`object-fit: none`, anchored top-left) and are clipped by the moving box, so nothing stretches. The rest of the page crossfades over 300ms. Under reduced motion the change applies instantly.
+- **State:** on the home page the checked radio drives every state through `:has()` on the hero root, on the same frame and without JavaScript. The specialty pages fix the state with `data-practice` on the record.
+- **Motion:** the new layout applies immediately; the panes and the history then settle in with a 260ms Web Animation (opacity from 0.4 and a 6px rise, `cubic-bezier(0.16, 1, 0.3, 1)`) that never blocks input. Under reduced motion nothing animates.
 
 ### Feature Tour (signature component)
 The rest of the record, one screen at a time, in the two-column split.
@@ -435,7 +435,7 @@ A Warm Ink band with 28px corners (40px from 768px up). It holds a white headlin
 - **Do** separate lists, definitions, and guarantees with hairline rules, with icons inline beside their term.
 - **Do** code the two specialties the same way everywhere: odontologia neutral, harmonização sand.
 - **Do** keep the sand-light gradient on the framed hero band only, with one per page.
-- **Do** run state changes through view transitions on `cubic-bezier(0.16, 1, 0.3, 1)`, and apply them instantly under reduced motion.
+- **Do** apply a state change on the frame it is chosen and animate only what settles after it (CSS transitions or a non-blocking Web Animation on `cubic-bezier(0.16, 1, 0.3, 1)`); never hold the page on a snapshot while a control waits to respond.
 - **Do** give consent choices equal visual weight: both Ghost, same size, side by side.
 
 ### Don't:

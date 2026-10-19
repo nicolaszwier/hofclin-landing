@@ -17,7 +17,7 @@
     },
     "tag": [
       {
-        "tagId": "19",
+        "tagId": "20",
         "name": "GA4 - Google tag",
         "type": "googtag",
         "parameter": [
@@ -48,7 +48,7 @@
         "containerId": "0"
       },
       {
-        "tagId": "20",
+        "tagId": "21",
         "name": "GA4 - cta_click",
         "type": "gaawe",
         "parameter": [
@@ -122,179 +122,12 @@
                   {
                     "type": "TEMPLATE",
                     "key": "parameter",
-                    "value": "attr_first_source"
+                    "value": "page_path"
                   },
                   {
                     "type": "TEMPLATE",
                     "key": "parameterValue",
-                    "value": "{{DLV - attr_first_source}}"
-                  }
-                ]
-              },
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "attr_first_medium"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "{{DLV - attr_first_medium}}"
-                  }
-                ]
-              },
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "attr_first_campaign"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "{{DLV - attr_first_campaign}}"
-                  }
-                ]
-              },
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "attr_last_source"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "{{DLV - attr_last_source}}"
-                  }
-                ]
-              },
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "attr_last_medium"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "{{DLV - attr_last_medium}}"
-                  }
-                ]
-              },
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "attr_last_campaign"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "{{DLV - attr_last_campaign}}"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "firingTriggerId": [
-          "17"
-        ],
-        "tagFiringOption": "ONCE_PER_EVENT",
-        "consentSettings": {
-          "consentStatus": "NEEDED",
-          "consentType": {
-            "type": "LIST",
-            "list": [
-              {
-                "type": "TEMPLATE",
-                "value": "analytics_storage"
-              }
-            ]
-          }
-        },
-        "notes": "",
-        "accountId": "0",
-        "containerId": "0"
-      },
-      {
-        "tagId": "21",
-        "name": "GA4 - whatsapp_click",
-        "type": "gaawe",
-        "parameter": [
-          {
-            "type": "BOOLEAN",
-            "key": "sendEcommerceData",
-            "value": "false"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "eventName",
-            "value": "whatsapp_click"
-          },
-          {
-            "type": "TEMPLATE",
-            "key": "measurementIdOverride",
-            "value": "{{ID - GA4}}"
-          },
-          {
-            "type": "LIST",
-            "key": "eventSettingsTable",
-            "list": [
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "conversation_code"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "{{DLV - conversation_code}}"
-                  }
-                ]
-              },
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "wa_placement"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "{{DLV - wa_placement}}"
-                  }
-                ]
-              },
-              {
-                "type": "MAP",
-                "map": [
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameter",
-                    "value": "wa_context"
-                  },
-                  {
-                    "type": "TEMPLATE",
-                    "key": "parameterValue",
-                    "value": "{{DLV - wa_context}}"
+                    "value": "{{DLV - page_path}}"
                   }
                 ]
               },
@@ -413,6 +246,203 @@
       },
       {
         "tagId": "22",
+        "name": "GA4 - whatsapp_click",
+        "type": "gaawe",
+        "parameter": [
+          {
+            "type": "BOOLEAN",
+            "key": "sendEcommerceData",
+            "value": "false"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "eventName",
+            "value": "whatsapp_click"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "measurementIdOverride",
+            "value": "{{ID - GA4}}"
+          },
+          {
+            "type": "LIST",
+            "key": "eventSettingsTable",
+            "list": [
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "conversation_code"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - conversation_code}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "wa_placement"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - wa_placement}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "wa_context"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - wa_context}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "page_path"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - page_path}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "attr_first_source"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - attr_first_source}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "attr_first_medium"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - attr_first_medium}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "attr_first_campaign"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - attr_first_campaign}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "attr_last_source"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - attr_last_source}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "attr_last_medium"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - attr_last_medium}}"
+                  }
+                ]
+              },
+              {
+                "type": "MAP",
+                "map": [
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameter",
+                    "value": "attr_last_campaign"
+                  },
+                  {
+                    "type": "TEMPLATE",
+                    "key": "parameterValue",
+                    "value": "{{DLV - attr_last_campaign}}"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": [
+          "19"
+        ],
+        "tagFiringOption": "ONCE_PER_EVENT",
+        "consentSettings": {
+          "consentStatus": "NEEDED",
+          "consentType": {
+            "type": "LIST",
+            "list": [
+              {
+                "type": "TEMPLATE",
+                "value": "analytics_storage"
+              }
+            ]
+          }
+        },
+        "notes": "",
+        "accountId": "0",
+        "containerId": "0"
+      },
+      {
+        "tagId": "23",
         "name": "Google Ads - Conversion Linker",
         "type": "gclidw",
         "parameter": [
@@ -453,7 +483,7 @@
         "containerId": "0"
       },
       {
-        "tagId": "23",
+        "tagId": "24",
         "name": "Clarity - base",
         "type": "html",
         "parameter": [
@@ -489,7 +519,7 @@
         "containerId": "0"
       },
       {
-        "tagId": "24",
+        "tagId": "25",
         "name": "Meta Pixel - base",
         "type": "html",
         "parameter": [
@@ -525,7 +555,7 @@
         "containerId": "0"
       },
       {
-        "tagId": "25",
+        "tagId": "26",
         "name": "Meta Pixel - Contact (WhatsApp)",
         "type": "html",
         "parameter": [
@@ -541,7 +571,7 @@
           }
         ],
         "firingTriggerId": [
-          "18"
+          "19"
         ],
         "tagFiringOption": "ONCE_PER_EVENT",
         "consentSettings": {
@@ -561,7 +591,7 @@
         "containerId": "0"
       },
       {
-        "tagId": "26",
+        "tagId": "27",
         "name": "TikTok Pixel - base",
         "type": "html",
         "parameter": [
@@ -597,7 +627,7 @@
         "containerId": "0"
       },
       {
-        "tagId": "27",
+        "tagId": "28",
         "name": "TikTok Pixel - Contact (WhatsApp)",
         "type": "html",
         "parameter": [
@@ -613,7 +643,7 @@
           }
         ],
         "firingTriggerId": [
-          "18"
+          "19"
         ],
         "tagFiringOption": "ONCE_PER_EVENT",
         "consentSettings": {
@@ -635,7 +665,7 @@
     ],
     "trigger": [
       {
-        "triggerId": "17",
+        "triggerId": "18",
         "name": "CE - cta_click",
         "type": "CUSTOM_EVENT",
         "customEventFilter": [
@@ -659,7 +689,7 @@
         "containerId": "0"
       },
       {
-        "triggerId": "18",
+        "triggerId": "19",
         "name": "CE - whatsapp_click",
         "type": "CUSTOM_EVENT",
         "customEventFilter": [
@@ -890,6 +920,30 @@
       },
       {
         "variableId": "11",
+        "name": "DLV - page_path",
+        "type": "v",
+        "parameter": [
+          {
+            "type": "INTEGER",
+            "key": "dataLayerVersion",
+            "value": "2"
+          },
+          {
+            "type": "BOOLEAN",
+            "key": "setDefaultValue",
+            "value": "false"
+          },
+          {
+            "type": "TEMPLATE",
+            "key": "name",
+            "value": "page_path"
+          }
+        ],
+        "accountId": "0",
+        "containerId": "0"
+      },
+      {
+        "variableId": "12",
         "name": "DLV - attr_first_source",
         "type": "v",
         "parameter": [
@@ -913,7 +967,7 @@
         "containerId": "0"
       },
       {
-        "variableId": "12",
+        "variableId": "13",
         "name": "DLV - attr_first_medium",
         "type": "v",
         "parameter": [
@@ -937,7 +991,7 @@
         "containerId": "0"
       },
       {
-        "variableId": "13",
+        "variableId": "14",
         "name": "DLV - attr_first_campaign",
         "type": "v",
         "parameter": [
@@ -961,7 +1015,7 @@
         "containerId": "0"
       },
       {
-        "variableId": "14",
+        "variableId": "15",
         "name": "DLV - attr_last_source",
         "type": "v",
         "parameter": [
@@ -985,7 +1039,7 @@
         "containerId": "0"
       },
       {
-        "variableId": "15",
+        "variableId": "16",
         "name": "DLV - attr_last_medium",
         "type": "v",
         "parameter": [
@@ -1009,7 +1063,7 @@
         "containerId": "0"
       },
       {
-        "variableId": "16",
+        "variableId": "17",
         "name": "DLV - attr_last_campaign",
         "type": "v",
         "parameter": [

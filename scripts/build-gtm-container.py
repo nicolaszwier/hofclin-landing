@@ -44,9 +44,11 @@ constant("ID - Meta Pixel", "Meta Events Manager → Fontes de dados → ID do p
 constant("ID - TikTok Pixel", "TikTok Events Manager → Web → Pixel ID / código. Vazio = tag não faz nada.")
 
 ATTR = ["attr_first_source", "attr_first_medium", "attr_first_campaign", "attr_last_source", "attr_last_medium", "attr_last_campaign"]
+# Pushed by track() on every landing Funnel event (src/scripts/analytics.ts), so both GA4 events forward it.
+COMMON = ["page_path"] + ATTR
 CTA = ["cta_placement", "plan", "link_url"]
 WA = ["conversation_code", "wa_placement", "wa_context"]
-dl = {key: dlv(key) for key in CTA + WA + ATTR}
+dl = {key: dlv(key) for key in CTA + WA + COMMON}
 
 def custom_event(event):
     trigger_id = next_id()
@@ -67,7 +69,7 @@ def tag(name, type_, parameter, trigger, kind, notes=""):
     })
 
 def ga4_event(event, keys, trigger):
-    rows = [{"type": "MAP", "map": [t("parameter", key), t("parameterValue", dl[key])]} for key in keys + ATTR]
+    rows = [{"type": "MAP", "map": [t("parameter", key), t("parameterValue", dl[key])]} for key in keys + COMMON]
     tag(f"GA4 - {event}", "gaawe", [
         b("sendEcommerceData", False),
         t("eventName", event),

@@ -8,9 +8,16 @@ import FaceogramMock from "../mockups/FaceogramMock.astro";
 <section class="px-3 pt-2 md:px-4" aria-labelledby="hero-titulo">
   <div class="hero-band relative overflow-hidden rounded-[28px] md:rounded-[40px]">
     <div class="container-page flex flex-col items-center pt-14 text-center md:pt-24">
-      <p class="pill-tag border-white/70 bg-white/60 backdrop-blur">
-        <Icon name="sparkle" size={14} class="text-sand-deep" />
-        Odontologia + harmonização orofacial
+      <p
+        class="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-[13px] font-medium whitespace-nowrap text-ink/75 sm:gap-x-3 sm:text-sm"
+      >
+        <span class="inline-flex items-center gap-1.5">
+          <Icon name="tooth" size={16} class="text-sand-deep" /> Odontologia
+        </span>
+        <span class="h-3.5 w-px bg-ink/25" aria-hidden="true"></span>
+        <span class="inline-flex items-center gap-1.5">
+          <Icon name="face" size={16} class="text-sand-deep" /> Harmonização orofacial
+        </span>
       </p>
       <h1 id="hero-titulo" class="text-display mt-6 max-w-4xl text-balance">
         Odontologia e harmonização no mesmo prontuário

@@ -1,0 +1,246 @@
+---
+import Icon from "../Icon.astro";
+import Dotted from "./Dotted.astro";
+import OdontogramChart from "../mockups/OdontogramChart.astro";
+import FaceogramChart from "../mockups/FaceogramChart.astro";
+import { dentalEntries, faceDoses, historyEntries, samplePatient, type Practice } from "../../content/sample-patient";
+
+/**
+ * One fictional patient's prontuário: odontograma and faceograma side by side over a shared history.
+ * On the home page the practice switch decides which panes show (via `data-practice` on an ancestor);
+ * the specialty pages fix it with `practice`. Each pane reveals more detail when it has the room.
+ */
+interface Props {
+  practice?: Practice;
+  class?: string;
+}
+
+const { practice, class: className } = Astro.props;
+
+const statusChip: Record<string, string> = {
+  Concluído: "bg-sand-ink text-white",
+  "Em andamento": "border border-sand-deep text-sand-ink",
+  Planejado: "bg-sand-soft text-sand-ink",
+  Condição: "bg-cloud text-charcoal",
+};
+
+const products = [
+  { product: "Toxina botulínica tipo A", lot: "TB-48213", expiry: "08/2027", note: "Reconstituída em 02/10" },
+  { product: "Ácido hialurônico 1 ml", lot: "HA-55187", expiry: "03/2028", note: "Malar E/D" },
+  { product: "Ácido hialurônico 1 ml", lot: "HA-55120", expiry: "02/2028", note: "Lábios" },
+];
+
+const areaTag = {
+  odonto: { label: "Odontologia", cls: "bg-cloud text-charcoal" },
+  hof: { label: "Harmonização", cls: "bg-sand-soft text-sand-ink" },
+  shared: { label: "Prontuário", cls: "border border-hairline-strong text-charcoal" },
+};
+---
+
+<figure
+  class:list={["record overflow-hidden rounded-[var(--radius-card-lg)] border border-hairline bg-white shadow-[var(--shadow-card)]", className]}
+  data-practice={practice}
+>
+  <figcaption class="flex flex-wrap items-center gap-x-4 gap-y-3 border-b border-hairline px-5 py-4 md:px-8 md:py-5">
+    <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-sand-soft text-sm font-semibold text-sand-ink" aria-hidden="true">
+      {samplePatient.initials}
+    </span>
+    <span class="flex min-w-0 flex-col">
+      <span class="text-base font-semibold tracking-[-0.02em] md:text-lg">{samplePatient.name}</span>
+      <span class="text-[13px] text-charcoal"><Dotted text={`${samplePatient.age} anos · paciente desde ${samplePatient.since} · dados fictícios`} /></span>
+    </span>
+    <span class="flex flex-wrap items-center gap-2 sm:ml-auto">
+      <span class="rec-tag-odonto chip bg-cloud px-3 py-1 text-xs text-charcoal">Odontologia</span>
+      <span class="rec-tag-hof chip bg-sand-soft px-3 py-1 text-xs text-sand-ink">Harmonização orofacial</span>
+    </span>
+  </figcaption>
+
+  <div class="rec-panes">
+    <div class="rec-pane rec-odonto">
+      <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+        <span class="flex items-center gap-2 text-[15px] font-semibold"><Icon name="tooth" size={18} class="text-sand-deep" /> Odontograma</span>
+        <span class="text-[13px] text-charcoal"><Dotted text="1 concluído · 2 planejados" /></span>
+      </div>
+      <div class="rec-pane-body">
+        <div class="rec-pane-main">
+          <OdontogramChart />
+          <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-charcoal">
+            <span class="flex items-center gap-1.5"><span class="size-3 rounded-[3px] border border-dashed border-sand-deep bg-sand-soft"></span>Planejado</span>
+            <span class="flex items-center gap-1.5"><span class="size-3 rounded-[3px] bg-sand-deep"></span>Concluído</span>
+            <span class="flex items-center gap-1.5"><span class="size-3 rounded-[3px] border border-charcoal bg-cloud"></span>Condição</span>
+          </div>
+        </div>
+        <ul class="rec-pane-side">
+          {
+            dentalEntries.map((entry) => (
+              <li class="flex items-center gap-3 border-b border-hairline py-2.5 last:border-0">
+                <span class="flex h-7 min-w-7 shrink-0 items-center justify-center rounded-full bg-cream px-1.5 text-xs font-semibold tabular-nums">{entry.site}</span>
+                <span class="min-w-0 flex-1 text-[13px] leading-snug"><Dotted text={entry.text} /></span>
+                <span class:list={["chip shrink-0", statusChip[entry.status]]}>{entry.status}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="rec-pane rec-hof">
+      <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+        <span class="flex items-center gap-2 text-[15px] font-semibold"><Icon name="face" size={18} class="text-sand-deep" /> Faceograma</span>
+        <span class="text-[13px] text-charcoal">Planejado e aplicado</span>
+      </div>
+      <div class="rec-pane-body">
+        <div class="rec-pane-main">
+          <div class="rec-face grid grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] items-center gap-5">
+            <FaceogramChart class="rec-face-chart" />
+            <ul class="flex flex-col gap-2">
+              {
+                faceDoses.map((row) => (
+                  <li class="flex items-center justify-between gap-2 rounded-lg bg-cream px-3 py-2 text-[13px]">
+                    <span class="flex min-w-0 items-center gap-2">
+                      <span class:list={["size-2.5 shrink-0 rounded-full", row.kind === "toxin" ? "bg-sand-deep" : "border-2 border-sand-deep bg-white"]} />
+                      <span class="truncate">{row.region}</span>
+                    </span>
+                    <span class="shrink-0 font-semibold whitespace-nowrap tabular-nums">{row.dose}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-charcoal">
+            <span class="flex items-center gap-1.5"><span class="size-3 rounded-full bg-sand-deep"></span>Toxina botulínica</span>
+            <span class="flex items-center gap-1.5"><span class="size-3 rounded-full border-2 border-sand-deep"></span>Ácido hialurônico</span>
+          </div>
+        </div>
+        <ul class="rec-pane-side rec-products">
+          {
+            products.map((item) => (
+              <li class="border-b border-hairline py-2.5 last:border-0">
+                <span class="flex items-center justify-between gap-3">
+                  <span class="truncate text-[13px] font-medium">{item.product}</span>
+                  <span class="chip shrink-0 bg-cream text-charcoal">Val. {item.expiry}</span>
+                </span>
+                <span class="mt-0.5 flex justify-between gap-3 text-xs text-charcoal">
+                  <span class="tabular-nums">Lote {item.lot}</span>
+                  <span class="truncate">{item.note}</span>
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="rec-history border-t border-hairline px-5 py-5 md:px-8 md:py-6">
+    <p class="text-[15px] font-semibold">Histórico de atendimentos</p>
+    <ol class="mt-2">
+      {
+        historyEntries.map((entry) => (
+          <li data-area={entry.area} class="grid grid-cols-[3.25rem_minmax(0,1fr)] gap-x-4 gap-y-1 border-b border-hairline py-3 last:border-0 sm:grid-cols-[3.5rem_minmax(0,1fr)_auto] sm:items-center">
+            <span class="text-[13px] text-charcoal tabular-nums">{entry.date}</span>
+            <span class="flex min-w-0 flex-col">
+              <span class="text-sm font-medium"><Dotted text={entry.title} /></span>
+              <span class="text-[13px] text-charcoal"><Dotted text={entry.detail} /></span>
+            </span>
+            <span class:list={["chip col-start-2 justify-self-start sm:col-start-3", areaTag[entry.area].cls]}>{areaTag[entry.area].label}</span>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</figure>
+
+<style>
+  .record {
+    view-transition-name: rec-sheet;
+  }
+  .rec-odonto {
+    view-transition-name: rec-odonto;
+  }
+  .rec-hof {
+    view-transition-name: rec-hof;
+  }
+  .rec-history {
+    view-transition-name: rec-history;
+  }
+
+  .rec-panes {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rec-pane {
+    container-type: inline-size;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .rec-pane + .rec-pane {
+    border-top: 1px solid var(--color-hairline);
+  }
+  .rec-pane-body {
+    display: grid;
+    gap: 16px;
+  }
+  /* Product lots only show when the faceograma has the record to itself. */
+  .rec-products {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .rec-pane {
+      padding: 24px 32px 28px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .rec-panes {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      min-height: 26rem;
+    }
+    .rec-pane + .rec-pane {
+      border-top: 0;
+      border-left: 1px solid var(--color-hairline);
+    }
+  }
+
+  /* Narrow faceograma: the face above its doses, so region names never truncate. */
+  @container (max-width: 420px) {
+    .rec-face {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .rec-face :global(.rec-face-chart) {
+      max-width: 190px;
+      margin-inline: auto;
+    }
+  }
+
+  @container (min-width: 760px) {
+    .rec-pane-body {
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: start;
+    }
+    .rec-products {
+      display: block;
+    }
+  }
+</style>
+
+<style is:global>
+  /* One pane left: it spans the record. */
+  :is(
+      [data-practice="odonto"],
+      [data-practice="hof"],
+      [data-practice-root]:not([data-practice]):has(input[name="pratica"]:is([value="odonto"], [value="hof"]):checked)
+    )
+    .rec-panes {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+  :is([data-practice="odonto"], [data-practice="hof"], [data-practice-root]:not([data-practice]):has(input[name="pratica"]:is([value="odonto"], [value="hof"]):checked))
+    .rec-pane
+    + .rec-pane {
+    border: 0;
+  }
+</style>

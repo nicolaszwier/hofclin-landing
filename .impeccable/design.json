@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-19T20:55:40.483Z",
+  "generatedAt": "2026-10-19T22:19:53.000Z",
   "title": "Design System: Hofclin",
   "extensions": {
     "colorMeta": {
@@ -62,6 +62,21 @@
           "#d6955b",
           "#fdb97f",
           "#feeadb"
+        ]
+      },
+      "sand-ink": {
+        "role": "secondary",
+        "displayName": "Inked Sand",
+        "canonical": "oklch(50.0% 0.095 60.7)",
+        "tonalRamp": [
+          "#240000",
+          "#451600",
+          "#663400",
+          "#8c5725",
+          "#a97241",
+          "#d09765",
+          "#ebc19f",
+          "#ffe7c9"
         ]
       },
       "sand-soft": {
@@ -233,7 +248,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Home hero H1 only; one per page."
+        "purpose": "Home hero H1 only; capped at 4.5rem so it holds two lines."
       },
       "display-sm": {
         "displayName": "Display Small",
@@ -245,7 +260,7 @@
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Card and plan H3s."
+        "purpose": "Plan, specialty and feature-tour H3s."
       },
       "price": {
         "displayName": "Price",
@@ -259,47 +274,47 @@
         "displayName": "Body",
         "purpose": "Default running text."
       },
+      "body-list": {
+        "displayName": "Body List",
+        "purpose": "15px list text: check-lists, feature points, FAQ answers, switch legend, record pane titles."
+      },
       "body-sm": {
         "displayName": "Body Small",
-        "purpose": "Fine print, tiles, footer, consent."
+        "purpose": "Fine print, guarantee descriptions, footer, consent."
       },
       "button": {
         "displayName": "Button",
         "purpose": "Large button labels (medium buttons set at 15px)."
       },
-      "eyebrow": {
-        "displayName": "Eyebrow",
-        "purpose": "Sentence-case Burnished Sand label above section headings."
-      },
       "label": {
         "displayName": "Label",
-        "purpose": "Pill-tag text."
+        "purpose": "Pill tags in preview headers; the record's 13px meta lines share its size at 400."
       },
       "chip": {
         "displayName": "Chip",
-        "purpose": "Status chips inside product mockups."
+        "purpose": "Status and area chips inside previews and the record."
       }
     },
     "shadows": [
       {
         "name": "card",
         "value": "0 17px 37px 0 rgb(85 12 36 / 0.035), 0 67px 67px 0 rgb(85 12 36 / 0.03), 0 150px 90px 0 rgb(85 12 36 / 0.02)",
-        "purpose": "Ambient lift for white cards on cream or white: specialty cards, the Pro plan, mobile menu, consent dialog."
+        "purpose": "Ambient lift for white sheets over the hero band or on cream: the patient record, the Pro plan, mobile menu, consent dialog."
       },
       {
         "name": "mock",
         "value": "0 1px 2px 0 rgb(85 12 36 / 0.06), 0 12px 32px -8px rgb(85 12 36 / 0.12)",
-        "purpose": "Product mockup sheets — a separate piece of paper."
+        "purpose": "Product preview sheets: a separate piece of paper."
       },
       {
         "name": "button",
         "value": "0 1px 2px 0 rgb(85 12 36 / 0.18), 0 3px 3px 0 rgb(85 12 36 / 0.12), 0 6px 4px 0 rgb(85 12 36 / 0.06), 0 11px 4px 0 rgb(85 12 36 / 0.01)",
-        "purpose": "Four-layer lift under filled buttons."
+        "purpose": "Lift under filled buttons and the practice-switch thumb."
       },
       {
         "name": "hairline",
         "value": "0 1px 2px 0 rgb(85 12 36 / 0.06)",
-        "purpose": "Whisper of separation for small elements."
+        "purpose": "Whisper of separation for small elements, such as the practice-switch track."
       }
     ],
     "gradients": [
@@ -326,9 +341,39 @@
         "purpose": "Floating WhatsApp button hover."
       },
       {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Shared curve for the record morph, the switch thumb and the tour arrow."
+      },
+      {
+        "name": "record-morph",
+        "value": "450ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "View-transition groups rec-sheet, rec-odonto, rec-hof, rec-history; snapshots object-fit: none, anchored top-left, clipped by the moving box."
+      },
+      {
+        "name": "seg-thumb",
+        "value": "360ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Practice-switch thumb slide, as a view-transition group; CSS transform transition as the fallback."
+      },
+      {
+        "name": "root-crossfade",
+        "value": "300ms",
+        "purpose": "Page crossfade around a practice change."
+      },
+      {
+        "name": "quiet-state",
+        "value": "200ms ease",
+        "purpose": "Switch segment and tour row colour changes."
+      },
+      {
+        "name": "tour-arrow",
+        "value": "opacity 200ms ease, transform 300ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Active tour row arrow slides in from translateX(-6px)."
+      },
+      {
         "name": "reduced-motion",
         "value": "0.01ms",
-        "purpose": "All animation and transition durations under prefers-reduced-motion; smooth scroll off."
+        "purpose": "All animation and transition durations under prefers-reduced-motion; smooth scroll off; the practice switch skips the view transition and applies instantly."
       }
     ],
     "breakpoints": [
@@ -343,6 +388,18 @@
       {
         "name": "lg",
         "value": "1024px"
+      },
+      {
+        "name": "odontograma-quadrants",
+        "value": "@container (max-width: 430px)"
+      },
+      {
+        "name": "pane-stack-face",
+        "value": "@container (max-width: 420px)"
+      },
+      {
+        "name": "pane-side-list",
+        "value": "@container (min-width: 760px)"
       }
     ]
   },
@@ -364,28 +421,28 @@
       "css": ".ds-btn-ghost { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 100px; font-weight: 500; font-size: 1rem; letter-spacing: -0.01em; white-space: nowrap; padding: 14px 28px; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; background: transparent; color: var(--color-ink, #1c1517); border-color: var(--color-hairline-strong, #d9cbc1); } .ds-btn-ghost:hover { border-color: var(--color-ink, #1c1517); } .ds-btn-ghost:active { transform: translateY(1px); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--color-ink, #1c1517); outline-offset: 3px; }"
     },
     {
-      "name": "Light Button",
-      "kind": "button",
-      "refersTo": "button-light",
-      "description": "White lifted pill for dark or gradient grounds.",
-      "html": "<div class=\"ds-light-ground\"><a class=\"ds-btn-light\" href=\"#\">Ver preços</a></div>",
-      "css": ".ds-light-ground { background: var(--color-ink, #1c1517); padding: 24px; border-radius: 18px; } .ds-btn-light { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 100px; font-weight: 500; font-size: 1rem; letter-spacing: -0.01em; white-space: nowrap; padding: 14px 28px; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; background: #fff; color: var(--color-ink, #1c1517); box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.18), 0 3px 3px 0 rgb(85 12 36 / 0.12), 0 6px 4px 0 rgb(85 12 36 / 0.06), 0 11px 4px 0 rgb(85 12 36 / 0.01); } .ds-btn-light:hover { background: var(--color-cream, #fbf6f2); } .ds-btn-light:active { transform: translateY(1px); } .ds-btn-light:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }"
+      "name": "Practice Switch",
+      "kind": "custom",
+      "refersTo": "practice-switch",
+      "description": "Signature: 'O que a sua clínica faz?' as three equal radio segments; an ink thumb slides under the checked one.",
+      "html": "<fieldset class=\"ds-switch\"><legend>O que a sua clínica faz?</legend><div class=\"ds-seg\"><label class=\"ds-seg-opt\"><input type=\"radio\" name=\"ds-pratica\" value=\"odonto\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7.5 3.5c-2.4 0-4 1.9-4 4.6 0 2.2.9 3.5 1.4 5.3.5 1.8.6 3.8 1.2 5.5.4 1.1 1.6 1.4 2.2.3.7-1.3.8-3.8 1.6-4.9.6-.8 1.6-.8 2.2 0 .8 1.1.9 3.6 1.6 4.9.6 1.1 1.8.8 2.2-.3.6-1.7.7-3.7 1.2-5.5.5-1.8 1.4-3.1 1.4-5.3 0-2.7-1.6-4.6-4-4.6-1.7 0-2.6 1-4.5 1s-2.8-1-4.5-1Z\"/></svg><span>Odontologia</span></label><label class=\"ds-seg-opt\"><input type=\"radio\" name=\"ds-pratica\" value=\"hof\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3c-3.9 0-6.5 3-6.5 7.2 0 4.9 3 9.3 6.5 10.3 3.5-1 6.5-5.4 6.5-10.3C18.5 6 15.9 3 12 3Z\"/><path d=\"M9.5 10.5h.01M14.5 10.5h.01M10 15.5c1.2.8 2.8.8 4 0\"/></svg><span>Harmonização</span></label><label class=\"ds-seg-opt\"><input type=\"radio\" name=\"ds-pratica\" value=\"both\" checked><span>As duas</span></label><span class=\"ds-seg-thumb\" aria-hidden=\"true\"></span></div></fieldset>",
+      "css": ".ds-switch { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); border: 0; padding: 0; margin: 0; min-width: 0; max-width: 34rem; width: 100%; letter-spacing: -0.01em; } .ds-switch legend { margin: 0 auto 12px; font-size: 15px; font-weight: 500; color: rgb(28 21 23 / 0.8); } .ds-seg { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 5px; border: 1px solid var(--color-hairline-strong, #d9cbc1); border-radius: 100px; background: #fff; box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.06); } .ds-seg-opt { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 12px; border-radius: 100px; font-size: 15px; font-weight: 500; color: var(--color-charcoal, #62585a); cursor: pointer; white-space: nowrap; transition: color 200ms ease; } .ds-seg-opt:hover { color: var(--color-ink, #1c1517); } .ds-seg-opt:has(:checked) { color: #fff; } .ds-seg-opt:has(:focus-visible) { outline: 2px solid var(--color-ink, #1c1517); outline-offset: 3px; } .ds-seg-opt input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; } .ds-seg-opt svg { color: var(--color-sand-deep, #a86a2f); transition: color 200ms ease; } .ds-seg-opt:has(:checked) svg { color: var(--color-sand, #ecba7c); } .ds-seg-thumb { position: absolute; top: 5px; bottom: 5px; left: 5px; width: calc((100% - 10px) / 3); border-radius: 100px; background: var(--color-ink, #1c1517); box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.18), 0 3px 3px 0 rgb(85 12 36 / 0.12), 0 6px 4px 0 rgb(85 12 36 / 0.06), 0 11px 4px 0 rgb(85 12 36 / 0.01); transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-seg:has(input[value=\"hof\"]:checked) .ds-seg-thumb { transform: translateX(100%); } .ds-seg:has(input[value=\"both\"]:checked) .ds-seg-thumb { transform: translateX(200%); } @media (prefers-reduced-motion: reduce) { .ds-seg-thumb, .ds-seg-opt, .ds-seg-opt svg { transition-duration: 0.01ms; } }"
     },
     {
       "name": "Pill Tag and Status Chips",
       "kind": "chip",
       "refersTo": "pill-tag",
-      "description": "Pill tag labels cards and mockups; status chips show state through sand depth only.",
-      "html": "<div class=\"ds-chip-row\"><span class=\"ds-pill-tag\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"5\" y=\"4.5\" width=\"14\" height=\"16.5\" rx=\"2.5\"/><path d=\"M9 4.5V3.8c0-.7.5-1.3 1.2-1.3h3.6c.7 0 1.2.6 1.2 1.3v.7\"/><path d=\"M8.5 10h7M8.5 13.5h7M8.5 17h4\"/></svg> Prontuário digital</span><span class=\"ds-chip ds-chip-done\">Concluído</span><span class=\"ds-chip ds-chip-planned\">Planejado</span><span class=\"ds-chip ds-chip-progress\">Em andamento</span><span class=\"ds-chip ds-chip-highlight\">Mais completo</span></div>",
-      "css": ".ds-chip-row { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: flex; flex-wrap: wrap; align-items: center; gap: 10px; } .ds-pill-tag { display: inline-flex; align-items: center; gap: 6px; border-radius: 100px; border: 1px solid var(--color-hairline-strong, #d9cbc1); background: #fff; padding: 4px 12px; font-size: 0.8125rem; font-weight: 500; color: var(--color-ink, #1c1517); } .ds-pill-tag svg { color: var(--color-sand-deep, #a86a2f); } .ds-chip { display: inline-flex; align-items: center; border-radius: 100px; padding: 2px 8px; font-size: 0.6875rem; font-weight: 500; line-height: 1.5; border: 1px solid transparent; } .ds-chip-done { background: var(--color-sand-deep, #a86a2f); color: #fff; } .ds-chip-planned { background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-deep, #a86a2f); } .ds-chip-progress { border-color: var(--color-sand-deep, #a86a2f); color: var(--color-sand-deep, #a86a2f); } .ds-chip-highlight { background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-deep, #a86a2f); padding: 4px 12px; font-size: 0.75rem; }"
+      "description": "Pill tag labels preview headers only; status and area chips show state through sand depth, cloud or an outline.",
+      "html": "<div class=\"ds-chip-row\"><span class=\"ds-pill-tag\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"5\" y=\"4.5\" width=\"14\" height=\"16.5\" rx=\"2.5\"/><path d=\"M9 4.5V3.8c0-.7.5-1.3 1.2-1.3h3.6c.7 0 1.2.6 1.2 1.3v.7\"/><path d=\"M8.5 10h7M8.5 13.5h7M8.5 17h4\"/></svg> Tratamento de canal · 16</span><span class=\"ds-chip ds-chip-done\">Concluído</span><span class=\"ds-chip ds-chip-planned\">Planejado</span><span class=\"ds-chip ds-chip-progress\">Em andamento</span><span class=\"ds-chip ds-chip-highlight\">Mais completo</span><span class=\"ds-chip ds-chip-odonto\">Odontologia</span><span class=\"ds-chip ds-chip-hof\">Harmonização</span><span class=\"ds-chip ds-chip-shared\">Prontuário</span></div>",
+      "css": ".ds-chip-row { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: flex; flex-wrap: wrap; align-items: center; gap: 10px; } .ds-pill-tag { display: inline-flex; align-items: center; gap: 6px; border-radius: 100px; border: 1px solid var(--color-hairline-strong, #d9cbc1); background: #fff; padding: 4px 12px; font-size: 0.8125rem; font-weight: 500; color: var(--color-ink, #1c1517); } .ds-pill-tag svg { color: var(--color-sand-deep, #a86a2f); } .ds-chip { display: inline-flex; align-items: center; border-radius: 100px; padding: 2px 8px; font-size: 0.6875rem; font-weight: 500; line-height: 1.5; border: 1px solid transparent; } .ds-chip-done { background: var(--color-sand-ink, #8a5523); color: #fff; } .ds-chip-planned { background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-ink, #8a5523); } .ds-chip-progress { border-color: var(--color-sand-deep, #a86a2f); color: var(--color-sand-ink, #8a5523); } .ds-chip-highlight { background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-ink, #8a5523); padding: 4px 12px; font-size: 0.75rem; } .ds-chip-odonto { background: var(--color-cloud, #f5ede6); color: var(--color-charcoal, #62585a); } .ds-chip-hof { background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-ink, #8a5523); } .ds-chip-shared { border-color: var(--color-hairline-strong, #d9cbc1); color: var(--color-charcoal, #62585a); }"
     },
     {
-      "name": "Specialty Card",
+      "name": "Patient Record",
       "kind": "card",
-      "refersTo": "surface-card",
-      "description": "White 32px card on cream with sand icon tile, check-list and arrow link.",
-      "html": "<article class=\"ds-card\"><span class=\"ds-icon-tile\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7.5 3.5c-2.4 0-4 1.9-4 4.6 0 2.2.9 3.5 1.4 5.3.5 1.8.6 3.8 1.2 5.5.4 1.1 1.6 1.4 2.2.3.7-1.3.8-3.8 1.6-4.9.6-.8 1.6-.8 2.2 0 .8 1.1.9 3.6 1.6 4.9.6 1.1 1.8.8 2.2-.3.6-1.7.7-3.7 1.2-5.5.5-1.8 1.4-3.1 1.4-5.3 0-2.7-1.6-4.6-4-4.6-1.7 0-2.6 1-4.5 1s-2.8-1-4.5-1Z\"/></svg></span><h3 class=\"ds-card-title\">Odontologia</h3><p class=\"ds-card-text\">Odontograma por dente e face, com o que o paciente já tinha separado do que a clínica planejou.</p><ul class=\"ds-checks\"><li><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m5 12.5 4.2 4.2L19 7\"/></svg> Condições e tratamentos no mesmo mapa</li><li><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m5 12.5 4.2 4.2L19 7\"/></svg> Tratamentos em várias sessões</li></ul><a class=\"ds-link-arrow\" href=\"#\">Conheça o prontuário odontológico <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></article>",
-      "css": ".ds-card { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: flex; flex-direction: column; gap: 16px; max-width: 420px; background: #fff; border: 1px solid var(--color-hairline, #ece1d9); border-radius: 32px; padding: 40px; box-shadow: 0 17px 37px 0 rgb(85 12 36 / 0.035), 0 67px 67px 0 rgb(85 12 36 / 0.03), 0 150px 90px 0 rgb(85 12 36 / 0.02); color: var(--color-ink, #1c1517); letter-spacing: -0.01em; } .ds-icon-tile { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-deep, #a86a2f); } .ds-card-title { margin: 0; font-size: 1.75rem; line-height: 1.2; font-weight: 600; letter-spacing: -0.035em; } .ds-card-text { margin: 0; color: var(--color-charcoal, #62585a); line-height: 1.5; } .ds-checks { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 15px; } .ds-checks li { display: flex; gap: 12px; } .ds-checks svg { flex-shrink: 0; margin-top: 2px; color: var(--color-sand-deep, #a86a2f); } .ds-link-arrow { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; font-weight: 500; color: var(--color-ink, #1c1517); text-decoration: underline; text-decoration-color: var(--color-hairline-strong, #d9cbc1); text-underline-offset: 4px; transition: text-decoration-color 160ms ease; } .ds-link-arrow:hover { text-decoration-color: var(--color-ink, #1c1517); } .ds-link-arrow:focus-visible { outline: 2px solid var(--color-ink, #1c1517); outline-offset: 3px; }"
+      "refersTo": "patient-record",
+      "description": "Signature: one fictional patient's prontuário; patient bar, area-coded chips, a ruled history.",
+      "html": "<figure class=\"ds-rec\"><figcaption class=\"ds-rec-bar\"><span class=\"ds-rec-avatar\" aria-hidden=\"true\">MA</span><span class=\"ds-rec-who\"><b>Marina Alves</b><small><span>34 anos ·</span> <span>paciente desde mar. 2024 ·</span> <span>dados fictícios</span></small></span><span class=\"ds-rec-tags\"><span class=\"ds-rec-chip ds-rec-odonto\">Odontologia</span><span class=\"ds-rec-chip ds-rec-hof\">Harmonização orofacial</span></span></figcaption><div class=\"ds-rec-history\"><p>Histórico de atendimentos</p><ol><li><span class=\"ds-rec-date\">16/10</span><span class=\"ds-rec-what\"><b><span>Restauração em resina ·</span> <span>26</span></b><small><span>Face O ·</span> <span>concluída nesta sessão</span></small></span><span class=\"ds-rec-chip ds-rec-odonto\">Odontologia</span></li><li><span class=\"ds-rec-date\">02/10</span><span class=\"ds-rec-what\"><b><span>Toxina botulínica ·</span> <span>terço superior</span></b><small><span>Lote TB-48213 ·</span> <span>val. 08/2027</span></small></span><span class=\"ds-rec-chip ds-rec-hof\">Harmonização</span></li><li><span class=\"ds-rec-date\">18/09</span><span class=\"ds-rec-what\"><b>Anamnese atualizada</b><small><span>Versão 3 ·</span> <span>assinada no tablet</span></small></span><span class=\"ds-rec-chip ds-rec-shared\">Prontuário</span></li></ol></div></figure>",
+      "css": ".ds-rec { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); margin: 0; max-width: 640px; overflow: hidden; background: #fff; border: 1px solid var(--color-hairline, #ece1d9); border-radius: 32px; box-shadow: 0 17px 37px 0 rgb(85 12 36 / 0.035), 0 67px 67px 0 rgb(85 12 36 / 0.03), 0 150px 90px 0 rgb(85 12 36 / 0.02); color: var(--color-ink, #1c1517); letter-spacing: -0.01em; } .ds-rec-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 20px 32px; border-bottom: 1px solid var(--color-hairline, #ece1d9); } .ds-rec-avatar { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex-shrink: 0; border-radius: 100px; background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-ink, #8a5523); font-size: 0.875rem; font-weight: 600; } .ds-rec-who { display: flex; flex-direction: column; min-width: 0; } .ds-rec-who b { font-size: 1.125rem; font-weight: 600; letter-spacing: -0.02em; } .ds-rec-who small, .ds-rec-what small { font-size: 13px; color: var(--color-charcoal, #62585a); } .ds-rec-who small span, .ds-rec-what span span { white-space: nowrap; } .ds-rec-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto; } .ds-rec-chip { display: inline-flex; align-items: center; border-radius: 100px; padding: 2px 8px; font-size: 0.6875rem; font-weight: 500; line-height: 1.5; white-space: nowrap; border: 1px solid transparent; } .ds-rec-tags .ds-rec-chip { padding: 4px 12px; font-size: 0.75rem; } .ds-rec-odonto { background: var(--color-cloud, #f5ede6); color: var(--color-charcoal, #62585a); } .ds-rec-hof { background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-ink, #8a5523); } .ds-rec-shared { border-color: var(--color-hairline-strong, #d9cbc1); color: var(--color-charcoal, #62585a); } .ds-rec-history { padding: 24px 32px; } .ds-rec-history p { margin: 0; font-size: 15px; font-weight: 600; } .ds-rec-history ol { list-style: none; margin: 8px 0 0; padding: 0; } .ds-rec-history li { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr) auto; align-items: center; gap: 4px 16px; padding: 12px 0; border-bottom: 1px solid var(--color-hairline, #ece1d9); } .ds-rec-history li:last-child { border-bottom: 0; } .ds-rec-date { font-size: 13px; color: var(--color-charcoal, #62585a); font-variant-numeric: tabular-nums; } .ds-rec-what { display: flex; flex-direction: column; min-width: 0; } .ds-rec-what b { font-size: 0.875rem; font-weight: 500; }"
     },
     {
       "name": "Plan Card (Pro)",
@@ -393,15 +450,23 @@
       "refersTo": "plan-card-highlighted",
       "description": "Highlighted plan: white, ink outline, tabular price, crimson CTA pinned to the bottom.",
       "html": "<article class=\"ds-plan\"><div class=\"ds-plan-head\"><h3>Pro</h3><span class=\"ds-plan-badge\">Mais completo</span></div><p class=\"ds-plan-tag\">Tudo do Standard, mais o financeiro completo da clínica.</p><p class=\"ds-plan-price\"><span class=\"ds-cur\">R$</span><span class=\"ds-amt\">149,99</span><span class=\"ds-per\">/mês</span></p><p class=\"ds-plan-tag\">Renovação mensal automática</p><a class=\"ds-plan-cta\" href=\"#\">Testar o Pro grátis</a></article>",
-      "css": ".ds-plan { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: flex; flex-direction: column; max-width: 400px; background: #fff; border: 1px solid var(--color-ink, #1c1517); border-radius: 32px; padding: 40px; box-shadow: 0 17px 37px 0 rgb(85 12 36 / 0.035), 0 67px 67px 0 rgb(85 12 36 / 0.03), 0 150px 90px 0 rgb(85 12 36 / 0.02); color: var(--color-ink, #1c1517); letter-spacing: -0.01em; } .ds-plan-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; } .ds-plan-head h3 { margin: 0; font-size: 1.75rem; font-weight: 600; letter-spacing: -0.035em; } .ds-plan-badge { border-radius: 100px; padding: 4px 12px; font-size: 0.75rem; font-weight: 500; background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-deep, #a86a2f); } .ds-plan-tag { margin: 8px 0 0; font-size: 0.875rem; color: var(--color-charcoal, #62585a); } .ds-plan-price { margin: 32px 0 0; display: flex; align-items: baseline; gap: 6px; } .ds-cur { font-size: 1.125rem; font-weight: 500; } .ds-amt { font-size: 3rem; line-height: 1; font-weight: 600; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; } .ds-per { color: var(--color-charcoal, #62585a); } .ds-plan-cta { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 100px; font-weight: 500; font-size: 1rem; letter-spacing: -0.01em; white-space: nowrap; padding: 14px 28px; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; margin-top: 40px; background: var(--color-crimson, #ae2351); color: #fff; box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.18), 0 3px 3px 0 rgb(85 12 36 / 0.12), 0 6px 4px 0 rgb(85 12 36 / 0.06), 0 11px 4px 0 rgb(85 12 36 / 0.01); } .ds-plan-cta:hover { background: var(--color-crimson-hover, #941c44); } .ds-plan-cta:active { transform: translateY(1px); } .ds-plan-cta:focus-visible { outline: 2px solid var(--color-ink, #1c1517); outline-offset: 3px; }"
+      "css": ".ds-plan { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: flex; flex-direction: column; max-width: 400px; background: #fff; border: 1px solid var(--color-ink, #1c1517); border-radius: 32px; padding: 40px; box-shadow: 0 17px 37px 0 rgb(85 12 36 / 0.035), 0 67px 67px 0 rgb(85 12 36 / 0.03), 0 150px 90px 0 rgb(85 12 36 / 0.02); color: var(--color-ink, #1c1517); letter-spacing: -0.01em; } .ds-plan-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; } .ds-plan-head h3 { margin: 0; font-size: 1.75rem; font-weight: 600; letter-spacing: -0.035em; } .ds-plan-badge { border-radius: 100px; padding: 4px 12px; font-size: 0.75rem; font-weight: 500; background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-ink, #8a5523); } .ds-plan-tag { margin: 8px 0 0; font-size: 0.875rem; color: var(--color-charcoal, #62585a); } .ds-plan-price { margin: 32px 0 0; display: flex; align-items: baseline; gap: 6px; } .ds-cur { font-size: 1.125rem; font-weight: 500; } .ds-amt { font-size: 3rem; line-height: 1; font-weight: 600; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; } .ds-per { color: var(--color-charcoal, #62585a); } .ds-plan-cta { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 100px; font-weight: 500; font-size: 1rem; letter-spacing: -0.01em; white-space: nowrap; padding: 14px 28px; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; margin-top: 40px; background: var(--color-crimson, #ae2351); color: #fff; box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.18), 0 3px 3px 0 rgb(85 12 36 / 0.12), 0 6px 4px 0 rgb(85 12 36 / 0.06), 0 11px 4px 0 rgb(85 12 36 / 0.01); } .ds-plan-cta:hover { background: var(--color-crimson-hover, #941c44); } .ds-plan-cta:active { transform: translateY(1px); } .ds-plan-cta:focus-visible { outline: 2px solid var(--color-ink, #1c1517); outline-offset: 3px; }"
     },
     {
-      "name": "Product Mockup",
+      "name": "Preview Well",
       "kind": "custom",
-      "refersTo": "mock-card",
-      "description": "Signature component: a fictional-data screen rebuilt in HTML, tilted and lifted like a sheet of paper.",
-      "html": "<div class=\"ds-mock-well\"><div class=\"ds-mock\"><div class=\"ds-mock-head\"><span class=\"ds-mock-tag\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"5\" y=\"4.5\" width=\"14\" height=\"16.5\" rx=\"2.5\"/><path d=\"M9 4.5V3.8c0-.7.5-1.3 1.2-1.3h3.6c.7 0 1.2.6 1.2 1.3v.7\"/><path d=\"M8.5 10h7M8.5 13.5h7M8.5 17h4\"/></svg> Plano de tratamento</span><span class=\"ds-mock-meta\">João Pereira</span></div><ul class=\"ds-mock-rows\"><li><span><b>Tratamento de canal</b><small>2 sessões · próxima 23/10</small></span><em class=\"ds-m-progress\">Em andamento</em></li><li><span><b>Restauração em resina · D, M</b><small>Sem horário marcado</small></span><em class=\"ds-m-planned\">Planejado</em></li><li><span><b>Profilaxia</b><small>Boca inteira</small></span><em class=\"ds-m-done\">Concluído</em></li></ul></div></div>",
-      "css": ".ds-mock-well { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); background: var(--color-cream, #fbf6f2); border-radius: 32px; padding: 40px 32px 0; overflow: hidden; max-width: 460px; } .ds-mock { background: #fff; border: 1px solid var(--color-hairline, #ece1d9); border-radius: 18px; box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.06), 0 12px 32px -8px rgb(85 12 36 / 0.12); transform: rotate(-2deg) translateY(12px); color: var(--color-ink, #1c1517); letter-spacing: -0.01em; } .ds-mock-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--color-hairline, #ece1d9); } .ds-mock-tag { display: inline-flex; align-items: center; gap: 6px; border-radius: 100px; border: 1px solid var(--color-hairline-strong, #d9cbc1); padding: 4px 12px; font-size: 0.8125rem; font-weight: 500; } .ds-mock-tag svg { color: var(--color-sand-deep, #a86a2f); } .ds-mock-meta { font-size: 0.75rem; color: var(--color-charcoal, #62585a); } .ds-mock-rows { list-style: none; margin: 0; padding: 4px 16px 20px; } .ds-mock-rows li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--color-hairline, #ece1d9); } .ds-mock-rows li:last-child { border-bottom: 0; } .ds-mock-rows b { display: block; font-size: 0.8125rem; font-weight: 500; } .ds-mock-rows small { font-size: 0.6875rem; color: var(--color-charcoal, #62585a); } .ds-mock-rows em { font-style: normal; border-radius: 100px; padding: 2px 8px; font-size: 0.6875rem; font-weight: 500; white-space: nowrap; border: 1px solid transparent; } .ds-m-done { background: var(--color-sand-deep, #a86a2f); color: #fff; } .ds-m-planned { background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-deep, #a86a2f); } .ds-m-progress { border-color: var(--color-sand-deep, #a86a2f) !important; color: var(--color-sand-deep, #a86a2f); }"
+      "refersTo": "preview-well",
+      "description": "A fictional-data preview sheet in a cream well, cropped by the well's bottom edge.",
+      "html": "<div class=\"ds-mock-well\"><div class=\"ds-mock\"><div class=\"ds-mock-head\"><span class=\"ds-mock-tag\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"5\" y=\"4.5\" width=\"14\" height=\"16.5\" rx=\"2.5\"/><path d=\"M9 4.5V3.8c0-.7.5-1.3 1.2-1.3h3.6c.7 0 1.2.6 1.2 1.3v.7\"/><path d=\"M8.5 10h7M8.5 13.5h7M8.5 17h4\"/></svg> Plano de tratamento</span><span class=\"ds-mock-meta\">Marina Alves · dados fictícios</span></div><ul class=\"ds-mock-rows\"><li><span><b>Tratamento de canal</b><small>2 sessões · próxima 23/10</small></span><em class=\"ds-m-progress\">Em andamento</em></li><li><span><b>Restauração em resina · D, M</b><small>Sem horário marcado</small></span><em class=\"ds-m-planned\">Planejado</em></li><li><span><b>Profilaxia</b><small>Boca inteira</small></span><em class=\"ds-m-done\">Concluído</em></li></ul></div></div>",
+      "css": ".ds-mock-well { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); background: var(--color-cream, #fbf6f2); border-radius: 32px; padding: 48px 40px 0; overflow: hidden; max-width: 480px; } .ds-mock { background: #fff; border: 1px solid var(--color-hairline, #ece1d9); border-radius: 18px; box-shadow: 0 1px 2px 0 rgb(85 12 36 / 0.06), 0 12px 32px -8px rgb(85 12 36 / 0.12); transform: translateY(20px); color: var(--color-ink, #1c1517); letter-spacing: -0.01em; } .ds-mock-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--color-hairline, #ece1d9); } .ds-mock-tag { display: inline-flex; align-items: center; gap: 6px; border-radius: 100px; border: 1px solid var(--color-hairline-strong, #d9cbc1); padding: 4px 12px; font-size: 0.8125rem; font-weight: 500; } .ds-mock-tag svg { color: var(--color-sand-deep, #a86a2f); } .ds-mock-meta { font-size: 0.75rem; color: var(--color-charcoal, #62585a); } .ds-mock-rows { list-style: none; margin: 0; padding: 4px 16px 40px; } .ds-mock-rows li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--color-hairline, #ece1d9); } .ds-mock-rows li:last-child { border-bottom: 0; } .ds-mock-rows b { display: block; font-size: 0.8125rem; font-weight: 500; } .ds-mock-rows small { font-size: 0.6875rem; color: var(--color-charcoal, #62585a); } .ds-mock-rows em { font-style: normal; border-radius: 100px; padding: 2px 8px; font-size: 0.6875rem; font-weight: 500; white-space: nowrap; border: 1px solid transparent; } .ds-m-done { background: var(--color-sand-ink, #8a5523); color: #fff; } .ds-m-planned { background: var(--color-sand-soft, #fbefe1); color: var(--color-sand-ink, #8a5523); } .ds-m-progress { border-color: var(--color-sand-deep, #a86a2f) !important; color: var(--color-sand-ink, #8a5523); }"
+    },
+    {
+      "name": "Feature Tour Index",
+      "kind": "nav",
+      "refersTo": "preview-well",
+      "description": "Signature: sticky ruled index; the row in view turns ink with a sand icon and a sliding arrow.",
+      "html": "<ol class=\"ds-tour\"><li><a href=\"#\" class=\"ds-tour-link\"><svg class=\"ds-tour-icon\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3.5\" y=\"5\" width=\"17\" height=\"15.5\" rx=\"2.5\"/><path d=\"M3.5 10h17M8 3v4M16 3v4\"/></svg><span>Anamnese e assinatura</span><svg class=\"ds-tour-arrow\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></li><li><a href=\"#\" class=\"ds-tour-link is-active\"><svg class=\"ds-tour-icon\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3.5\" y=\"5\" width=\"17\" height=\"15.5\" rx=\"2.5\"/><path d=\"M3.5 10h17M8 3v4M16 3v4\"/></svg><span>Agenda</span><svg class=\"ds-tour-arrow\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></li><li><a href=\"#\" class=\"ds-tour-link\"><svg class=\"ds-tour-icon\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3.5\" y=\"5\" width=\"17\" height=\"15.5\" rx=\"2.5\"/><path d=\"M3.5 10h17M8 3v4M16 3v4\"/></svg><span>Orçamentos</span><svg class=\"ds-tour-arrow\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a></li></ol>",
+      "css": ".ds-tour { font-family: var(--font-sans, Poppins, ui-sans-serif, system-ui, sans-serif); list-style: none; margin: 0; padding: 0; max-width: 420px; border-top: 1px solid var(--color-hairline, #ece1d9); letter-spacing: -0.01em; } .ds-tour-link { display: flex; align-items: center; gap: 14px; padding: 16px 4px; border-bottom: 1px solid var(--color-hairline, #ece1d9); font-size: 1.125rem; font-weight: 500; color: var(--color-charcoal, #62585a); text-decoration: none; transition: color 200ms ease; } .ds-tour-link:hover, .ds-tour-link.is-active { color: var(--color-ink, #1c1517); } .ds-tour-link:focus-visible { outline: 2px solid var(--color-ink, #1c1517); outline-offset: 3px; } .ds-tour-icon { color: var(--color-slate, #8f8486); transition: color 200ms ease; } .ds-tour-link.is-active .ds-tour-icon { color: var(--color-sand-deep, #a86a2f); } .ds-tour-arrow { margin-left: auto; opacity: 0; transform: translateX(-6px); transition: opacity 200ms ease, transform 300ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-tour-link.is-active .ds-tour-arrow, .ds-tour-link:hover .ds-tour-arrow { opacity: 1; transform: none; }"
     },
     {
       "name": "Navigation",
@@ -422,14 +487,14 @@
   ],
   "narrative": {
     "northStar": "The Warm Clinical Record",
-    "overview": "Hofclin looks like a patient chart laid on warm paper. Everything is specific and exact: the faces of a tooth, the points and doses on a face, a lot number and an expiry date. Nothing feels sterile. Every neutral leans toward a warm red-brown, the surfaces alternate between white paper and cream, and every shadow is tinted toward crimson rather than grey. The product itself carries the persuasion. Each section shows the real record as an HTML mockup with fictional data, tilted slightly and cropped by its container, as if a page were sliding out of a folder.\n\nThe mood is **warm, precise, and candid**. Warmth comes from the material: cream, sand, and a warm ink. Precision comes from tight display tracking, 1px hairlines, tabular prices, and single-weight line icons. Candor comes from what the system refuses to hide: the fine print under the price is set in legible charcoal at the same width as the plans, and the consent banner gives Reject and Accept the same weight.\n\nComponents feel **warm and tactile**. Buttons are fully rounded pills that lift on a soft crimson-tinted shadow and press down 1px when clicked. Cards are generously rounded and padded and sit on cream. Product mockups are white sheets with a hairline edge. Each page has one atmospheric moment, a framed sand-light band at the top, and a deep ink band closes the page at the bottom.\n\nThe system explicitly rejects **spa or beauty-salon gloss** (rose gold, glossy stock photos of faces, soft-focus aesthetics imagery) and **generic startup gradients** (purple-blue washes, glassmorphism, floating 3D blobs).",
+    "overview": "Hofclin looks like a patient chart laid on warm paper. Everything is specific and exact: the faces of a tooth, the points and doses on a face, a lot number and an expiry date. Nothing feels sterile. Every neutral leans toward a warm red-brown, the surfaces alternate between white paper and cream, and every shadow is tinted toward crimson rather than grey. The product itself carries the persuasion. The pages show the real record as HTML previews built around one fictional patient, each cropped by the bottom edge of its cream well, as if a page were sliding out of a folder.\n\nThe mood is **warm, precise, and candid**. Warmth comes from the material: cream, sand, and a warm ink. Precision comes from tight display tracking, 1px hairlines, ruled lists, tabular prices, and single-weight line icons. Candor comes from what the system refuses to hide: the fine print under the price is set in legible charcoal at the same width as the plans, every preview says its data is fictional, and the consent banner gives Reject and Accept the same weight.\n\nComponents feel **warm and tactile**. Buttons are fully rounded pills that lift on a soft crimson-tinted shadow and press down 1px when clicked. Content sits on generous 32px corners or between hairline rules rather than inside boxes. Product previews are white sheets with a hairline edge. Each page has one atmospheric moment, a framed sand-light band at the top with the patient record rising out of its lower edge, and a deep ink band closes the page at the bottom.\n\nThe system explicitly rejects **spa or beauty-salon gloss** (rose gold, glossy stock photos of faces, soft-focus aesthetics imagery) and **generic startup gradients** (purple-blue washes, glassmorphism, floating 3D blobs).",
     "keyCharacteristics": [
       "Warm monochrome canvas: paper, cream, and cloud, with warm ink and charcoal text.",
       "One action color: Hofclin Crimson appears only on the primary CTA and in the logo.",
-      "Burnished Sand marks everything that is information rather than action: icons, checkmarks, eyebrows, and the marks inside mockups.",
-      "Poppins at 400, 500, and 600, with display tracking pulled to -0.04em.",
-      "Pills for everything you can press or tag, and 18–32px corners for everything that holds content.",
-      "Product mockups with fictional data serve as the imagery. There are no photographs."
+      "Burnished Sand marks everything that is information rather than action: icons, checkmarks, and the marks inside previews. Small sand-colored text steps down to Inked Sand.",
+      "Poppins at 400, 500, and 600, with display tracking pulled to -0.04em. Headings stand alone, with no label above them.",
+      "Pills for everything you can press or tag, 32px corners for everything that holds content, and hairline rules where a box would be too much.",
+      "Product previews with one fictional patient serve as the imagery. There are no photographs."
     ],
     "rules": [
       {
@@ -439,7 +504,12 @@
       },
       {
         "name": "The Sand Marks Rule",
-        "body": "Information is marked in Burnished Sand and actions in Crimson. Icons, checkmarks, eyebrows, and mockup marks use `sand-deep`. Sand is never body text.",
+        "body": "Information is marked in Burnished Sand and actions in Crimson. Icons, checkmarks, and preview marks use `sand-deep`. When sand has to be read as text, it uses `sand-ink`; sand is never body text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Area Code Rule",
+        "body": "Wherever the two specialties appear side by side, odontologia is neutral (Cloud fill, Strong Hairline bar) and harmonização is sand (Sand Wash fill with Inked Sand text, Warm Sand bar). Something that belongs to both is outlined in Strong Hairline.",
         "section": "colors"
       },
       {
@@ -458,32 +528,44 @@
         "section": "typography"
       },
       {
+        "name": "The Heading Speaks First Rule",
+        "body": "Nothing sits above an H1 or H2: no eyebrow, kicker, pill tag, or small label. The heading carries the section, and a subtitle may follow it. The only thing allowed above a page H1 is the breadcrumb, because it is navigation.",
+        "section": "typography"
+      },
+      {
         "name": "The Tinted Shadow Rule",
         "body": "Every shadow uses `rgb(85 12 36 / ≤0.18)`. A grey or black shadow breaks the warmth of the page.",
         "section": "elevation"
       },
       {
         "name": "The Tonal-First Rule",
-        "body": "Separate with cream and hairlines before reaching for a shadow. A cream card on a paper section needs no shadow, while a white card on a cream section gets the Card shadow.",
+        "body": "Separate with cream and hairlines before reaching for a shadow. A cream well on a paper section needs no shadow, while a white sheet on a cream section or over the hero band gets the Card shadow.",
         "section": "elevation"
       }
     ],
     "dos": [
       "**Do** reserve Hofclin Crimson (#ae2351) for the primary Trial CTA fill, with #941c44 on hover.",
-      "**Do** color icons, checkmarks, eyebrows, and mockup marks with Burnished Sand (#a86a2f).",
+      "**Do** color icons, checkmarks, and preview marks with Burnished Sand (#a86a2f), and set any sand-colored text in Inked Sand (#8a5523).",
       "**Do** tint every shadow with `rgb(85 12 36)` and keep its opacity at or below 0.18.",
       "**Do** alternate paper and cream sections, and separate them with 1px hairlines (#ece1d9).",
-      "**Do** use full pills (100px) for every button, tag, and chip, and 18px or 32px corners for content containers.",
+      "**Do** use full pills (100px) for every button, switch, tag, and chip, and 18px or 32px corners for content containers.",
       "**Do** pull display and headline tracking to -0.04em, and balance heading lines.",
+      "**Do** left-align section headings, and keep centered composition for the hero band alone.",
       "**Do** set prices in Poppins 600 with tabular numerals.",
-      "**Do** show the product as an HTML mockup with fictional data, tilted ±2–3° and cropped by its container's edge.",
+      "**Do** show the product as an HTML preview built from the one fictional patient, cropped by the bottom edge of its well.",
+      "**Do** separate lists, definitions, and guarantees with hairline rules, with icons inline beside their term.",
+      "**Do** code the two specialties the same way everywhere: odontologia neutral, harmonização sand.",
       "**Do** keep the sand-light gradient on the framed hero band only, with one per page.",
+      "**Do** run state changes through view transitions on `cubic-bezier(0.16, 1, 0.3, 1)`, and apply them instantly under reduced motion.",
       "**Do** give consent choices equal visual weight: both Ghost, same size, side by side."
     ],
     "donts": [
       "**Don't** use crimson for text, links, icons, borders, backgrounds, or decoration.",
       "**Don't** use pure black, cool greys, or Tailwind's default grey scales; Warm Ink (#1c1517) and Warm Charcoal (#62585a) cover every text need.",
-      "**Don't** introduce green, amber, or red status colors in mockups; show state with sand depth, cloud, or an outline.",
+      "**Don't** set text in Burnished Sand; it is under 4.5:1 on every ground in the palette.",
+      "**Don't** put an eyebrow, kicker, pill tag, or small label above an H1 or H2.",
+      "**Don't** lay out a section as a grid of icon tiles or equal icon cards; icons sit inline beside their heading or term.",
+      "**Don't** introduce green, amber, or red status colors in previews; show state with sand depth, cloud, or an outline.",
       "**Don't** reach for spa or beauty-salon gloss: rose gold, glossy stock photos of faces, soft-focus aesthetics imagery.",
       "**Don't** use generic startup gradients: purple-blue washes, glassmorphism, floating 3D blobs.",
       "**Don't** load a Poppins weight above 600, or add a second typeface.",

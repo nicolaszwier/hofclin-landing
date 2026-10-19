@@ -1,0 +1,177 @@
+---
+import CtaButton from "../CtaButton.astro";
+import Icon from "../Icon.astro";
+import PatientRecord from "../record/PatientRecord.astro";
+
+/**
+ * Home hero. The visitor says what the clinic does and the record below recomposes:
+ * both maps for "As duas", one map otherwise. Radios carry the state, so it works without JS;
+ * the script only adds the view transition.
+ */
+const options = [
+  { value: "odonto", label: "Odontologia", short: "Odonto", icon: "tooth" },
+  { value: "hof", label: "Harmonização", short: "HOF", icon: "face" },
+  { value: "both", label: "As duas", short: "As duas", icon: null },
+] as const;
+---
+
+<section class="px-3 pt-2 md:px-4" aria-labelledby="hero-titulo" data-practice-root>
+  <div class="hero-band rounded-[28px] pb-[168px] md:rounded-[40px] md:pb-[248px]">
+    <div class="container-page flex flex-col items-center pt-12 text-center md:pt-16">
+      <h1 id="hero-titulo" class="text-display text-balance">Odontologia e harmonização no mesmo prontuário</h1>
+
+      <div class="hero-sub mt-6 grid max-w-3xl text-lg text-pretty text-ink/75 md:text-xl" aria-live="polite">
+        <p class="sub-both">
+          Agenda, odontograma, faceograma, anamnese e orçamentos em um só lugar, para a clínica que cuida do sorriso e do rosto.
+        </p>
+        <p class="sub-odonto">
+          Odontograma por dente e face, tratamentos em várias sessões e orçamento por dente. O faceograma fica à disposição
+          para quando a clínica precisar.
+        </p>
+        <p class="sub-hof">
+          Faceograma com pontos e doses, lote e validade de cada produto, e o planejado junto do aplicado no mesmo mapa.
+        </p>
+      </div>
+
+      <fieldset class="practice-switch mt-9 w-full max-w-[34rem]">
+        <legend class="mx-auto mb-3 text-[15px] font-medium text-ink/80">O que a sua clínica faz?</legend>
+        <div class="seg">
+          {
+            options.map((option) => (
+              <label class="seg-option">
+                <input type="radio" name="pratica" value={option.value} checked={option.value === "both"} aria-label={option.label} class="seg-input" />
+                {option.icon && <Icon name={option.icon} size={18} class="seg-icon" />}
+                <span class="hidden sm:inline">{option.label}</span>
+                <span class="sm:hidden">{option.short}</span>
+              </label>
+            ))
+          }
+          <span class="seg-thumb" aria-hidden="true"></span>
+        </div>
+      </fieldset>
+
+      <div class="mt-8 flex flex-col items-center gap-3">
+        <CtaButton placement="hero" />
+        <p class="text-sm text-ink/70">10 dias grátis · Cartão de crédito não obrigatório</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-page relative -mt-[136px] md:-mt-[208px]">
+    <PatientRecord />
+  </div>
+</section>
+
+<style>
+  /* All three subtitles share one cell, so the switch below never moves when the text changes. */
+  .hero-sub > p {
+    grid-area: 1 / 1;
+  }
+  .practice-switch {
+    border: 0;
+    padding: 0;
+    margin-inline: 0;
+    min-width: 0;
+  }
+  .seg {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 5px;
+    border: 1px solid var(--color-hairline-strong);
+    border-radius: 100px;
+    background: #fff;
+    box-shadow: var(--shadow-hairline);
+  }
+  .seg-option {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 12px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-charcoal);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 200ms ease;
+  }
+  .seg-option:hover {
+    color: var(--color-ink);
+  }
+  .seg-option:has(:checked) {
+    color: #fff;
+  }
+  .seg-option:has(:focus-visible) {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+  .seg-input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  .seg-option :global(.seg-icon) {
+    color: var(--color-sand-deep);
+    transition: color 200ms ease;
+  }
+  .seg-option:has(:checked) :global(.seg-icon) {
+    color: var(--color-sand);
+  }
+  /* The ink pill slides under the checked option. */
+  .seg-thumb {
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    width: calc((100% - 10px) / 3);
+    border-radius: 100px;
+    background: var(--color-ink);
+    box-shadow: var(--shadow-button);
+    transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+    view-transition-name: seg-thumb;
+  }
+  /* Where view transitions run, the thumb slides as its own transition group instead. */
+  @supports (view-transition-name: none) {
+    .seg-thumb {
+      transition: none;
+    }
+  }
+  .seg:has(input[value="hof"]:checked) .seg-thumb {
+    transform: translateX(100%);
+  }
+  .seg:has(input[value="both"]:checked) .seg-thumb {
+    transform: translateX(200%);
+  }
+  @media (min-width: 768px) {
+    .seg-option {
+      min-height: 52px;
+      font-size: 16px;
+    }
+  }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-practice-root]");
+  if (root) {
+    const inputs = root.querySelectorAll<HTMLInputElement>('input[name="pratica"]');
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const checked = () => Array.from(inputs).find((input) => input.checked)?.value ?? "both";
+    root.dataset.practice = checked();
+    inputs.forEach((input) =>
+      input.addEventListener("change", () => {
+        const apply = () => {
+          root.dataset.practice = input.value;
+        };
+        if (!document.startViewTransition || reduceMotion.matches) apply();
+        else document.startViewTransition(apply);
+      }),
+    );
+  }
+</script>

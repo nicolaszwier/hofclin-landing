@@ -1,80 +1,32 @@
 ---
 import Icon from "../Icon.astro";
+import OdontogramChart from "./OdontogramChart.astro";
+import { dentalEntries, samplePatient } from "../../content/sample-patient";
 
-/** Recreation of the app's Odontograma with a fictional patient. */
+/** Recreation of the app's Odontograma for the shared fictional patient. */
 interface Props {
   compact?: boolean;
   class?: string;
 }
 
 const { compact = false, class: className } = Astro.props;
-// One pattern id per instance: the hero and a feature section may render this twice.
-const hatchId = `hatch-${Math.random().toString(36).slice(2, 8)}`;
 
-type ToothState = "planned" | "completed" | "condition";
-const upper = [18, 17, 16, 15, 14, 13, 12, 11, 21, 22, 23, 24, 25, 26, 27, 28];
-const lower = [48, 47, 46, 45, 44, 43, 42, 41, 31, 32, 33, 34, 35, 36, 37, 38];
-const states: Record<number, ToothState> = { 16: "planned", 26: "completed", 11: "condition", 36: "planned", 46: "completed", 24: "planned" };
-
-const PITCH = 26;
-const x = (index: number) => 4 + index * PITCH + (index >= 8 ? 8 : 0);
-
-const toothStyle = (state?: ToothState) => {
-  if (state === "completed") return { fill: "#a86a2f", stroke: "#a86a2f", dash: undefined };
-  if (state === "planned") return { fill: "#fbefe1", stroke: "#a86a2f", dash: "3 2.5" };
-  if (state === "condition") return { fill: `url(#${hatchId})`, stroke: "#62585a", dash: undefined };
-  return { fill: "#ffffff", stroke: "#d9cbc1", dash: undefined };
+const statusChip: Record<string, string> = {
+  Concluído: "bg-sand-ink text-white",
+  "Em andamento": "border border-sand-deep text-sand-ink",
+  Planejado: "bg-sand-soft text-sand-ink",
+  Condição: "bg-cloud text-charcoal",
 };
-
-const rows = [
-  { tooth: "26", text: "Restauração em resina · face O", status: "Concluído", done: true },
-  { tooth: "16", text: "Tratamento de canal", status: "Planejado", done: false },
-  { tooth: "36", text: "Restauração em resina · faces O e M", status: "Planejado", done: false },
-];
 ---
 
 <div class:list={["mock-card overflow-hidden", className]}>
   <div class="flex flex-wrap items-center justify-between gap-3 border-b border-hairline px-4 py-3">
     <span class="pill-tag"><Icon name="tooth" size={15} class="text-sand-deep" /> Odontograma</span>
-    <span class="text-xs text-charcoal">Marina Alves · 34 anos</span>
+    <span class="text-xs text-charcoal">{samplePatient.name} · {samplePatient.age} anos</span>
   </div>
 
   <div class="px-4 pt-4 pb-3">
-    <svg viewBox="0 0 432 110" class="w-full" role="img" aria-label="Odontograma com dentes planejados, concluídos e uma condição registrada">
-      <defs>
-        <pattern id={hatchId} width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <rect width="4" height="4" fill="#f5ede6"></rect>
-          <line x1="0" y1="0" x2="0" y2="4" stroke="#8f8486" stroke-width="1"></line>
-        </pattern>
-      </defs>
-      {
-        upper.map((tooth, index) => {
-          const style = toothStyle(states[tooth]);
-          return (
-            <g>
-              <rect x={x(index)} y="4" width="22" height="30" rx="7" fill={style.fill} stroke={style.stroke} stroke-width="1.2" stroke-dasharray={style.dash} />
-              {states[tooth] === "planned" && <rect x={x(index) + 7} y="14" width="8" height="9" rx="2" fill="#ecba7c" />}
-              {states[tooth] === "completed" && <path d={`M${x(index) + 6.5} 19.5l3 3 6-6.5`} stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />}
-              <text x={x(index) + 11} y="48" text-anchor="middle" font-size="9" fill="#62585a" font-family="Poppins, sans-serif">{tooth}</text>
-            </g>
-          );
-        })
-      }
-      {
-        lower.map((tooth, index) => {
-          const style = toothStyle(states[tooth]);
-          return (
-            <g>
-              <text x={x(index) + 11} y="68" text-anchor="middle" font-size="9" fill="#62585a" font-family="Poppins, sans-serif">{tooth}</text>
-              <rect x={x(index)} y="76" width="22" height="30" rx="7" fill={style.fill} stroke={style.stroke} stroke-width="1.2" stroke-dasharray={style.dash} />
-              {states[tooth] === "planned" && <rect x={x(index) + 7} y="86" width="8" height="9" rx="2" fill="#ecba7c" />}
-              {states[tooth] === "completed" && <path d={`M${x(index) + 6.5} 91.5l3 3 6-6.5`} stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" />}
-            </g>
-          );
-        })
-      }
-    </svg>
-
+    <OdontogramChart />
     <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-[11px] text-charcoal">
       <span class="flex items-center gap-1.5"><span class="size-2.5 rounded-sm border border-dashed border-sand-deep bg-sand-soft"></span>Planejado</span>
       <span class="flex items-center gap-1.5"><span class="size-2.5 rounded-sm bg-sand-deep"></span>Concluído</span>
@@ -85,11 +37,11 @@ const rows = [
   {
     !compact && (
       <ul class="border-t border-hairline">
-        {rows.map((row) => (
+        {dentalEntries.map((row) => (
           <li class="flex items-center gap-3 border-b border-hairline px-4 py-2.5 text-xs last:border-0">
-            <span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-cream font-semibold">{row.tooth}</span>
+            <span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-cream font-semibold">{row.site}</span>
             <span class="min-w-0 flex-1 truncate">{row.text}</span>
-            <span class:list={["chip", row.done ? "bg-sand-deep text-white" : "bg-sand-soft text-sand-deep"]}>{row.status}</span>
+            <span class:list={["chip", statusChip[row.status]]}>{row.status}</span>
           </li>
         ))}
       </ul>

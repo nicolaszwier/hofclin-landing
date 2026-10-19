@@ -5,8 +5,7 @@ import FeatureRow from "../components/FeatureRow.astro";
 import PricingSection from "../components/PricingSection.astro";
 import FaqSection from "../components/FaqSection.astro";
 import FinalCta from "../components/FinalCta.astro";
-import OdontogramMock from "../components/mockups/OdontogramMock.astro";
-import TreatmentPlanMock from "../components/mockups/TreatmentPlanMock.astro";
+import TreatmentSessionsMock from "../components/mockups/TreatmentSessionsMock.astro";
 import AnamnesisMock from "../components/mockups/AnamnesisMock.astro";
 import QuoteMock from "../components/mockups/QuoteMock.astro";
 import AgendaMock from "../components/mockups/AgendaMock.astro";
@@ -28,19 +27,14 @@ import { breadcrumbJsonLd } from "../content/structured-data";
 >
   <PageHero
     breadcrumb="Odontologia"
-    tag="Para clínicas odontológicas"
-    icon="tooth"
     title="Prontuário odontológico digital, do odontograma ao orçamento"
     subtitle="Registre o que o paciente já tem, planeje o tratamento dente a dente e acompanhe cada sessão até a conclusão, com a anamnese assinada no tablet."
     placement="odontologia_hero"
-  >
-    <OdontogramMock compact />
-  </PageHero>
+    practice="odonto"
+  />
 
   <div class="container-page flex flex-col gap-24 py-20 md:gap-32 md:py-28">
     <FeatureRow
-      icon="tooth"
-      tag="Odontograma"
       title="Odontograma por dente, face e região"
       text="Cada registro diz onde está e o que é: uma condição que o paciente já tinha ou um tratamento planejado pela clínica."
       points={[
@@ -49,14 +43,10 @@ import { breadcrumbJsonLd } from "../content/structured-data";
         "Registros por região: boca inteira, arcada superior, arcada inferior ou uma região sua",
         "Nada é apagado: tratamentos cancelados ou concluídos continuam no histórico",
       ]}
-    >
-      <OdontogramMock />
-    </FeatureRow>
+    />
 
     <FeatureRow
       reverse
-      icon="refresh"
-      tag="Plano de tratamento"
       title="Tratamentos que atravessam várias sessões"
       text="Um canal é um tratamento só, mesmo que leve três consultas. Cada atendimento registra a sessão, e o tratamento passa a concluído quando você finaliza."
       points={[
@@ -65,12 +55,10 @@ import { breadcrumbJsonLd } from "../content/structured-data";
         "Lista de tratamentos planejados sem horário marcado, para chamar o paciente",
       ]}
     >
-      <TreatmentPlanMock />
+      <TreatmentSessionsMock />
     </FeatureRow>
 
     <FeatureRow
-      icon="clipboard"
-      tag="Anamnese e assinatura"
       title="Anamnese com versões e assinatura no tablet"
       text="Use o modelo pronto ou crie os seus. O paciente responde e assina no tablet, com o dedo ou a caneta."
       points={[
@@ -84,8 +72,6 @@ import { breadcrumbJsonLd } from "../content/structured-data";
 
     <FeatureRow
       reverse
-      icon="receipt"
-      tag="Orçamentos"
       title="Do plano ao orçamento, do orçamento à agenda"
       text="Os itens do orçamento puxam o dente e as faces do plano de tratamento. Aceito o orçamento, os horários saem dele."
       points={[
@@ -98,8 +84,6 @@ import { breadcrumbJsonLd } from "../content/structured-data";
     </FeatureRow>
 
     <FeatureRow
-      icon="calendar"
-      tag="Agenda"
       title="Uma agenda que sabe onde cada dentista está"
       text="Para quem atende em mais de uma clínica, o Hofclin não deixa marcar dois pacientes no mesmo horário, em nenhuma delas."
       points={[

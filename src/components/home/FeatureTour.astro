@@ -1,0 +1,148 @@
+---
+import Icon, { type IconName } from "../Icon.astro";
+import SectionHeading from "../SectionHeading.astro";
+import AnamnesisMock from "../mockups/AnamnesisMock.astro";
+import AgendaMock from "../mockups/AgendaMock.astro";
+import QuoteMock from "../mockups/QuoteMock.astro";
+import InsightsMock from "../mockups/InsightsMock.astro";
+
+/**
+ * The rest of the record, one screen at a time. On wide screens the index stays put
+ * and marks the screen in view; on phones the screens simply stack.
+ */
+const features: { id: string; icon: IconName; label: string; title: string; text: string; mock: "anamnesis" | "agenda" | "quote" | "insights" }[] = [
+  {
+    id: "anamnese",
+    icon: "clipboard",
+    label: "Anamnese e assinatura",
+    title: "O histórico do paciente, completo e assinado",
+    text: "Anamnese com versões, odontograma, faceograma, atendimentos e anexos. O paciente assina no tablet, com o dedo ou a caneta.",
+    mock: "anamnesis",
+  },
+  {
+    id: "agenda",
+    icon: "calendar",
+    label: "Agenda",
+    title: "O dia da clínica em uma tela",
+    text: "Agenda por dia e semana para cada dentista, com aviso de conflito de horário e a agenda no calendário do celular.",
+    mock: "agenda",
+  },
+  {
+    id: "orcamentos",
+    icon: "receipt",
+    label: "Orçamentos",
+    title: "Orçamento por dente ou região, com link para o paciente",
+    text: "Monte o orçamento a partir do plano de tratamento, aplique desconto e envie um link que o paciente abre no celular.",
+    mock: "quote",
+  },
+  {
+    id: "retornos",
+    icon: "chart",
+    label: "Retornos e pendências",
+    title: "Quem precisa voltar, sem planilha",
+    text: "Retornos vencidos, tratamentos planejados sem horário marcado e aniversariantes da semana, prontos para você chamar.",
+    mock: "insights",
+  },
+];
+---
+
+<section class="py-20 md:py-32" aria-labelledby="recursos-titulo" data-tour>
+  <div class="container-page grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+    <div class="lg:sticky lg:top-32 lg:self-start">
+      <SectionHeading
+        id="recursos-titulo"
+        title="Feito para o dia a dia da clínica"
+        subtitle="Do primeiro contato ao retorno, cada etapa do atendimento fica registrada no mesmo prontuário."
+      />
+      <ol class="mt-10 hidden border-t border-hairline lg:block">
+        {
+          features.map((feature) => (
+            <li>
+              <a href={`#recurso-${feature.id}`} class="tour-link" data-tour-link={feature.id}>
+                <Icon name={feature.icon} size={20} class="tour-icon" />
+                <span>{feature.label}</span>
+                <Icon name="arrow-right" size={18} class="tour-arrow" />
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    <div class="flex flex-col gap-20 md:gap-28">
+      {
+        features.map((feature) => (
+          <article id={`recurso-${feature.id}`} class="scroll-mt-28" data-tour-item={feature.id}>
+            <h3 class="text-subheading max-w-xl text-balance">{feature.title}</h3>
+            <p class="mt-3 max-w-xl text-lg text-pretty text-charcoal">{feature.text}</p>
+            <div class="mt-8 overflow-hidden rounded-[var(--radius-card-lg)] bg-cream px-5 pt-8 sm:px-10 md:pt-12" aria-hidden="true">
+              {/* The well's bottom edge crops the preview; pb-5 keeps its last row visible. */}
+              <div class="mx-auto max-w-[480px] translate-y-5">
+                {feature.mock === "anamnesis" && <AnamnesisMock class="pb-5" />}
+                {feature.mock === "agenda" && <AgendaMock class="pb-5" />}
+                {feature.mock === "quote" && <QuoteMock class="pb-5" />}
+                {feature.mock === "insights" && <InsightsMock class="pb-5" />}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .tour-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 4px;
+    border-bottom: 1px solid var(--color-hairline);
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--color-charcoal);
+    transition: color 200ms ease;
+  }
+  .tour-link:hover,
+  .tour-link.is-active {
+    color: var(--color-ink);
+  }
+  .tour-link :global(.tour-icon) {
+    color: var(--color-slate);
+    transition: color 200ms ease;
+  }
+  .tour-link.is-active :global(.tour-icon) {
+    color: var(--color-sand-deep);
+  }
+  .tour-link :global(.tour-arrow) {
+    margin-left: auto;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition:
+      opacity 200ms ease,
+      transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .tour-link.is-active :global(.tour-arrow),
+  .tour-link:hover :global(.tour-arrow) {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+
+<script>
+  // Marks the index entry whose screen sits in the middle band of the viewport.
+  const links = new Map(
+    Array.from(document.querySelectorAll<HTMLElement>("[data-tour-link]")).map((link) => [link.dataset.tourLink, link]),
+  );
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const id = (entry.target as HTMLElement).dataset.tourItem;
+        links.forEach((link, key) => link.classList.toggle("is-active", key === id));
+      }
+    },
+    { rootMargin: "-45% 0px -45% 0px" },
+  );
+  document.querySelectorAll("[data-tour-item]").forEach((item) => observer.observe(item));
+</script>

@@ -1,38 +1,57 @@
 ---
-import Icon, { type IconName } from "./Icon.astro";
+import Icon from "./Icon.astro";
 
-/** One capability: copy on one side, a product card on the other; `reverse` alternates sides. */
+/**
+ * One capability: copy on one side, a product preview on the other; `reverse` alternates sides.
+ * Without a preview (the hero record already shows it) the copy runs wide and the points split in two.
+ */
 interface Props {
-  icon: IconName;
-  tag: string;
   title: string;
   text: string;
   points: string[];
   reverse?: boolean;
 }
 
-const { icon, tag, title, text, points, reverse = false } = Astro.props;
+const { title, text, points, reverse = false } = Astro.props;
+const hasPreview = Astro.slots.has("default");
 ---
 
-<div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-  <div class:list={["flex flex-col gap-5", reverse && "lg:order-2"]}>
-    <span class="pill-tag self-start"><Icon name={icon} size={15} class="text-sand-deep" /> {tag}</span>
-    <h2 class="text-heading text-balance">{title}</h2>
-    <p class="text-lg text-pretty text-charcoal">{text}</p>
-    <ul class="flex flex-col gap-3 text-[15px]">
-      {
-        points.map((point) => (
+{
+  hasPreview ? (
+    <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-20">
+      <div class:list={["flex flex-col gap-5", reverse && "lg:order-2"]}>
+        <h2 class="text-heading text-balance">{title}</h2>
+        <p class="text-lg text-pretty text-charcoal">{text}</p>
+        <ul class="flex flex-col gap-3 border-t border-hairline pt-5 text-[15px]">
+          {points.map((point) => (
+            <li class="flex gap-3">
+              <Icon name="check" size={18} class="mt-0.5 shrink-0 text-sand-deep" />
+              {point}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class:list={["overflow-hidden rounded-[var(--radius-card-lg)] bg-cream px-5 pt-8 sm:px-10 md:pt-12", reverse && "lg:order-1"]} aria-hidden="true">
+        {/* The well's bottom edge crops the preview; pb-5 keeps its last row visible. */}
+        <div class="mx-auto max-w-[480px] translate-y-5 [&>*]:pb-5">
+          <slot />
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+      <div class="flex flex-col gap-5">
+        <h2 class="text-heading text-balance">{title}</h2>
+        <p class="text-lg text-pretty text-charcoal">{text}</p>
+      </div>
+      <ul class="grid grid-cols-1 gap-x-10 gap-y-4 self-end border-t border-hairline pt-6 text-[15px] sm:grid-cols-2">
+        {points.map((point) => (
           <li class="flex gap-3">
             <Icon name="check" size={18} class="mt-0.5 shrink-0 text-sand-deep" />
             {point}
           </li>
-        ))
-      }
-    </ul>
-  </div>
-  <div class:list={["rounded-[var(--radius-card-lg)] bg-cream p-6 md:p-10", reverse && "lg:order-1"]} aria-hidden="true">
-    <div class="mx-auto max-w-[460px]">
-      <slot />
+        ))}
+      </ul>
     </div>
-  </div>
-</div>
+  )
+}

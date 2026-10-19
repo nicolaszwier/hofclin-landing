@@ -31,28 +31,27 @@ const items: { icon: IconName; title: string; text: string }[] = [
 ---
 
 <section class="border-t border-hairline bg-cream py-20 md:py-28" aria-labelledby="seguranca-titulo">
-  <div class="container-page">
-    <SectionHeading
-      id="seguranca-titulo"
-      eyebrow="Segurança e privacidade"
-      title="Dados de saúde pedem cuidado"
-      subtitle="Prontuário guarda informação sensível. Por isso, dizemos exatamente o que fazemos para protegê-la."
-    />
-    <ul class="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+  <div class="container-page grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+    <div class="flex flex-col gap-8">
+      <SectionHeading
+        id="seguranca-titulo"
+        title="Dados de saúde pedem cuidado"
+        subtitle="Prontuário guarda informação sensível. Por isso, dizemos exatamente o que fazemos para protegê-la."
+      />
+      <a href="/seguranca" class="link-arrow self-start">Veja como protegemos os dados <Icon name="arrow-right" size={16} /></a>
+    </div>
+    <dl class="border-t border-hairline-strong">
       {
         items.map((item) => (
-          <li class="flex flex-col gap-3 rounded-[var(--radius-card)] border border-hairline bg-white p-6">
-            <span class="flex size-10 items-center justify-center rounded-[var(--radius-icon)] bg-sand-soft text-sand-deep">
-              <Icon name={item.icon} size={20} />
-            </span>
-            <h3 class="text-base font-semibold">{item.title}</h3>
-            <p class="text-sm text-pretty text-charcoal">{item.text}</p>
-          </li>
+          <div class="grid grid-cols-1 gap-x-8 gap-y-2 border-b border-hairline py-6 sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)]">
+            <dt class="flex items-start gap-3 text-base font-semibold">
+              <Icon name={item.icon} size={20} class="mt-0.5 shrink-0 text-sand-deep" />
+              {item.title}
+            </dt>
+            <dd class="text-pretty text-charcoal">{item.text}</dd>
+          </div>
         ))
       }
-    </ul>
-    <p class="mt-10 text-center">
-      <a href="/seguranca" class="link-arrow">Veja como protegemos os dados <Icon name="arrow-right" size={16} /></a>
-    </p>
+    </dl>
   </div>
 </section>

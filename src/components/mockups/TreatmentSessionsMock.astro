@@ -1,0 +1,46 @@
+---
+import Icon from "../Icon.astro";
+
+/** One planned treatment followed session by session (the shared fictional patient's canal on 16). */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const sessions = [
+  { label: "Planejado na avaliação", date: "04/09", state: "done" },
+  { label: "Sessão 1 · acesso e instrumentação", date: "16/10", state: "done" },
+  { label: "Sessão 2 · medicação intracanal", date: "23/10", state: "next" },
+  { label: "Sessão 3 · obturação", date: "A agendar", state: "open" },
+] as const;
+---
+
+<div class:list={["mock-card overflow-hidden", className]}>
+  <div class="flex items-center justify-between gap-3 border-b border-hairline px-4 py-3">
+    <span class="pill-tag"><Icon name="tooth" size={15} class="text-sand-deep" /> Tratamento de canal · 16</span>
+    <span class="chip shrink-0 border border-sand-deep text-sand-ink">Em andamento</span>
+  </div>
+  <ol class="px-4 py-3">
+    {
+      sessions.map((session, index) => (
+        <li class="relative flex items-center gap-3 py-2.5">
+          {index < sessions.length - 1 && <span class="absolute top-[26px] left-[9px] h-[calc(100%-10px)] w-px bg-hairline-strong" aria-hidden="true" />}
+          <span
+            class:list={[
+              "relative z-10 flex size-[19px] shrink-0 items-center justify-center rounded-full",
+              session.state === "done" && "bg-sand-deep text-white",
+              session.state === "next" && "border-2 border-sand-deep bg-white",
+              session.state === "open" && "border border-dashed border-hairline-strong bg-white",
+            ]}
+          >
+            {session.state === "done" && <Icon name="check" size={12} />}
+          </span>
+          <span class:list={["min-w-0 flex-1 text-xs", session.state === "open" ? "text-charcoal" : "font-medium"]}>{session.label}</span>
+          <span class="shrink-0 text-[11px] text-charcoal tabular-nums">{session.date}</span>
+        </li>
+      ))
+    }
+  </ol>
+  <div class="border-t border-hairline bg-cream px-4 py-2.5 text-[11px] text-charcoal">Concluído quando a última sessão for registrada.</div>
+</div>

@@ -36,6 +36,11 @@ export const homeFaq: FaqItem[] = [
   noCard,
   trialEnd,
   {
+    question: "Quanto trabalho dá para começar?",
+    answer:
+      "Você cadastra a clínica com nome e CNPJ, e um checklist na tela inicial mostra o que configurar: dados da clínica, procedimentos, modelo de anamnese e equipe. A clínica já começa com um modelo de anamnese pronto, e com um procedimento cadastrado você marca o primeiro horário.",
+  },
+  {
     question: "Qual a diferença entre os planos Standard e Pro?",
     answer:
       "O Standard tem agenda, prontuário digital com odontograma, faceograma e anamnese, orçamentos, insights e agenda no celular via iCal. O Pro tem tudo isso e mais o módulo financeiro: vendas, parcelas, contas, caixa, despesas, fechamento do dia, inadimplentes e a calculadora de custos.",

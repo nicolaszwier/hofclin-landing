@@ -6,6 +6,11 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["dev", "--port", "4321"],
       "port": 4321
+    },
+    {
+      "name": "landing-running",
+      "url": "http://localhost:4321",
+      "port": 4321
     }
   ]
 }

@@ -2,15 +2,18 @@
 import Icon from "./Icon.astro";
 import SectionHeading from "./SectionHeading.astro";
 import type { FaqItem } from "../content/faq";
-import { isPlaceholder, site } from "../config/site";
+import { site } from "../config/site";
+import { type WhatsAppContext, whatsappLink } from "../config/whatsapp";
 
 /** Zero-JS accordion. The page passes the same items to faqJsonLd() for FAQPage markup. */
 interface Props {
   items: FaqItem[];
   title?: string;
+  whatsappContext?: WhatsAppContext;
 }
 
-const { items, title = "Dúvidas frequentes" } = Astro.props;
+const { items, title = "Dúvidas frequentes", whatsappContext = "home" } = Astro.props;
+const whatsapp = whatsappLink(whatsappContext);
 ---
 
 <section id="duvidas" class="scroll-mt-20 bg-cream py-20 md:py-28" aria-labelledby="duvidas-titulo">
@@ -18,11 +21,21 @@ const { items, title = "Dúvidas frequentes" } = Astro.props;
     <div class="flex flex-col gap-6 lg:sticky lg:top-32 lg:self-start">
       <SectionHeading id="duvidas-titulo" title={title} />
       {
-        !isPlaceholder(site.company.email) && (
+        site.whatsapp.enabled && (
           <p class="max-w-sm text-pretty text-charcoal">
-            Não achou a sua dúvida? Escreva para{" "}
-            <a href={`mailto:${site.company.email}`} class="text-ink underline underline-offset-4">
-              {site.company.email}
+            Não achou a sua dúvida?{" "}
+            <a
+              href={whatsapp.href}
+              target="_blank"
+              rel="noopener"
+              class="text-ink underline underline-offset-4"
+              data-whatsapp
+              data-whatsapp-number={whatsapp.number}
+              data-whatsapp-message={whatsapp.message}
+              data-whatsapp-context={whatsappContext}
+              data-whatsapp-placement="faq"
+            >
+              Fale com a gente pelo WhatsApp
             </a>
             .
           </p>

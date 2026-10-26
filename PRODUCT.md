@@ -32,7 +32,7 @@ The lead claim is **odontologia and harmonização in the same prontuário**. Od
 
 - **How visitors arrive:** paid campaigns (Google Ads, Meta, TikTok) and organic search. Attribution (UTMs and click IDs) is captured in the `hof_attr` cookie and handed to the app at signup (docs/attribution-contract.md).
 - **Handoff:** every Trial CTA goes to `app.hofclin.com.br/signup`, optionally with `?plan=standard|pro`, which sets the **Trial plan**. Signup, clinic creation, and payment all happen in the app. The landing has no forms or text inputs.
-- **Contact:** a floating WhatsApp button exists, but it stays hidden until the real number is set (`site.whatsapp` in `src/config/site.ts`).
+- **Contact:** WhatsApp only — a floating button on every page, with a speech bubble beside it once the footer is on screen, and a link under the FAQ heading (`site.whatsapp` in `src/config/site.ts`).
 - **How the product is used:** in the browser, with nothing to install. It is designed for the tablet at the chair and the computer at reception, and patients sign anamneses and appointments on the tablet with a finger or stylus.
 - **Pages:** home, `/odontologia`, `/harmonizacao-orofacial`, `/seguranca`, `/termos`, `/privacidade`, the cookie policy, and 404.
 - **Language:** every user-visible string is PT-br.
@@ -56,7 +56,6 @@ The lead claim is **odontologia and harmonização in the same prontuário**. Od
 - **Some promises depend on app releases.** The Pro Trial, plan choice at card registration, and the 7-day guarantee are each gated on specific app releases (docs/go-live-checklist.md, "Product promises the landing makes").
 
 **Undecided or pending:**
-- The real WhatsApp number, and when the button turns on.
 - Showing the encarregado (DPO) line in the footer is switched off for now; `/privacidade` still names them.
 - The open legal points in docs/go-live-checklist.md.
 

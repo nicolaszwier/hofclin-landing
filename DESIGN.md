@@ -275,7 +275,7 @@ The palette is a warm monochrome with one action color (crimson) and one informa
 - **Strong Hairline** (`hairline-strong`): ghost-button and pill-tag borders, the practice-switch track, the rule that opens a ruled list or the specialty diptych, outlined "shared" and "scheduled" chips, the odontologia bar in the agenda preview, and the round mobile-menu trigger.
 
 ### Third-party
-- **WhatsApp Green** (`whatsapp`, `whatsapp-hover`): only on the floating WhatsApp button, which is currently switched off.
+- **WhatsApp Green** (`whatsapp`, `whatsapp-hover`): only on the floating WhatsApp button.
 
 ### Named Rules
 **The One Action Color Rule.** Hofclin Crimson fills the primary CTA and appears in the logo, and nowhere else. It is never used for text, links, icons, borders, section backgrounds, or chart marks. If something is not a button that starts the Trial, it is not crimson.
@@ -416,6 +416,9 @@ The logo (horizontal SVG, 28–32px tall) sits on the left. Links in the center 
 
 ### Consent Banner
 A white card with 18px corners and stacked Card and Mock shadows. It sits bottom-left on desktop (max 440px wide) and spans the bottom edge on mobile. **Reject and Accept are both Ghost buttons of equal size, side by side**, with "Personalizar" as an underlined text button below. Consent UI never uses the primary crimson button.
+
+### WhatsApp Button and Bubble
+A 56px WhatsApp Green circle with the Button shadow, fixed bottom-right (16px from the edges, 24px from the right at 768px up) and riding above the consent banner on phones. Once the footer is on screen and the visitor has scrolled past the first screen, a speech bubble opens to its left: a white card with 18px corners, hairline border, stacked Card and Mock shadows, and a small tail pointing at the button. It reads "Ficou com alguma dúvida?" in Warm Ink 500 over an underlined charcoal "Fale com a gente pelo WhatsApp.", and has a slate close button. It slides in 8px and fades over 300ms on `cubic-bezier(0.16, 1, 0.3, 1)`, waits while the consent banner is open, and stays shut for the page view once closed or clicked. The bubble stays white; the green belongs to the button alone.
 
 ### Final CTA Band
 A Warm Ink band with 28px corners (40px from 768px up). It holds a white headline, a subtitle in 75% white, the primary crimson CTA, and the reassurance line. A large Warm Sand sparkle at 25% opacity sits in the top-right corner, the only decorative mark in the system.

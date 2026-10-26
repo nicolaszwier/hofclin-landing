@@ -27,7 +27,7 @@ Both events carry `page_path` and the Attribution summary (`attr_first_source`, 
 | Event | Extra parameters | Fired when |
 | --- | --- | --- |
 | `cta_click` | `cta_placement` (e.g. `hero`, `nav`, `pricing_pro`, `odontologia_final`), `plan` (`standard` / `pro` / `none`), `link_url` | Any trial CTA is clicked |
-| `whatsapp_click` | `conversation_code` (e.g. `G7K2`), `wa_placement`, `wa_context` (`home`, `odontologia`, `harmonizacao`, `legal`) | The floating WhatsApp button is clicked |
+| `whatsapp_click` | `conversation_code` (e.g. `G7K2`), `wa_placement` (`floating`, `bubble`, `faq`), `wa_context` (`home`, `odontologia`, `harmonizacao`, `legal`) | The floating WhatsApp button, its speech bubble, or the FAQ's WhatsApp link is clicked |
 
 ## GTM container
 

@@ -32,10 +32,10 @@ export const site = {
   },
 
   whatsapp: {
-    /** Shows the floating button. Hidden until the real number is set. */
-    enabled: false,
+    /** Shows the floating button and the FAQ's WhatsApp link. */
+    enabled: true,
     /** Digits only, with country code, e.g. 5541999999999. */
-    number: "5541999999999", //to-do: replace with real number
+    number: "5542988754149",
   },
 
   analytics: {

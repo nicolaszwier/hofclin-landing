@@ -26,8 +26,8 @@
 - [ ] Re-read `src/config/plans.ts` against the production `plans` rows (prices, features). Documentos stays off while the app hides it.
 
 ### Contact
-- [ ] 🔒 `site.whatsapp.number` (digits with country code, e.g. `5541999999999`).
-- [ ] `site.whatsapp.enabled = true` — the floating button stays hidden until then.
+- [x] 🔒 `site.whatsapp.number` (digits with country code, e.g. `5541999999999`).
+- [x] `site.whatsapp.enabled = true` — the floating button and the FAQ link stay hidden until then.
 
 ### Domain and search
 - [ ] Vercel project for this repo, production domain `hofclin.com.br`, plus `www.hofclin.com.br` (redirected to the apex by `vercel.json`).

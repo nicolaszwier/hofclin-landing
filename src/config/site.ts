@@ -20,7 +20,7 @@ export const site = {
     cnpj: "60.678.486/0001-43",
     address: "R CLOTARIO PORTUGAL, 1050, UNIAO DA VITORIA, PR",
     email: "nicolaszwier@gmail.com",
-    phone: "(42) 998071761",
+    phone: "(42) 98875-4149",
   },
 
   /** Encarregado pelo tratamento de dados — LGPD art. 41, §1º. */

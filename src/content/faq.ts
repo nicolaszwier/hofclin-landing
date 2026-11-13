@@ -1,7 +1,9 @@
 /**
  * FAQ copy, shared by the visible accordion and the FAQPage JSON-LD.
- * Every answer must stay true to the product and to the offer (CDC art. 30) —
- * see odonto-web/docs/research/termos-de-uso-privacidade-lgpd-saas.md §5.3 for claims to avoid.
+ * Every answer must stay true to the product and must never promise more than the Termos de Uso
+ * (src/pages/termos.astro, from counsel's docs/legal PDF). Trial, refund, failed payment and post-cancellation
+ * answers restate Termos clauses 4, 5, 6 and 9; change them together.
+ * See odonto-web/docs/research/termos-de-uso-privacidade-lgpd-saas.md §5.3 for claims to avoid.
  */
 export interface FaqItem {
   question: string;
@@ -53,12 +55,22 @@ export const homeFaq: FaqItem[] = [
   {
     question: "Como funciona a garantia de 7 dias?",
     answer:
-      "Se você cancelar em até 7 dias depois da primeira cobrança, devolvemos o valor integral dessa cobrança. Depois desse prazo, o cancelamento interrompe a renovação e o acesso continua até o fim do período já pago, sem reembolso.",
+      "Se você cancelar em até 7 dias corridos depois da primeira cobrança, devolvemos o valor integral dessa cobrança. Depois desse prazo, o cancelamento interrompe a renovação e o acesso continua até o fim do período já pago, sem reembolso.",
   },
   {
     question: "Como faço para cancelar?",
     answer:
       "O administrador da clínica cancela pelo próprio Hofclin, em Configurações → Assinatura, sem precisar falar com ninguém. A assinatura renova todo mês automaticamente até ser cancelada.",
+  },
+  {
+    question: "E se o pagamento não for aprovado?",
+    answer:
+      "Avisamos você antes de qualquer bloqueio. Se o pagamento não for regularizado, o acesso completo da clínica fica suspenso até a regularização. Não cobramos multa nem juros por atraso.",
+  },
+  {
+    question: "O que acontece com os meus dados se eu cancelar?",
+    answer:
+      "Quando a assinatura termina, por cancelamento ou por falta prolongada de pagamento, a clínica continua com acesso para exportar os dados por 60 dias, e enviamos por e-mail um passo a passo da exportação.",
   },
   {
     question: "O Hofclin serve para quem faz só odontologia?",

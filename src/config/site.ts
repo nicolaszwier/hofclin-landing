@@ -46,7 +46,7 @@ export const site = {
   legal: {
     /** Flip to true only after counsel has reviewed the Termos, Privacidade and Segurança pages. */
     reviewed: true,
-    updatedAt: "2026-10-17",
+    updatedAt: "2026-11-13",
   },
 } as const;
 
